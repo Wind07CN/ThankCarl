@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,17 +7,25 @@ public class PlayerController : MonoBehaviour
 	public float playerDefaultSpeed = 20;
 	public float playerSpeedRate = 1;
 
+	public float PlayDefaultLife = 3;
+
+	public Player player;
+
 	public void Start()
 	{
-
+		player = new Player(PlayDefaultLife);
 	}
 
 	private void Update()
 	{
 		KeyBoardInput();
-
+		if (player.isAlive == false)
+		{
+			Destroy(gameObject);
+		}
 	}
 
+	
 
 
 	private void KeyBoardInput() 

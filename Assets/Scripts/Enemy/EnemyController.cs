@@ -1,4 +1,4 @@
-using System.Collections;
+锘縰sing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour
 	public float waitTime = 1;
 	private float timer = 1;
 
-	public bool isActive = false; //是否处于激活状态，并可以对玩家造成伤害
+	public bool isActive = false; //鏄惁澶勪簬婵�娲荤姸鎬侊紝骞跺彲浠ュ鐜╁閫犳垚浼ゅ
 
 	private GameObject player;
 
