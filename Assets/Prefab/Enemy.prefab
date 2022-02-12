@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5088029350238481360}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,8 @@ MonoBehaviour:
   enemyDefaultSpeed: 3
   enemySpeedRate: 1
   waitTime: 1
-  isActive: 0
+  enemyTotalHealth: 1
+  enemyCurrentHealth: 1
 --- !u!1 &5088029351333420442
 GameObject:
   m_ObjectHideFlags: 0

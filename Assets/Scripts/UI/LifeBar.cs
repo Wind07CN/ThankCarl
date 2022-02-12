@@ -19,7 +19,7 @@ public class LifeBar : MonoBehaviour
 	{
 		if (player != null)
 		{
-			SetPlayerHealth(player.totalHealth, player.currentHealth);
+			SetPlayerHealth(player.TotalHealth, player.CurrentHealth);
 		}
 	}
 

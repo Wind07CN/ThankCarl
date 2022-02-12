@@ -4,41 +4,54 @@ using UnityEngine;
 
 public class Player
 {
-	public float totalHealth { set; get; }
-	public float currentHealth { set; get; }
+	// 玩家速度
+	public float PlayerDefaultSpeed { set; get; } = 20;
+	public float PlayerSpeedRate { set; get; } = 1;
+	
 
-	public bool isAlive { set; get; } = true;
+
+	// 玩家生命值相关
+	public float TotalHealth { set; get; }
+	public float CurrentHealth { set; get; }
 
 
-	public Player(float totalHealth)
+
+	// 玩家是否存活
+	public bool IsAlive { set; get; } = true;
+
+	// 构造函数
+	public Player(float totalHealth, float playerDefaultSpeed)
 	{
-		isAlive = true;
-		this.totalHealth = totalHealth;
-		this.currentHealth = totalHealth;
+		IsAlive = true;
+		this.PlayerDefaultSpeed = playerDefaultSpeed;
+		this.TotalHealth = totalHealth;
+		this.CurrentHealth = totalHealth;
 	}
 
+	// 在玩家受到伤害的时候 由敌人调用该函数
 	public void GetDamage(float demage)
 	{
-		if (currentHealth - demage <= 0f)
+		if (CurrentHealth - demage <= 0f)
 		{
-			currentHealth = 0f;
-			isAlive = false;
+			CurrentHealth = 0f;
+			IsAlive = false;
 		}
 		else
 		{
-			currentHealth -= demage;
+			CurrentHealth -= demage;
 		}
 	}
 
+	// 玩家受到治疗时调用该函数
 	public void GetHeal(float heal)
 	{
-		if (currentHealth + heal > totalHealth)
+		if (CurrentHealth + heal > TotalHealth)
 		{
-			currentHealth = totalHealth;
+			CurrentHealth = TotalHealth;
 		}
 		else
 		{
-			currentHealth += heal;
+			CurrentHealth += heal;
 		}
 	}
 
