@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     public void DamagePlayer()
     {
-        player.CurrentLife -= 10;
+        player.CurrentLife -= 1;
     }
     
     public void DamagePlayer(int damage)
