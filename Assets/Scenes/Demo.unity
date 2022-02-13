@@ -541,32 +541,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8080196475049245855, guid: 213fc754e11ed2c41bd396e1647a9ebe, type: 3}
   m_PrefabInstance: {fileID: 3730578921623768037}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &532829761
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 532829757}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.023320109, y: -0.016608715}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.2890162, y: 1.4851332}
-  m_EdgeRadius: 0
 --- !u!50 &532829762
 Rigidbody2D:
   serializedVersion: 4
@@ -946,7 +920,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: YOU Points
+  m_Text: Your Points
 --- !u!222 &895683877
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1137,7 +1111,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355462503}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1212,7 +1186,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1362708676}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1745,7 +1719,8 @@ PrefabInstance:
       propertyPath: waitTime
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5088029350238481360, guid: 73719a5540532f044a80bf5a1435904c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 73719a5540532f044a80bf5a1435904c, type: 3}
 --- !u!1 &2074838119
 GameObject:
@@ -1833,6 +1808,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2009769494727135488, guid: 213fc754e11ed2c41bd396e1647a9ebe, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3523115924450725626, guid: 213fc754e11ed2c41bd396e1647a9ebe, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6643630103568112242, guid: 213fc754e11ed2c41bd396e1647a9ebe, type: 3}
       propertyPath: m_Name
       value: player
