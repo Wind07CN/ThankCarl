@@ -4,4 +4,5 @@ public interface IUnit {
     float MoveSpeed { get; set; }
     int Armour { get; set; }
     bool IsAlive { get; }
+    bool IsActive { get; set; }
 }
