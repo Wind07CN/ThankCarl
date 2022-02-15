@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour
 			}
 			if (!enemy.IsAlive)
 			{
-				EnemyDead();
+				KillEnemy();
 			}
 		}
 	}
@@ -86,7 +86,7 @@ public class EnemyController : MonoBehaviour
 		}
 	}
 
-	public void EnemyDead()
+	public void KillEnemy()
 	{
 		// Play Death Animation & Create Explosion 
 
