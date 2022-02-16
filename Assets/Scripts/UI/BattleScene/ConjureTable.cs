@@ -34,7 +34,7 @@ public class ConjureTable : MonoBehaviour
 
     private void HandleKeyInput()
     {
-        if (playerController.IsConjuredTableFull() && !Input.GetKeyDown(KeyCode.Space))
+        if (playerController.IsConjureTableFull() && !Input.GetKeyDown(KeyCode.Space))
         {
             return;
         }
@@ -55,7 +55,7 @@ public class ConjureTable : MonoBehaviour
         {
             playerController.AppendElement(ElementType.Earth);
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
+        else if (Input.GetKeyDown(KeyCode.Space) && !playerController.IsConjureTableEmpty())
         {
             playerController.PushConjuredElementsToSpell();
             playerController.ClearConjuredElements();

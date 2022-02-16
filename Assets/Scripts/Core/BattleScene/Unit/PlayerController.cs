@@ -105,8 +105,13 @@ public class PlayerController : MonoBehaviour
 		return playerAttribute.Level + Constants.BaseConjuredElementsAmount - 1;
 	}
 
-	public bool IsConjuredTableFull()	{
+	public bool IsConjureTableFull()
+	{
 		return conjuredElements.Count >= GetConjuredElementsLimit();
 	}
 
+	public bool IsConjureTableEmpty()
+	{
+		return conjuredElements.Count == 0;
+	}
 }

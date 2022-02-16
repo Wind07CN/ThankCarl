@@ -6,7 +6,7 @@ public class SpellMatcher
 {
     // use Set if order doesn't matter
     private List<ISpell> spells = new List<ISpell>();
-    private Spell<General> generalSpell;
+    private Spell<General> generalSpell = new Spell<General>();
 
     /*
      * Register all the spells here.
@@ -19,8 +19,6 @@ public class SpellMatcher
 
     public ISpell MatchSpell(List<ElementType> elements)
     {
-        Debug.Log(elements.Count);
-        Debug.Log(elements[0]);
         foreach (ISpell spell in this.spells)
         {
             if (spell.GetElementsCombination().Count != elements.Count)

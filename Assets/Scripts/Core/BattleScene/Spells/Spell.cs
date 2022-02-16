@@ -7,7 +7,10 @@ public class Spell<T>: ISpell where T : ISpellCaster
 
     public Spell(params ElementType[] elementsCombination)
     {
-        this.attribute = new SpellAttribute(elementsCombination);
+        if (elementsCombination.Length > 0)
+        {
+            this.attribute = new SpellAttribute(elementsCombination);
+        }
     }
 
     public List<ElementType> GetElementsCombination()
@@ -17,12 +20,16 @@ public class Spell<T>: ISpell where T : ISpellCaster
 
     public ISpellCaster FindCasterComponent()
     {
-        Debug.Log(GameObject.Find("SpellCaster"));
         return GameObject.Find("SpellCaster").GetComponent<T>();
     }
 
     public SpellAttribute GetSpellAttribute()
     {
         return attribute;
+    }
+
+    public void SetSpellAttribute(SpellAttribute attribute)
+    {
+        this.attribute = attribute;
     }
 }
