@@ -9,10 +9,10 @@ public class EnemyController : MonoBehaviour
 	// When enemy is inited, is not active mmediately
 	[SerializeField] private float enemyActiveTime = Constants.EnemyDefaultActiveTime;
 
-	public EnemyAttribute enemy;
+	public EnemyAttribute enemyAttribute;
 
-	private PlayerAttribute mPlayer;
-	private PlayerController mPlayerController;
+	private PlayerAttribute playerAttribute;
+	private PlayerController playerController;
 
 	public void Start()
 	{
@@ -22,13 +22,13 @@ public class EnemyController : MonoBehaviour
 
 	public void Update()
 	{
-		if (mPlayer.IsActive)
+		if (playerAttribute.IsActive)
 		{
-			if (enemy.IsAlive && enemy.IsActive)
+			if (enemyAttribute.IsAlive && enemyAttribute.IsActive)
 			{
 				TrackPlayer();
 			}
-			if (!enemy.IsAlive)
+			if (!enemyAttribute.IsAlive)
 			{
 				KillEnemy();
 			}
@@ -38,25 +38,25 @@ public class EnemyController : MonoBehaviour
 	private void InitEnemy()
 	{
 
-		enemy = new EnemyAttribute();
+		enemyAttribute = new EnemyAttribute();
 
-		mPlayerController = GameObject.FindWithTag("MainController").GetComponent<BattleSceneController>().playerController;
-		mPlayer = GameObject.FindWithTag("MainController").GetComponent<BattleSceneController>().player;
+		playerController = GameObject.FindWithTag("MainController").GetComponent<BattleSceneController>().playerController;
+		playerAttribute = GameObject.FindWithTag("MainController").GetComponent<BattleSceneController>().player;
 
 		// Set Value
-		enemy.MaxLife = enemyMaxLife;
-		enemy.CurrentLife = enemyMaxLife;
-		enemy.Armour = enemyArmour;
-		enemy.MoveSpeed = enemySpeed;
+		enemyAttribute.MaxLife = enemyMaxLife;
+		enemyAttribute.CurrentLife = enemyMaxLife;
+		enemyAttribute.Armour = enemyArmour;
+		enemyAttribute.MoveSpeed = enemySpeed;
 
 		// Active Enemy After Set Time 
-		enemy.IsActive = false;
+		enemyAttribute.IsActive = false;
 		Invoke("SetEnemyActive", enemyActiveTime);
 	}
 
 	private void SetEnemyActive()
 	{
-		enemy.IsActive = true;
+		enemyAttribute.IsActive = true;
 
 		// 结束待机（无敌）动画
 	}
@@ -66,23 +66,23 @@ public class EnemyController : MonoBehaviour
 
 	private void TrackPlayer()
 	{
-		if (mPlayer.IsAlive)
+		if (playerAttribute.IsAlive)
 		{
 			// calculate
-			Vector2 orientation = mPlayerController.transform.position - transform.position;
+			Vector2 orientation = playerController.transform.position - transform.position;
 
 			float angle = Mathf.Atan2(orientation.y, orientation.x) * Mathf.Rad2Deg;
 			transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-			transform.Translate(Vector2.right * enemy.MoveSpeed * Time.deltaTime);
+			transform.Translate(Vector2.right * enemyAttribute.MoveSpeed * Time.deltaTime);
 		}
 	}
 
 	public void DamageEnemy(int damage)
 	{
-		int finalDamage = damage - enemy.Armour;
+		int finalDamage = damage - enemyAttribute.Armour;
 		if (finalDamage > 0)
 		{
-			enemy.CurrentLife -= finalDamage;
+			enemyAttribute.CurrentLife -= finalDamage;
 		}
 	}
 

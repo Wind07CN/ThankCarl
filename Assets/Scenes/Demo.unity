@@ -298,6 +298,77 @@ MonoBehaviour:
   WaterPrefab: {fileID: 1369926189737875484, guid: a2e4666b18f68cb40aa827c734131c3c, type: 3}
   EarthPrefab: {fileID: 1369926189737875484, guid: bb863c5a76e8ccd48a48648bebc83c5e, type: 3}
   AirPrefab: {fileID: 1369926189737875484, guid: 4769c72dc5ab6d74a9947d98c2470116, type: 3}
+--- !u!1 &124658308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 124658309}
+  - component: {fileID: 124658311}
+  - component: {fileID: 124658310}
+  - component: {fileID: 124658312}
+  m_Layer: 0
+  m_Name: SpellCaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &124658309
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124658308}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.1691637, y: 0.5161996, z: -223.09628}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1438070854}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &124658310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124658308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03dd064a67c64044b9233c28fd7fae8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WhirlPrefab: {fileID: 0}
+--- !u!114 &124658311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124658308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa3a2ef64b0f214fa14713527a3e6bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireBallPrefab: {fileID: 0}
+--- !u!114 &124658312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124658308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639ab32a195e47947bb93d31977a72ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &141006560
 GameObject:
   m_ObjectHideFlags: 0
@@ -7801,6 +7872,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1330452153}
+  - {fileID: 124658309}
   m_Father: {fileID: 860951949}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

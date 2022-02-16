@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +13,8 @@ public class ConjureTable : MonoBehaviour
     public GameObject WaterPrefab;
     public GameObject EarthPrefab;
     public GameObject AirPrefab;
+
+    private SpellMatcher spellMatcher = new SpellMatcher();
 
     private bool shouldUpdateUI = false;
 
@@ -55,9 +57,18 @@ public class ConjureTable : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
+            playerController.PushConjuredElementsToSpell();
             playerController.ClearConjuredElements();
+            TriggerSpell();
         }
         shouldUpdateUI = true;
+    }
+
+    private void TriggerSpell()
+    {
+        ISpell spell = spellMatcher.MatchSpell(playerController.GetSpellElements());
+        ISpellCaster caster = spell.FindCasterComponent();
+        caster.Cast(spell.GetSpellAttribute());
     }
     
 

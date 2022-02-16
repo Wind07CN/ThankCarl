@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
 	private PlayerAttribute playerAttribute;
 	private List<ElementType> conjuredElements = new List<ElementType>();
+	private List<ElementType> spellElements = new List<ElementType>();
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -73,6 +74,11 @@ public class PlayerController : MonoBehaviour
 		return conjuredElements;
 	}
 
+	public List<ElementType> GetSpellElements()
+	{
+		return spellElements;
+	}
+
 	public void AppendElement(ElementType element)
 	{
 		if (conjuredElements.Count < GetConjuredElementsLimit())
@@ -86,6 +92,12 @@ public class PlayerController : MonoBehaviour
 	public void ClearConjuredElements()
 	{
 		conjuredElements.Clear();
+	}
+
+	public void PushConjuredElementsToSpell()
+	{
+		spellElements.Clear();
+		spellElements.AddRange(conjuredElements);
 	}
 
 	public int GetConjuredElementsLimit()
