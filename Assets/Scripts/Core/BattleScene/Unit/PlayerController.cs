@@ -1,6 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PlayerController : MonoBehaviour
 		{
 			EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
 
-			Debug.Log("Boom!!!!!!");
+			// Debug.Log("Boom!!!!!!");
 			DamagePlayer();
 
 			// 由敌人自己控制结束, 同时由敌人处理死亡动画等等
@@ -21,12 +22,15 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	public void InitPlayer(PlayerAttribute player)
+	public void InitPlayer(PlayerAttribute playerAttribute)
 	{
 		// 一些准备工作完成,或者倒计时结束后后将控制权移交给玩家
 		Debug.Log("Doing Something...");
-		this.playerAttribute = player;
+		this.playerAttribute = playerAttribute;
 		this.playerAttribute.IsActive = true;
+
+		// Initialize UI
+		UpdateLevelIndicatorUI();
 
 	}
 
@@ -48,9 +52,17 @@ public class PlayerController : MonoBehaviour
 		//玩家死亡动画
 	}
 
+    /*
+	 * Level up player
+	 */
 	public void LevelUpPlayer()
 	{
 		playerAttribute.Level += 1;
+	}
+
+	public void UpdateLevelIndicatorUI()
+	{
+		GameObject.Find("PlayerLevel").GetComponent<Text>().text = "Lv." + playerAttribute.Level;
 	}
 
 	/*

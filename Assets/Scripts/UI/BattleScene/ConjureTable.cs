@@ -32,7 +32,7 @@ public class ConjureTable : MonoBehaviour
 
     private void HandleKeyInput()
     {
-        if (playerController.IsConjuredTableFull())
+        if (playerController.IsConjuredTableFull() && !Input.GetKeyDown(KeyCode.Space))
         {
             return;
         }
@@ -40,23 +40,24 @@ public class ConjureTable : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             playerController.AppendElement(ElementType.Fire);
-            shouldUpdateUI = true;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             playerController.AppendElement(ElementType.Water);
-            shouldUpdateUI = true;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             playerController.AppendElement(ElementType.Air);
-            shouldUpdateUI = true;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             playerController.AppendElement(ElementType.Earth);
-            shouldUpdateUI = true;
         }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            playerController.ClearConjuredElements();
+        }
+        shouldUpdateUI = true;
     }
     
 
