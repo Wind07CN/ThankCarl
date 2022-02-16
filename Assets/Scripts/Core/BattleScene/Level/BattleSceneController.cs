@@ -24,7 +24,7 @@ public class BattleSceneController : MonoBehaviour
 	{
 		if (!player.IsAlive && player.IsActive)
 		{
-			playerController.PlayerDead();
+			playerController.KillPlayer();
 		}
 	}
 

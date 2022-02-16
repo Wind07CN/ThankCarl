@@ -8,4 +8,6 @@ public static class Constants
     public const float EnemyDefaultMoveSpeed = 5;
     public const int EnemyDefaultArmour = 0;
     public const float EnemyDefaultActiveTime = 1f;
+
+    public const int BaseConjuredElementsAmount = 2;
 }
