@@ -41,7 +41,7 @@ public class EnemyController : MonoBehaviour
 		enemyAttribute = new EnemyAttribute();
 
 		playerController = GameObject.FindWithTag("MainController").GetComponent<BattleSceneController>().playerController;
-		playerAttribute = GameObject.FindWithTag("MainController").GetComponent<BattleSceneController>().player;
+		playerAttribute = GameObject.FindWithTag("MainController").GetComponent<BattleSceneController>().playerAttribute;
 
 		// Set Value
 		enemyAttribute.MaxLife = enemyMaxLife;

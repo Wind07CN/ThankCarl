@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ConjureTable : MonoBehaviour
 {
 
-    private PlayerController playerController;
+    private PlayerSkillController playerSkillController;
     public GameObject PrimaryHolder;
     public GameObject SecondaryHolder;
     public GameObject FirePrefab;
@@ -14,63 +14,26 @@ public class ConjureTable : MonoBehaviour
     public GameObject EarthPrefab;
     public GameObject AirPrefab;
 
-    private SpellMatcher spellMatcher = new SpellMatcher();
-
     private bool shouldUpdateUI = false;
 
     private void Start()
     {
-        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        playerSkillController = GameObject.Find("Player").GetComponent<PlayerSkillController>();
     }
 
     private void Update()
     {
-        HandleKeyInput();
+        
         if (shouldUpdateUI)
         {
             UpdateUI();
         }
     }
 
-    private void HandleKeyInput()
-    {
-        if (playerController.IsConjuredTableFull() && !Input.GetKeyDown(KeyCode.Space))
-        {
-            return;
-        }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            playerController.AppendElement(ElementType.Fire);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            playerController.AppendElement(ElementType.Water);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            playerController.AppendElement(ElementType.Air);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            playerController.AppendElement(ElementType.Earth);
-        }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            playerController.PushConjuredElementsToSpell();
-            playerController.ClearConjuredElements();
-            TriggerSpell();
-        }
+    public void UpdateConjureTableUI() {
         shouldUpdateUI = true;
     }
-
-    private void TriggerSpell()
-    {
-        ISpell spell = spellMatcher.MatchSpell(playerController.GetSpellElements());
-        ISpellCaster caster = spell.FindCasterComponent();
-        caster.Cast(spell.GetSpellAttribute());
-    }
-    
 
     private void UpdateUI()
     {
@@ -78,7 +41,7 @@ public class ConjureTable : MonoBehaviour
         bool isFirstElement = true;
         GameObject newElement;
 
-        foreach (ElementType element in playerController.GetConjuredElements())
+        foreach (ElementType element in playerSkillController.GetConjuredElements())
         {
             switch (element)
             {

@@ -10,10 +10,9 @@ public class BattleSceneController : MonoBehaviour
 	[SerializeField] private float playerMoveSpeed = Constants.PlayerDefaultMoveSpeed;
 
 	[HideInInspector] public PlayerController playerController;
-	[HideInInspector] public PlayerAttribute player;
+	[HideInInspector] public PlayerAttribute playerAttribute;
 
 	private GameObject mainCameraObject;
-	// [SerializeField] 
 
 	private void Awake()
 	{
@@ -22,7 +21,7 @@ public class BattleSceneController : MonoBehaviour
 
 	private void Update()
 	{
-		if (!player.IsAlive && player.IsActive)
+		if (!playerAttribute.IsAlive && playerAttribute.IsActive)
 		{
 			playerController.KillPlayer();
 		}
@@ -30,13 +29,35 @@ public class BattleSceneController : MonoBehaviour
 
 	private void InitScene()
 	{
-		player = new PlayerAttribute(playerMaxLife, playerMoveSpeed, playerArmour);
-		playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-		playerController.InitPlayer(player);
+		InitPlayer();
+		InitMainCamera();
+		InitUI();
 
-		GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<MainCameraController>().InitCamera(player);
+		InitSkillSys();
+		
 	}
 
+	private void InitPlayer()
+	{
+		playerAttribute = new PlayerAttribute(playerMaxLife, playerMoveSpeed, playerArmour);
+
+		playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+		playerController.InitPlayer(playerAttribute);
+	}
+
+	private void InitMainCamera()
+	{
+		GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainCameraController>().InitCamera(playerAttribute);
+	}
+
+	private void InitUI()
+	{
+		GameObject.FindGameObjectWithTag("MainUI").GetComponent<BattleSceneMainUIController>().InitMainUI(playerAttribute);
+	}
+
+	private void InitSkillSys() {
+		GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkillController>().InitPlayerSkillSys(playerAttribute);
+	}
 
 
 }
