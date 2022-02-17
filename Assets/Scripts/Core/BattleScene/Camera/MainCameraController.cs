@@ -10,10 +10,6 @@ public class MainCameraController : MonoBehaviour
 	
 	[SerializeField] private float cameraPositionZ = -10f;
 
-	private void Start()
-	{
-	}
-
 	private void Update()
 	{
 		// 这里是检测玩家的是否激活的情况, 而不是存活, 游戏开始的倒计时玩家也不能操作
