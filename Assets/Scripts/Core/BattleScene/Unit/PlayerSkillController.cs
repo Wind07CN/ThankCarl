@@ -113,4 +113,9 @@ public class PlayerSkillController : MonoBehaviour
 	{
 		return conjuredElements.Count >= GetConjuredElementsLimit();
 	}
+
+	public bool IsConjureTableEmpty()
+	{
+		return conjuredElements.Count == 0;
+	}
 }
