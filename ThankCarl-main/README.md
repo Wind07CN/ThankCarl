@@ -1,2 +1,0 @@
-# ThankCarl
-## An Indie Game
