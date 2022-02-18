@@ -9,7 +9,24 @@ public static class Constants
     public const int EnemyDefaultArmour = 0;
     public const float EnemyDefaultActiveTime = 1f;
 
+    public const int NormalEnemyTypeDefaultNum = 0;
+    public const int EliteEnemyTypeDefaoultNum = 0;
+
+    public const float nextDefaultSpawnTime = 1f;
+
+    public const float BattlefieldDefaultMaxX = 14f;
+    public const float BattlefieldDefaultMinX = -14f;
+    public const float BattlefieldDefaultMaxY = 14;
+    public const float BattlefieldDefaultMinY = -14f;
+
+    public const float EliteDefaultRate = 0.1f;
+
+    public const float DifficultyDefaultMultiplier = 1f;
+
     public const int BaseConjuredElementsAmount = 2;
 
     public const string PlayerTag = "Player";
+    public const string EnemyTag = "Enemy";
+    public const string MainUITag = "MainUI";
+    public const string MainController = "MainController";
 }

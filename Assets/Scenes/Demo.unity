@@ -1945,7 +1945,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530759965}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 860928808}
@@ -50693,6 +50693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2121190883}
   - component: {fileID: 2121190882}
+  - component: {fileID: 2121190884}
   m_Layer: 0
   m_Name: MainController
   m_TagString: MainController
@@ -50712,6 +50713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe4f34ad4196a14b927ddb846bbff70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficultyMultiplier: 1
 --- !u!4 &2121190883
 Transform:
   m_ObjectHideFlags: 0
@@ -50726,3 +50728,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2121190884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121190881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb55fac35bd7bf4ea0a079fae6abd25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalEnemyPrefabs:
+  - {fileID: 4879297585810891665, guid: 73719a5540532f044a80bf5a1435904c, type: 3}
+  eliteEnemyPrefabs:
+  - {fileID: 4879297585810891665, guid: 73719a5540532f044a80bf5a1435904c, type: 3}
+  eliteRate: 0.1
+  battlefieldMaxX: 7
+  battlefieldMinX: 0
+  battlefieldMaxY: 7
+  battlefieldMinY: 0

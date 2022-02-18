@@ -14,9 +14,22 @@ public static class Utils
 		return GameObject.FindGameObjectWithTag(Constants.PlayerTag).GetComponent<PlayerController>().playerAttribute;
 	}
 
+	/// <summary>
+	/// Get MainUI Component
+	/// </summary>
+	/// <returns></returns>
 	public static BattleSceneMainUIController GetMainUIController()
 	{
-		return GameObject.FindGameObjectWithTag("MainUI").GetComponent<BattleSceneMainUIController>();
+		return GameObject.FindGameObjectWithTag(Constants.MainUITag).GetComponent<BattleSceneMainUIController>();
+	}
+
+	/// <summary>
+	/// Get BattSceneController Component
+	/// </summary>
+	/// <returns></returns>
+	public static BattleSceneController GetMainController()
+	{
+		return GameObject.FindGameObjectWithTag(Constants.MainController).GetComponent<BattleSceneController>();
 	}
 
 }

@@ -6,10 +6,13 @@ public class BattleSceneController : MonoBehaviour
 {
 
 	[HideInInspector] public PlayerAttribute playerAttribute;
+	public float difficultyMultiplier = 1.0f;
 
 	private bool isPlayerDead = false;
 
 	private GameObject mainCameraObject;
+
+
 
 	private void Awake()
 	{
@@ -23,6 +26,8 @@ public class BattleSceneController : MonoBehaviour
 			SwitchSence();
 		}
 	}
+
+	
 
 	private void InitScene()
 	{

@@ -6,6 +6,8 @@ public class EnemyController : MonoBehaviour
 	[SerializeField] private int enemyMaxLife = Constants.EnemyDefaultMaxLife;
 	[SerializeField] private int enemyArmour = Constants.EnemyDefaultArmour;
 
+	[SerializeField] private float difficultyMultiplier = 1f;
+
 	// When enemy is inited, is not active mmediately
 	[SerializeField] private float enemyActiveTime = Constants.EnemyDefaultActiveTime;
 
@@ -41,16 +43,22 @@ public class EnemyController : MonoBehaviour
 
 		mPlayer = GameObject.FindWithTag("Player");
 		playerAttribute = Utils.GetPlayerAttribute();
+		difficultyMultiplier = Utils.GetMainController().difficultyMultiplier;
 
 		// Set Value
-		enemyAttribute.MaxLife = enemyMaxLife;
-		enemyAttribute.CurrentLife = enemyMaxLife;
+		enemyAttribute.MaxLife = (int)(enemyMaxLife * difficultyMultiplier);
+		enemyAttribute.CurrentLife = enemyAttribute.MaxLife;
 		enemyAttribute.Armour = enemyArmour;
 		enemyAttribute.MoveSpeed = enemySpeed;
 
 		// Active Enemy After Set Time 
 		enemyAttribute.IsActive = false;
 		Invoke(nameof(SetEnemyActive), enemyActiveTime);
+	}
+
+	public void SetDifficultyMultiplier(float multiplier)
+	{
+		difficultyMultiplier = multiplier;
 	}
 
 	private void SetEnemyActive()
