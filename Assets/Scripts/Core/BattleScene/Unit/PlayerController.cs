@@ -5,7 +5,16 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-	private PlayerAttribute playerAttribute;
+	[HideInInspector] public PlayerAttribute playerAttribute = new PlayerAttribute();
+
+	[SerializeField] private int playerMaxLife = Constants.PlayerDefaultMaxLife;
+	[SerializeField] private int playerArmour = Constants.PlayerDefaultArmour;
+	[SerializeField] private float playerMoveSpeed = Constants.PlayerDefaultMoveSpeed;
+
+	private void Start()
+	{
+		InitPlayer();
+	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -20,12 +29,17 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	public void InitPlayer(PlayerAttribute playerAttribute)
+	public void InitPlayer()
 	{
 		// init
-		Debug.Log("Doing Something...");
-		this.playerAttribute = playerAttribute;
-		this.playerAttribute.IsActive = true;
+		// Debug.Log("Doing Something...");
+		// Debug.Log("Init Player Fin, ready to go");
+		playerAttribute.MaxLife = playerMaxLife;
+		playerAttribute.Armour = playerArmour;
+		playerAttribute.MoveSpeed = playerMoveSpeed;
+
+		// Set Active
+		playerAttribute.IsActive = true;
 
 	}
 

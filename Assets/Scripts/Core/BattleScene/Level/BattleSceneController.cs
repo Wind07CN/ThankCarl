@@ -5,12 +5,9 @@ using UnityEngine;
 public class BattleSceneController : MonoBehaviour
 {
 
-	[SerializeField] private int playerMaxLife = Constants.PlayerDefaultMaxLife;
-	[SerializeField] private int playerArmour = Constants.PlayerDefaultArmour;
-	[SerializeField] private float playerMoveSpeed = Constants.PlayerDefaultMoveSpeed;
-
-	[HideInInspector] public PlayerController playerController;
 	[HideInInspector] public PlayerAttribute playerAttribute;
+
+	private bool isPlayerDead = false;
 
 	private GameObject mainCameraObject;
 
@@ -21,42 +18,28 @@ public class BattleSceneController : MonoBehaviour
 
 	private void Update()
 	{
-		if (!playerAttribute.IsAlive && playerAttribute.IsActive)
+		if (isPlayerDead)
 		{
-			playerController.KillPlayer();
+			SwitchSence();
 		}
 	}
 
 	private void InitScene()
 	{
-		InitPlayer();
-		InitMainCamera();
-		InitUI();
-
-		InitSkillSys();
-		
+		Debug.Log("InitScene");
 	}
 
-	private void InitPlayer()
+
+	public void PlayerIsKilled()
 	{
-		playerAttribute = new PlayerAttribute(playerMaxLife, playerMoveSpeed, playerArmour);
+		isPlayerDead = true;
+		Debug.Log("Player is dead");
 
-		playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-		playerController.InitPlayer(playerAttribute);
 	}
 
-	private void InitMainCamera()
+	private void SwitchSence()
 	{
-		GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainCameraController>().InitCamera(playerAttribute);
-	}
-
-	private void InitUI()
-	{
-		GameObject.FindGameObjectWithTag("MainUI").GetComponent<BattleSceneMainUIController>().InitMainUI(playerAttribute);
-	}
-
-	private void InitSkillSys() {
-		GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkillController>().InitPlayerSkillSys(playerAttribute);
+		Debug.Log("ChangeSence");
 	}
 
 

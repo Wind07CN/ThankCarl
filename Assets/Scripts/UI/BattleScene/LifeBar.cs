@@ -10,7 +10,7 @@ public class LifeBar : MonoBehaviour
     private void Start()
     {
         image = GetComponent<Image>();
-        mPlayer = GameObject.FindWithTag("MainController").GetComponent<BattleSceneController>().playerAttribute;
+        mPlayer = GameObject.FindWithTag("Player").GetComponent<PlayerController>().playerAttribute;
     }
 
     private void Update()

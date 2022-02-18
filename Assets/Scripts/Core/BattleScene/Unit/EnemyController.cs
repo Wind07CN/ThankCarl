@@ -12,13 +12,12 @@ public class EnemyController : MonoBehaviour
 	public EnemyAttribute enemyAttribute;
 
 	private PlayerAttribute playerAttribute;
-	private PlayerController playerController;
+	private GameObject mPlayer;
 
 	public void Start()
 	{
 		InitEnemy();
 	}
-
 
 	public void Update()
 	{
@@ -40,8 +39,8 @@ public class EnemyController : MonoBehaviour
 
 		enemyAttribute = new EnemyAttribute();
 
-		playerController = GameObject.FindWithTag("MainController").GetComponent<BattleSceneController>().playerController;
-		playerAttribute = GameObject.FindWithTag("MainController").GetComponent<BattleSceneController>().playerAttribute;
+		mPlayer = GameObject.FindWithTag("Player");
+		playerAttribute = Utils.GetPlayerAttribute();
 
 		// Set Value
 		enemyAttribute.MaxLife = enemyMaxLife;
@@ -51,7 +50,7 @@ public class EnemyController : MonoBehaviour
 
 		// Active Enemy After Set Time 
 		enemyAttribute.IsActive = false;
-		Invoke("SetEnemyActive", enemyActiveTime);
+		Invoke(nameof(SetEnemyActive), enemyActiveTime);
 	}
 
 	private void SetEnemyActive()
@@ -69,11 +68,11 @@ public class EnemyController : MonoBehaviour
 		if (playerAttribute.IsAlive)
 		{
 			// calculate
-			Vector2 orientation = playerController.transform.position - transform.position;
+			Vector2 orientation = mPlayer.transform.position - transform.position;
 
 			float angle = Mathf.Atan2(orientation.y, orientation.x) * Mathf.Rad2Deg;
 			transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-			transform.Translate(Vector2.right * enemyAttribute.MoveSpeed * Time.deltaTime);
+			transform.Translate(enemyAttribute.MoveSpeed * Time.deltaTime * Vector2.right);
 		}
 	}
 

@@ -8,15 +8,33 @@ public class BattleSceneMainUIController : MonoBehaviour
 
 	private PlayerAttribute playerAttribute;
 	[SerializeField] private GameObject playerLevelIndicator;
+	[SerializeField] private GameObject playerPointCounter;
+	private Text playerLevelText;
+	private Text playerPointCounterText;
 
-	public void InitMainUI(PlayerAttribute player)
+	private void Start()
 	{
-		playerAttribute = player;
-		SetLevelIndicatorUI();
+		InitMainUI();
+	}
+	private void InitMainUI()
+	{
+		playerAttribute = Utils.GetPlayerAttribute();
+
+		playerLevelText = playerLevelIndicator.GetComponent<Text>();
+		playerPointCounterText = playerPointCounter.GetComponent<Text>();
 	}
 
-	public void SetLevelIndicatorUI()
+	public void UpdateLevelIndicatorUI()
 	{
-		playerLevelIndicator.GetComponent<Text>().text = "Lv." + playerAttribute.Level;
+		playerLevelText.text = "Lv." + playerAttribute.Level;
 	}
+
+	public void UpdatePlayerPointCounterUI()
+	{
+		playerPointCounterText.text = "You Point" + playerAttribute.PlayerPoints;
+	}
+
+
+
+
 }

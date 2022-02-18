@@ -15,14 +15,13 @@ public class PlayerSkillController : MonoBehaviour
 
 	private void Start()
 	{
+		playerAttribute = Utils.GetPlayerAttribute();
 		conjureTable = GameObject.Find("ConjureTable").GetComponent<ConjureTable>();
 	}
 
 	private void Update()
 	{
-
 		HandleKeyInput();
-
 	}
 
 	private void HandleKeyInput()
@@ -66,10 +65,6 @@ public class PlayerSkillController : MonoBehaviour
 	}
 
 
-	public void InitPlayerSkillSys(PlayerAttribute player)
-	{
-		playerAttribute = player;
-	}
 
 	public List<ElementType> GetConjuredElements()
 	{

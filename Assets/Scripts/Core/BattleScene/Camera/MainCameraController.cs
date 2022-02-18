@@ -6,14 +6,19 @@ using UnityEngine;
 public class MainCameraController : MonoBehaviour
 {
 	// [SerializeField]
-	private PlayerAttribute mPlayer;
-	
+	private PlayerAttribute mPlayerAttribute;
+
 	[SerializeField] private float cameraPositionZ = -10f;
+
+	private void Start()
+	{
+		transform.position = new Vector3(0, 0, cameraPositionZ);
+		mPlayerAttribute = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().playerAttribute;
+	}
 
 	private void Update()
 	{
-		// 这里是检测玩家的是否激活的情况, 而不是存活, 游戏开始的倒计时玩家也不能操作
-		if (mPlayer.IsActive)
+		if (mPlayerAttribute.IsActive)
 		{
 			HandleKeyBoardInput();
 		}
@@ -21,13 +26,13 @@ public class MainCameraController : MonoBehaviour
 
 	public void InitCamera(PlayerAttribute player)
 	{
-		mPlayer = player;
+		mPlayerAttribute = player;
 	}
 
 
 	private void HandleKeyBoardInput()
 	{
-		float moveDistance = Time.deltaTime * mPlayer.MoveSpeed;
+		float moveDistance = Time.deltaTime * mPlayerAttribute.MoveSpeed;
 
 		if (Input.GetKey(KeyCode.W))
 		{
@@ -48,7 +53,10 @@ public class MainCameraController : MonoBehaviour
 	}
 
 
-	// **************
+	/// <summary>
+	/// Change the High of Camera
+	/// </summary>
+	/// <param name="high"></param>
 	private void ChangeCameraHigh(float high)
 	{
 		Vector3 currentPos = transform.position;

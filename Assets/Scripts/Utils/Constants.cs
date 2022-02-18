@@ -10,4 +10,6 @@ public static class Constants
     public const float EnemyDefaultActiveTime = 1f;
 
     public const int BaseConjuredElementsAmount = 2;
+
+    public const string PlayerTag = "Player";
 }
