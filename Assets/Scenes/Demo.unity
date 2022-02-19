@@ -50694,6 +50694,7 @@ GameObject:
   - component: {fileID: 2121190883}
   - component: {fileID: 2121190882}
   - component: {fileID: 2121190884}
+  - component: {fileID: 2121190885}
   m_Layer: 0
   m_Name: MainController
   m_TagString: MainController
@@ -50713,7 +50714,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe4f34ad4196a14b927ddb846bbff70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficultyMultiplier: 1
 --- !u!4 &2121190883
 Transform:
   m_ObjectHideFlags: 0
@@ -50749,3 +50749,16 @@ MonoBehaviour:
   battlefieldMinX: 0
   battlefieldMaxY: 7
   battlefieldMinY: 0
+  nextSpawnTime: 1
+--- !u!114 &2121190885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121190881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89dc27911863b6a4b95bcc95823df1d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

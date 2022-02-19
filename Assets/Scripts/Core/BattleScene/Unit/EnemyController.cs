@@ -13,15 +13,19 @@ public class EnemyController : MonoBehaviour
 
 	public EnemyAttribute enemyAttribute;
 
-	private PlayerAttribute playerAttribute;
-	private GameObject mPlayer;
+	private ControllerContext controllerContext;
 
-	public void Start()
+	private PlayerAttribute playerAttribute;
+
+	private GameObject playerObj;
+
+	private void Start()
 	{
+		controllerContext = ControllerContext.GetContext();
 		InitEnemy();
 	}
 
-	public void Update()
+	private void Update()
 	{
 		if (playerAttribute.IsActive)
 		{
@@ -41,9 +45,8 @@ public class EnemyController : MonoBehaviour
 
 		enemyAttribute = new EnemyAttribute();
 
-		mPlayer = GameObject.FindWithTag("Player");
-		playerAttribute = Utils.GetPlayerAttribute();
-		difficultyMultiplier = Utils.GetMainController().difficultyMultiplier;
+		playerObj = controllerContext.PlayerController.transform.gameObject;
+		playerAttribute = controllerContext.PlayerController.playerAttribute;
 
 		// Set Value
 		enemyAttribute.MaxLife = (int)(enemyMaxLife * difficultyMultiplier);
@@ -76,7 +79,7 @@ public class EnemyController : MonoBehaviour
 		if (playerAttribute.IsAlive)
 		{
 			// calculate
-			Vector2 orientation = mPlayer.transform.position - transform.position;
+			Vector2 orientation = playerObj.transform.position - transform.position;
 
 			float angle = Mathf.Atan2(orientation.y, orientation.x) * Mathf.Rad2Deg;
 			transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);

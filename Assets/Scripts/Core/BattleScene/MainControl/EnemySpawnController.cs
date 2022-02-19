@@ -30,7 +30,7 @@ public class EnemySpawnController : MonoBehaviour
 		if (needSpawn)
 		{
 			needSpawn = false;
-			Invoke(nameof(SpawnNewEnemy), nextSpawnTime);
+			Invoke(nameof(SpawnEnemy), nextSpawnTime);
 		}
 	}
 
@@ -39,7 +39,7 @@ public class EnemySpawnController : MonoBehaviour
 		eliteRate = rate;
 	}
 
-	private void SpawnNewEnemy()
+	private void SpawnEnemy()
 	{
 
 		Vector2 vector2 = new Vector2(Random.Range(battlefieldMinX, battlefieldMaxX), Random.Range(battlefieldMinY, battlefieldMaxY));

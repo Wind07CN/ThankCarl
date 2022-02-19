@@ -11,8 +11,11 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private int playerArmour = Constants.PlayerDefaultArmour;
 	[SerializeField] private float playerMoveSpeed = Constants.PlayerDefaultMoveSpeed;
 
+	private ControllerContext controllerContext;
+
 	private void Start()
 	{
+		controllerContext = ControllerContext.GetContext();
 		InitPlayer();
 	}
 
@@ -56,9 +59,14 @@ public class PlayerController : MonoBehaviour
 	public void KillPlayer()
 	{
 		Debug.Log("Player Dead!");
-		playerAttribute.IsActive = false;
+		playerAttribute.CurrentLife = 0;
 
 		// play player dead animation
+	}
+
+	public void LevelUp()
+	{
+		playerAttribute.Level += 1;
 	}
 
 }

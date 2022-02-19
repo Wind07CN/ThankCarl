@@ -5,16 +5,13 @@ using UnityEngine;
 public class BattleSceneController : MonoBehaviour
 {
 
-	[HideInInspector] public PlayerAttribute playerAttribute;
-	public float difficultyMultiplier = 1.0f;
-
-
+	private ControllerContext controllerContext;
+	private PlayerAttribute playerAttribute;
 	private GameObject mainCameraObject;
 
-
-
-	private void Awake()
+	private void Start()
 	{
+		controllerContext = ControllerContext.GetContext();
 		InitScene();
 	}
 
@@ -26,13 +23,13 @@ public class BattleSceneController : MonoBehaviour
 		}
 	}
 
-	
 
 	private void InitScene()
 	{
+		playerAttribute = controllerContext.PlayerController.playerAttribute;
+		mainCameraObject = controllerContext.MainCameraController.transform.gameObject;
 		Debug.Log("InitScene");
 	}
-
 
 	private void SwitchSence()
 	{

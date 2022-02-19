@@ -13,9 +13,13 @@ public class PlayerSkillController : MonoBehaviour
 
 	private ConjureTable conjureTable;
 
+	private ControllerContext controllerContext;
+
+
 	private void Start()
 	{
-		playerAttribute = Utils.GetPlayerAttribute();
+		controllerContext = ControllerContext.GetContext();
+		playerAttribute = controllerContext.PlayerController.playerAttribute;
 		conjureTable = GameObject.Find("ConjureTable").GetComponent<ConjureTable>();
 	}
 
@@ -63,8 +67,6 @@ public class PlayerSkillController : MonoBehaviour
 		ISpellCaster caster = spell.FindCasterComponent();
 		caster.Cast(spell.GetSpellAttribute());
 	}
-
-
 
 	public List<ElementType> GetConjuredElements()
 	{
