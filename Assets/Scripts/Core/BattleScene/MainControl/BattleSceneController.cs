@@ -8,7 +8,6 @@ public class BattleSceneController : MonoBehaviour
 	[HideInInspector] public PlayerAttribute playerAttribute;
 	public float difficultyMultiplier = 1.0f;
 
-	private bool isPlayerDead = false;
 
 	private GameObject mainCameraObject;
 
@@ -21,7 +20,7 @@ public class BattleSceneController : MonoBehaviour
 
 	private void Update()
 	{
-		if (isPlayerDead)
+		if (!playerAttribute.IsAlive)
 		{
 			SwitchSence();
 		}
@@ -34,13 +33,6 @@ public class BattleSceneController : MonoBehaviour
 		Debug.Log("InitScene");
 	}
 
-
-	public void PlayerIsKilled()
-	{
-		isPlayerDead = true;
-		Debug.Log("Player is dead");
-
-	}
 
 	private void SwitchSence()
 	{
