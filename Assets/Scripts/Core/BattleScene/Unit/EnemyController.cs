@@ -93,6 +93,14 @@ public class EnemyController : MonoBehaviour
 		}
 	}
 
+	public void StunEnemy(float time)
+	{
+		enemyAttribute.IsActive = false;
+		Invoke(nameof(SetEnemyActive), time);
+	}
+
+
+
 	public void KillEnemy()
 	{
 		// Play Death Animation & Create Explosion 

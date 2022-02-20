@@ -32,4 +32,35 @@ public static class Utils
 		return GameObject.FindGameObjectWithTag(Constants.MainController).GetComponent<BattleSceneController>();
 	}
 
+
+	/// <summary>
+	/// Find THE Nearest Enemy to the Target
+	/// </summary>
+	/// <param name="enemiesPos"></param>
+	/// <param name="startPos"></param>
+	/// <param name="maxDistance"></param>
+	/// <returns></returns>
+	public static int FindTheNearestEnemy(List<GameObject> enemiesPos, GameObject startPos, float maxDistance)
+	{
+		int nearestEnemyPosInArray = -1;
+		float minDistance = Vector3.Distance(enemiesPos[0].transform.position, startPos.transform.position);
+
+		if (minDistance <= maxDistance)
+		{
+			nearestEnemyPosInArray = 0;
+		}
+
+		for (int i = 1; i < enemiesPos.Count; i++)
+		{
+			float nextDistance = Vector3.Distance(enemiesPos[i].transform.position, startPos.transform.position);
+			if (nextDistance <= maxDistance && nextDistance < minDistance)
+			{
+				nearestEnemyPosInArray = i;
+				minDistance = nextDistance;
+			}
+		}
+
+		return nearestEnemyPosInArray;
+	}
+
 }
