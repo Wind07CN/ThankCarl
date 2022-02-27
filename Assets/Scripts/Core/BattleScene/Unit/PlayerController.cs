@@ -11,9 +11,20 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private int playerArmour = Constants.PlayerDefaultArmour;
 	[SerializeField] private float playerMoveSpeed = Constants.PlayerDefaultMoveSpeed;
 
+	private new PlayerAnimeController animation;
+
 	private void Start()
 	{
 		InitPlayer();
+
+	}
+
+	private void Update()
+	{
+		if (!playerAttribute.IsAlive && playerAttribute.IsActive) 
+		{
+			KillPlayer();
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -38,14 +49,19 @@ public class PlayerController : MonoBehaviour
 		playerAttribute.Armour = playerArmour;
 		playerAttribute.MoveSpeed = playerMoveSpeed;
 
+		animation = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
 		// Set Active
 		playerAttribute.IsActive = true;
+
+
 
 	}
 
 	public void DamagePlayer()
 	{
 		playerAttribute.CurrentLife -= 1;
+		animation.PlayerGetDamage();
+		
 	}
 
 	public void DamagePlayer(int damage)
@@ -58,7 +74,7 @@ public class PlayerController : MonoBehaviour
 		Debug.Log("Player Dead!");
 		playerAttribute.IsActive = false;
 
-		// play player dead animation
+		animation.PlayerIsDead();
 	}
 
 }

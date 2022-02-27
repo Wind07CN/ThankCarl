@@ -39,7 +39,7 @@ public class LineController : MonoBehaviour
 
 	private void Update()
 	{
-		lineRenderer.SetPosition(0, player.transform.position);
+		// lineRenderer.SetPosition(0, player.transform.position);
 		UpdateAnimation();
 	}
 

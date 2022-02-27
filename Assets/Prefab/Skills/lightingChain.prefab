@@ -141,9 +141,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textures:
-  - {fileID: 2800000, guid: 68b70ef1707d0f04b905cd5f105fd7b9, type: 3}
-  - {fileID: 2800000, guid: fd0d4927017c86c43bec312d37b6bda2, type: 3}
-  - {fileID: 2800000, guid: 00b310b589fce7f449a7333b5d142c7a, type: 3}
+  - {fileID: 2800000, guid: 0050bbfa639d39146b269c67e972b799, type: 3}
+  - {fileID: 2800000, guid: 1c552072f4074434e9fa1585c3fecb87, type: 3}
+  - {fileID: 2800000, guid: fd701a9cf97c9cc4794bbc922473ab0c, type: 3}
   fps: 10
   player: {fileID: 0}
   maxRange: 5
