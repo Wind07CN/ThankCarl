@@ -32,11 +32,13 @@ public class PlayerController : MonoBehaviour
 		if (collision.gameObject.CompareTag("Enemy"))
 		{
 			EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
+			if (enemyController.enemyAttribute.IsActive)
+			{
+				DamagePlayer();
 
-			DamagePlayer();
-
-			// Enemy Play dying animation
-			enemyController.KillEnemy();
+				// Enemy Play dying animation
+				enemyController.KillEnemy();
+			}
 		}
 	}
 

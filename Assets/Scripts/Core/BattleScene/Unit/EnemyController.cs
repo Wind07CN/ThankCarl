@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour
 			{
 				TrackPlayer();
 			}
-			if (!enemyAttribute.IsAlive)
+			if (!enemyAttribute.IsAlive && enemyAttribute.IsActive)
 			{
 				KillEnemy();
 			}
@@ -76,7 +76,7 @@ public class EnemyController : MonoBehaviour
 
 	private void TrackPlayer()
 	{
-		if (playerAttribute.IsAlive)
+		if (playerAttribute.IsAlive && enemyAttribute.IsActive)
 		{
 			// calculate
 			Vector2 orientation = (mPlayer.transform.position - mRigidbody.transform.position).normalized;
@@ -117,10 +117,8 @@ public class EnemyController : MonoBehaviour
 
 	public void KillEnemy()
 	{
-		// Play Death Animation & Create Explosion 
-
-		// Remove this GameObject
-		Destroy(gameObject);
+		enemyAttribute.IsActive = false;
+		GetComponent<EnemyAnimeController>().EnemyDead();
 	}
 
 
