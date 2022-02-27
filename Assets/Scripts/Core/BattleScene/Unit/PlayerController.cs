@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
 		// Debug.Log("Doing Something...");
 		// Debug.Log("Init Player Fin, ready to go");
 		playerAttribute.MaxLife = playerMaxLife;
+		playerAttribute.CurrentLife = playerMaxLife;
 		playerAttribute.Armour = playerArmour;
 		playerAttribute.MoveSpeed = playerMoveSpeed;
 

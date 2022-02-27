@@ -18,6 +18,7 @@ public class PlayerSkillController : MonoBehaviour
 	{
 		playerAttribute = Utils.GetPlayerAttribute();
 		conjureTable = GameObject.Find("ConjureTable").GetComponent<ConjureTable>();
+		
 		animeController = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
 	}
 
@@ -52,6 +53,7 @@ public class PlayerSkillController : MonoBehaviour
 		else if (Input.GetKeyDown(KeyCode.Space))
 		{
 			animeController.PlayerAttack();
+			
 			PushConjuredElementsToSpell();
 			ClearConjuredElements();
 			TriggerSpell();
@@ -65,6 +67,7 @@ public class PlayerSkillController : MonoBehaviour
 		ISpell spell = spellMatcher.MatchSpell(GetSpellElements());
 		ISpellCaster caster = spell.FindCasterComponent();
 		caster.Cast(spell.GetSpellAttribute());
+
 	}
 
 
@@ -84,10 +87,6 @@ public class PlayerSkillController : MonoBehaviour
 		if (conjuredElements.Count < GetConjuredElementsLimit())
 		{
 			conjuredElements.Add(element);
-		}
-		else
-		{
-			throw new System.Exception("Conjured Elements is full!");
 		}
 	}
 

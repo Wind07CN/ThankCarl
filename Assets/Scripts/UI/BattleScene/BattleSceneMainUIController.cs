@@ -16,6 +16,11 @@ public class BattleSceneMainUIController : MonoBehaviour
 	{
 		InitMainUI();
 	}
+
+	private void Update()
+	{
+		UpdatePlayerPointCounterUI();	
+	}
 	private void InitMainUI()
 	{
 		playerAttribute = Utils.GetPlayerAttribute();
@@ -31,8 +36,12 @@ public class BattleSceneMainUIController : MonoBehaviour
 
 	public void UpdatePlayerPointCounterUI()
 	{
-		playerPointCounterText.text = "You Point" + playerAttribute.PlayerPoints;
+		playerPointCounterText.text = "You Life" + playerAttribute.CurrentLife +"/" + playerAttribute.MaxLife;
 	}
+
+
+
+
 
 
 

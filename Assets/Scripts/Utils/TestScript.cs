@@ -11,15 +11,19 @@ public class TestScript : MonoBehaviour
 
 	public GameObject chainPrefab;
 	public Transform player;
+
+	public GameObject player1;
 	private void Start()
 	{
-		playerAttribute = Utils.GetPlayerAttribute();
-		mainUIController = Utils.GetMainUIController();
+		// playerAttribute = Utils.GetPlayerAttribute();
+		// mainUIController = Utils.GetMainUIController();
+		// for (double i = 100000; i > 0; i--) { }
+		// player1 = GameObject.FindGameObjectWithTag("Player");
 	}
 	private void Update()
 	{
 		// test01();
-		test02();
+		// test02();
 	}
 
 

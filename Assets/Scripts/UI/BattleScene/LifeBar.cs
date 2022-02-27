@@ -13,6 +13,8 @@ public class LifeBar : MonoBehaviour
         mPlayer = GameObject.FindWithTag("Player").GetComponent<PlayerController>().playerAttribute;
     }
 
+
+    // *************** need update **************
     private void Update()
     {
         UpdateLifeBarPercentage(mPlayer.MaxLife, mPlayer.CurrentLife);
