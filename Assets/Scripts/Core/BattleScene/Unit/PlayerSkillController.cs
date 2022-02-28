@@ -17,6 +17,7 @@ public class PlayerSkillController : MonoBehaviour
 	private void Start()
 	{
 		playerAttribute = Utils.GetPlayerAttribute();
+		// *************** ºı…Ÿ π”√find*************
 		conjureTable = GameObject.Find("ConjureTable").GetComponent<ConjureTable>();
 		
 		animeController = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
@@ -59,7 +60,6 @@ public class PlayerSkillController : MonoBehaviour
 			TriggerSpell();
 		}
 
-		conjureTable.UpdateConjureTableUI();
 	}
 
 	private void TriggerSpell()
@@ -87,12 +87,14 @@ public class PlayerSkillController : MonoBehaviour
 		if (conjuredElements.Count < GetConjuredElementsLimit())
 		{
 			conjuredElements.Add(element);
+			conjureTable.UpadateElement(conjuredElements.Count, element);
 		}
 	}
 
 	public void ClearConjuredElements()
 	{
 		conjuredElements.Clear();
+		conjureTable.ClearElement();
 	}
 
 	public void PushConjuredElementsToSpell()

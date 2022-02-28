@@ -7,82 +7,50 @@ public class ConjureTable : MonoBehaviour
 {
 
 	private PlayerSkillController playerSkillController;
-	public GameObject PrimaryHolder;
-	public GameObject SecondaryHolder;
-	public GameObject FirePrefab;
-	public GameObject WaterPrefab;
-	public GameObject EarthPrefab;
-	public GameObject AirPrefab;
+	[SerializeField] private GameObject PrimaryHolder;
+	[SerializeField] private GameObject SecondaryHolder;
 
-	private bool shouldUpdateUI = false;
+	[SerializeField] private Sprite DefautSprite;
+
+	[SerializeField] private int DefaultElementCount = 2;
+
+	[SerializeField] private GameObject emptyPrefab;
+
+	private List<Image> images = new List<Image>();
+
 
 	private void Start()
 	{
 		playerSkillController = GameObject.Find("Player").GetComponent<PlayerSkillController>();
+		InitConjure();
 	}
 
-	private void Update()
+	private void InitConjure()
 	{
-		if (shouldUpdateUI)
+		images.Clear();
+		images.Add(Instantiate(emptyPrefab, PrimaryHolder.transform).GetComponent<Image>());
+		for (int i = 0; i < DefaultElementCount - 1; i++)
 		{
-			UpdateUI();
+			images.Add(Instantiate(emptyPrefab, SecondaryHolder.transform).GetComponent<Image>());
 		}
 	}
 
-
-	public void UpdateConjureTableUI()
+	public void AddConjure()
 	{
-		shouldUpdateUI = true;
+		images.Add(Instantiate(emptyPrefab, SecondaryHolder.transform).GetComponent<Image>());
 	}
 
-	private void UpdateUI()
+	public void UpadateElement(int pos, ElementType elementType)
 	{
-		ClearPreviousUI();
-		bool isFirstElement = true;
-		GameObject newElement;
-
-		foreach (ElementType element in playerSkillController.GetConjuredElements())
-		{
-			switch (element)
-			{
-				case ElementType.Fire:
-					newElement = FirePrefab;
-					break;
-				case ElementType.Water:
-					newElement = WaterPrefab;
-					break;
-				case ElementType.Earth:
-					newElement = EarthPrefab;
-					break;
-				case ElementType.Air:
-					newElement = AirPrefab;
-					break;
-				default:
-					throw new System.Exception("Unknown ElementType");
-			}
-
-			if (true == isFirstElement)
-			{
-				Instantiate(newElement, PrimaryHolder.transform);
-				isFirstElement = false;
-			}
-			else
-			{
-				Instantiate(newElement, SecondaryHolder.transform);
-			}
-		}
-		shouldUpdateUI = false;
+		// elementType -> sprite
+		images[pos].sprite = DefautSprite;
 	}
 
-	private void ClearPreviousUI()
+	public void ClearElement()
 	{
-		foreach (Transform child in PrimaryHolder.transform)
+		foreach (Image image in images)
 		{
-			Destroy(child.gameObject);
-		}
-		foreach (Transform child in SecondaryHolder.transform)
-		{
-			Destroy(child.gameObject);
+			image.sprite = DefautSprite;
 		}
 	}
 

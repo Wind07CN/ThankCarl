@@ -16,8 +16,4 @@ public class EnemyAnimeController : MonoBehaviour
 		animator.SetBool("dead", true);
 	}
 
-	private void DestroyGameObject() 
-	{
-		Destroy(gameObject);
-	}
 }
