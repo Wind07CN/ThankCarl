@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
 
 	private PlayerAttribute playerAttribute;
 	private GameObject mPlayer;
+	private Rigidbody2D mRigidbody;
 
 	public void Start()
 	{
@@ -29,7 +30,7 @@ public class EnemyController : MonoBehaviour
 			{
 				TrackPlayer();
 			}
-			if (!enemyAttribute.IsAlive)
+			if (!enemyAttribute.IsAlive && enemyAttribute.IsActive)
 			{
 				KillEnemy();
 			}
@@ -40,6 +41,8 @@ public class EnemyController : MonoBehaviour
 	{
 
 		enemyAttribute = new EnemyAttribute();
+
+		mRigidbody = GetComponent<Rigidbody2D>();
 
 		mPlayer = GameObject.FindWithTag("Player");
 		playerAttribute = Utils.GetPlayerAttribute();
@@ -73,14 +76,25 @@ public class EnemyController : MonoBehaviour
 
 	private void TrackPlayer()
 	{
-		if (playerAttribute.IsAlive)
+		if (playerAttribute.IsAlive && enemyAttribute.IsActive)
 		{
 			// calculate
-			Vector2 orientation = mPlayer.transform.position - transform.position;
+			Vector2 orientation = (mPlayer.transform.position - mRigidbody.transform.position).normalized;
 
-			float angle = Mathf.Atan2(orientation.y, orientation.x) * Mathf.Rad2Deg;
-			transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-			transform.Translate(enemyAttribute.MoveSpeed * Time.deltaTime * Vector2.right);
+			// 需要重写降低损耗
+			if (orientation.x > 0)
+			{
+				mRigidbody.transform.localScale = new Vector3(-1, 1, 1);
+			}
+			else
+			{
+				mRigidbody.transform.localScale = new Vector3(1, 1, 1);
+			}
+
+			// enemy rotation 
+			// float angle = Mathf.Atan2(orientation.y, orientation.x) * Mathf.Rad2Deg;
+			// transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+			mRigidbody.transform.Translate(enemyAttribute.MoveSpeed * Time.deltaTime * orientation);
 		}
 	}
 
@@ -93,12 +107,18 @@ public class EnemyController : MonoBehaviour
 		}
 	}
 
+	public void StunEnemy(float time)
+	{
+		enemyAttribute.IsActive = false;
+		Invoke(nameof(SetEnemyActive), time);
+	}
+
+
+
 	public void KillEnemy()
 	{
-		// Play Death Animation & Create Explosion 
-
-		// Remove this GameObject
-		Destroy(gameObject);
+		enemyAttribute.IsActive = false;
+		GetComponent<EnemyAnimeController>().EnemyDead();
 	}
 
 

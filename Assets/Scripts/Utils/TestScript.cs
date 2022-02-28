@@ -8,15 +8,25 @@ public class TestScript : MonoBehaviour
 	private int countNum = 0;
 	private PlayerAttribute playerAttribute;
 	private BattleSceneMainUIController mainUIController;
+
+	public GameObject chainPrefab;
+	public Transform player;
+
+	public GameObject player1;
 	private void Start()
 	{
-		playerAttribute = Utils.GetPlayerAttribute();
-		mainUIController = Utils.GetMainUIController();
+		// playerAttribute = Utils.GetPlayerAttribute();
+		// mainUIController = Utils.GetMainUIController();
+		// for (double i = 100000; i > 0; i--) { }
+		// player1 = GameObject.FindGameObjectWithTag("Player");
 	}
 	private void Update()
 	{
 		// test01();
+		// test02();
 	}
+
+
 
 	private void test01()
 	{
@@ -27,5 +37,10 @@ public class TestScript : MonoBehaviour
 			mainUIController.UpdatePlayerPointCounterUI();
 		}
 	}
-
+	private void test02()
+	{
+		if (Input.GetKeyDown(KeyCode.Y)) {
+			Instantiate(chainPrefab, player);
+		}
+	}
 }

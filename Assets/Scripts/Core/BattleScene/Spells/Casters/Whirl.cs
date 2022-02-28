@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Whirl : AbstractSpellCaster
 {
@@ -8,4 +8,5 @@ public class Whirl : AbstractSpellCaster
     {
         Debug.Log("Whirl");
     }
+
 }
