@@ -10,7 +10,11 @@ public class ConjureTable : MonoBehaviour
 	[SerializeField] private GameObject PrimaryHolder;
 	[SerializeField] private GameObject SecondaryHolder;
 
-	[SerializeField] private Sprite DefautSprite;
+	[SerializeField] private Sprite fire;
+	[SerializeField] private Sprite water;
+	[SerializeField] private Sprite wind;
+	[SerializeField] private Sprite soil;
+	[SerializeField] private Sprite defautSprite;
 
 	[SerializeField] private int DefaultElementCount = 2;
 
@@ -18,11 +22,24 @@ public class ConjureTable : MonoBehaviour
 
 	private List<Image> images = new List<Image>();
 
+	private Dictionary<ElementType, Sprite> spritesDic = new Dictionary<ElementType, Sprite>();
+
 
 	private void Start()
 	{
 		playerSkillController = GameObject.Find("Player").GetComponent<PlayerSkillController>();
+		InitDic();
 		InitConjure();
+	}
+
+	private void InitDic()
+	{
+		spritesDic.Clear();
+		spritesDic.Add(ElementType.Fire, fire);
+		spritesDic.Add(ElementType.Water, water);
+		spritesDic.Add(ElementType.Wind, wind);
+		spritesDic.Add(ElementType.Soil, soil);
+		spritesDic.Add(ElementType.None, defautSprite);
 	}
 
 	private void InitConjure()
@@ -43,14 +60,14 @@ public class ConjureTable : MonoBehaviour
 	public void UpadateElement(int pos, ElementType elementType)
 	{
 		// elementType -> sprite
-		images[pos].sprite = DefautSprite;
+		images[pos - 1].sprite = spritesDic[elementType];
 	}
 
 	public void ClearElement()
 	{
 		foreach (Image image in images)
 		{
-			image.sprite = DefautSprite;
+			image.sprite = defautSprite;
 		}
 	}
 

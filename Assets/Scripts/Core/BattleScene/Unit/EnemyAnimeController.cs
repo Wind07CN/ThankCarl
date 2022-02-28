@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class EnemyAnimeController : MonoBehaviour
 {
-	private  Animator animator;
+	private Animator animator;
 
 	private void Awake()
 	{
 		animator = GetComponent<Animator>();
 	}
 
-	public void EnemyDead() 
+	public void EnemyDead()
 	{
 		animator.SetBool("dead", true);
 	}
 
+	// For animeENd 
+	public void DestroyGameObject()
+	{
+		Destroy(gameObject);
+	}
 }

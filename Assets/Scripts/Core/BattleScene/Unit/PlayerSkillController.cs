@@ -45,11 +45,11 @@ public class PlayerSkillController : MonoBehaviour
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha3))
 		{
-			AppendElement(ElementType.Air);
+			AppendElement(ElementType.Wind);
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha4))
 		{
-			AppendElement(ElementType.Earth);
+			AppendElement(ElementType.Soil);
 		}
 		else if (Input.GetKeyDown(KeyCode.Space))
 		{
