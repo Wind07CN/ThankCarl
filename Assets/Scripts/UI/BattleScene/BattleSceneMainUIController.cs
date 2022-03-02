@@ -9,8 +9,14 @@ public class BattleSceneMainUIController : MonoBehaviour
 	private PlayerAttribute playerAttribute;
 	[SerializeField] private GameObject playerLevelIndicator;
 	[SerializeField] private GameObject playerPointCounter;
+	[SerializeField] private GameObject playerLifeBar;
+	[SerializeField] private GameObject playerManaBar;
 	private Text playerLevelText;
 	private Text playerPointCounterText;
+	private ManaBar manaBar;
+	private LifeBar lifeBar;
+
+
 
 	private void Start()
 	{
@@ -19,7 +25,7 @@ public class BattleSceneMainUIController : MonoBehaviour
 
 	private void Update()
 	{
-		UpdatePlayerPointCounterUI();	
+		UpdatePlayerPointCounterUI();
 	}
 	private void InitMainUI()
 	{
@@ -27,6 +33,9 @@ public class BattleSceneMainUIController : MonoBehaviour
 
 		playerLevelText = playerLevelIndicator.GetComponent<Text>();
 		playerPointCounterText = playerPointCounter.GetComponent<Text>();
+
+		lifeBar = playerLifeBar.GetComponent<LifeBar>();
+		manaBar = playerManaBar.GetComponent<ManaBar>();
 	}
 
 	public void UpdateLevelIndicatorUI()
@@ -36,11 +45,18 @@ public class BattleSceneMainUIController : MonoBehaviour
 
 	public void UpdatePlayerPointCounterUI()
 	{
-		playerPointCounterText.text = "You Life" + playerAttribute.CurrentLife +"/" + playerAttribute.MaxLife;
+		playerPointCounterText.text = "You Life" + playerAttribute.CurrentLife + "/" + playerAttribute.MaxLife;
 	}
 
+	public void UpdateManaBar()
+	{
+		manaBar.shouldUpdate = true;
+	}
 
-
+	public void UpdateLifeBar()
+	{
+		lifeBar.shouldUpdate = true;
+	}
 
 
 

@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private int playerArmour = Constants.PlayerDefaultArmour;
 	[SerializeField] private float playerMoveSpeed = Constants.PlayerDefaultMoveSpeed;
 
+	private BattleSceneMainUIController UIController;
+
 	private new PlayerAnimeController animation;
 
 	private void Start()
@@ -44,15 +46,14 @@ public class PlayerController : MonoBehaviour
 
 	public void InitPlayer()
 	{
-		// init
-		// Debug.Log("Doing Something...");
-		// Debug.Log("Init Player Fin, ready to go");
 		playerAttribute.MaxLife = playerMaxLife;
 		playerAttribute.CurrentLife = playerMaxLife;
 		playerAttribute.Armour = playerArmour;
 		playerAttribute.MoveSpeed = playerMoveSpeed;
 
 		animation = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
+		UIController = GameObject.FindGameObjectWithTag("MainUI").GetComponent<BattleSceneMainUIController>();
+		
 		// Set Active
 		playerAttribute.IsActive = true;
 
@@ -64,12 +65,14 @@ public class PlayerController : MonoBehaviour
 	{
 		playerAttribute.CurrentLife -= 1;
 		animation.PlayerGetDamage();
+		UIController.UpdateLifeBar();
 		
 	}
 
 	public void DamagePlayer(int damage)
 	{
 		playerAttribute.CurrentLife -= damage;
+		UIController.UpdateLifeBar();
 	}
 
 	public void KillPlayer()
