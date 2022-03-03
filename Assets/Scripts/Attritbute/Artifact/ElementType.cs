@@ -5,5 +5,6 @@ public enum ElementType
     Water = 2,
     Soil = 3,
     light = 4,
-    None = 5
+    None = 5,
+    Locked = 6,
 }

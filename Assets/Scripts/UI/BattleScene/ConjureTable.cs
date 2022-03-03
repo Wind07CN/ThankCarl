@@ -14,13 +14,16 @@ public class ConjureTable : MonoBehaviour
 	[SerializeField] private Sprite water;
 	[SerializeField] private Sprite wind;
 	[SerializeField] private Sprite soil;
-	[SerializeField] private Sprite defautSprite;
+	[SerializeField] private Sprite none;
+	[SerializeField] private Sprite locked;
 
-	[SerializeField] private int DefaultElementCount = 2;
+	[SerializeField] private GameObject[] elementsIcons;
+	private List<Image> images = new List<Image>();
+
+	[SerializeField] private int unlockedSubElementCount = 1;
 
 	[SerializeField] private GameObject emptyPrefab;
 
-	private List<Image> images = new List<Image>();
 
 	private Dictionary<ElementType, Sprite> spritesDic = new Dictionary<ElementType, Sprite>();
 
@@ -39,22 +42,26 @@ public class ConjureTable : MonoBehaviour
 		spritesDic.Add(ElementType.Water, water);
 		spritesDic.Add(ElementType.Wind, wind);
 		spritesDic.Add(ElementType.Soil, soil);
-		spritesDic.Add(ElementType.None, defautSprite);
+		spritesDic.Add(ElementType.None, none);
+		spritesDic.Add(ElementType.Locked, locked);
 	}
 
 	private void InitConjure()
 	{
 		images.Clear();
-		images.Add(Instantiate(emptyPrefab, PrimaryHolder.transform).GetComponent<Image>());
-		for (int i = 0; i < DefaultElementCount - 1; i++)
+		foreach (GameObject element in elementsIcons) 
 		{
-			images.Add(Instantiate(emptyPrefab, SecondaryHolder.transform).GetComponent<Image>());
+			images.Add(element.GetComponent<Image>());
+		}
+		for (int i = 0; i <= unlockedSubElementCount; i++) 
+		{
+			images[i].sprite = spritesDic[ElementType.None];
 		}
 	}
 
-	public void AddConjure()
+	public void UnluckConjure()
 	{
-		images.Add(Instantiate(emptyPrefab, SecondaryHolder.transform).GetComponent<Image>());
+		images[++unlockedSubElementCount].sprite = spritesDic[ElementType.None];
 	}
 
 	public void UpadateElement(int pos, ElementType elementType)
@@ -65,9 +72,9 @@ public class ConjureTable : MonoBehaviour
 
 	public void ClearElement()
 	{
-		foreach (Image image in images)
+		for (int i = 0; i <= unlockedSubElementCount; i++) 
 		{
-			image.sprite = defautSprite;
+			images[i].sprite = spritesDic[ElementType.None];
 		}
 	}
 
