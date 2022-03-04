@@ -25,6 +25,7 @@ public class LineController : MonoBehaviour
 	private void Awake()
 	{
 		lineRenderer = GetComponent<LineRenderer>();
+		lineRenderer.material.SetTexture("_MainTex", textures[0]);
 		lineRenderer.positionCount = 1;
 		player = GameObject.FindGameObjectWithTag("Player");
 		animationStep = -1;

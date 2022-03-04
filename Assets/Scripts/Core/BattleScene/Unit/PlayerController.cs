@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private int playerArmour = Constants.PlayerDefaultArmour;
 	[SerializeField] private float playerMoveSpeed = Constants.PlayerDefaultMoveSpeed;
 
+	[SerializeField] private int playerDyingHealthLine = 3;
+
+	private bool isInvincible = false;
+	[SerializeField] private float invincibleTime = 2f;
+
 	private BattleSceneMainUIController UIController;
 
 	private new PlayerAnimeController animation;
@@ -23,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
-		if (!playerAttribute.IsAlive && playerAttribute.IsActive) 
+		if (!playerAttribute.IsAlive && playerAttribute.IsActive)
 		{
 			KillPlayer();
 		}
@@ -31,15 +36,18 @@ public class PlayerController : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject.CompareTag("Enemy"))
+		if (!isInvincible)
 		{
-			EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
-			if (enemyController.enemyAttribute.IsActive)
+			if (collision.gameObject.CompareTag("Enemy"))
 			{
-				DamagePlayer();
+				EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
+				if (enemyController.enemyAttribute.IsActive)
+				{
+					DamagePlayer(1);
 
-				// Enemy Play dying animation
-				enemyController.KillEnemy();
+					// Enemy Play dying animation
+					enemyController.KillEnemy();
+				}
 			}
 		}
 	}
@@ -53,26 +61,27 @@ public class PlayerController : MonoBehaviour
 
 		animation = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
 		UIController = GameObject.FindGameObjectWithTag("MainUI").GetComponent<BattleSceneMainUIController>();
-		
+
 		// Set Active
 		playerAttribute.IsActive = true;
-
-
-
-	}
-
-	public void DamagePlayer()
-	{
-		playerAttribute.CurrentLife -= 1;
-		animation.PlayerGetDamage();
-		UIController.UpdateLifeBar();
-		
 	}
 
 	public void DamagePlayer(int damage)
 	{
 		playerAttribute.CurrentLife -= damage;
+		
+		animation.PlayerGetDamage();
 		UIController.UpdateLifeBar();
+
+		isInvincible = true;
+		Invoke(nameof(ResetIincible), invincibleTime);
+
+
+		if (playerAttribute.CurrentLife <= playerDyingHealthLine) 
+		{
+			UIController.PlayerIsDying();
+		}
+		UIController.GetDamage();
 	}
 
 	public void KillPlayer()
@@ -83,4 +92,14 @@ public class PlayerController : MonoBehaviour
 		animation.PlayerIsDead();
 	}
 
+	private void ResetIincible()
+	{
+		isInvincible = false;
+	}
+
+
+	private void ResetVisable()
+	{
+
+	}
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,13 +6,10 @@ public class TestScript : MonoBehaviour
 {
 
 	private int countNum = 0;
-	private PlayerAttribute playerAttribute;
-	private BattleSceneMainUIController mainUIController;
 
 	public GameObject chainPrefab;
 	public Transform player;
 
-	public GameObject player1;
 	private void Start()
 	{
 		// playerAttribute = Utils.GetPlayerAttribute();
@@ -23,23 +20,13 @@ public class TestScript : MonoBehaviour
 	private void Update()
 	{
 		// test01();
-		// test02();
+		test02();
 	}
 
-
-
-	private void test01()
-	{
-		if (countNum < 10000)
-		{
-			countNum++;
-			playerAttribute.PlayerPoints = countNum;
-			mainUIController.UpdatePlayerPointCounterUI();
-		}
-	}
 	private void test02()
 	{
-		if (Input.GetKeyDown(KeyCode.Y)) {
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
 			Instantiate(chainPrefab, player);
 		}
 	}
