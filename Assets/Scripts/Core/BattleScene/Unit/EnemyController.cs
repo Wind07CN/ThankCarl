@@ -96,6 +96,10 @@ public class EnemyController : MonoBehaviour
 			// transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 			mRigidbody.transform.Translate(enemyAttribute.MoveSpeed * Time.deltaTime * orientation);
 		}
+		else if (!playerAttribute.IsAlive && enemyAttribute.IsActive) 
+		{
+			KillEnemy();
+		}
 	}
 
 	public void DamageEnemy(int damage)

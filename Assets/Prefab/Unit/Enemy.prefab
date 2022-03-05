@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 5
-  enemyMaxLife: 30
+  enemyMaxLife: 1
   enemyArmour: 0
   difficultyMultiplier: 1
   enemyActiveTime: 1

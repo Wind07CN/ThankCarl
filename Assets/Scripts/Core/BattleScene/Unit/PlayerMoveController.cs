@@ -41,6 +41,8 @@ public class PlayerMoveController : MonoBehaviour
 		bool isRun = false;
 		Vector2 direction = Vector2.zero;
 
+		// Debug.Log(Camera.main.WorldToScreenPoint(transform.position) + "+" + Input.mousePosition);
+
 		if (Camera.main.WorldToScreenPoint(transform.position).x > Input.mousePosition.x)
 		{
 			transform.localScale = new Vector3(1, 1, 1);
@@ -77,6 +79,21 @@ public class PlayerMoveController : MonoBehaviour
 			isLastStateRun = isRun;
 		}
 		transform.Translate(mPlayerAttribute.MoveSpeed * Time.deltaTime * direction.normalized);
+	}
+
+	public float GetMouseAngle()
+	{
+		Vector3 mPos  = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+		float fireAngle = Vector2.Angle(mPos - transform.position, Vector2.up);
+
+		if (mPos.x > this.transform.position.x)
+		{
+			fireAngle = -fireAngle;
+		}
+
+
+		return fireAngle;
 	}
 
 }

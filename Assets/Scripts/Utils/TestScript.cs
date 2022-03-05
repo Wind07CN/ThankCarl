@@ -5,9 +5,10 @@ using UnityEngine;
 public class TestScript : MonoBehaviour
 {
 
-	private int countNum = 0;
+	// private int countNum = 0;
 
 	public GameObject chainPrefab;
+	public GameObject FirePrefab;
 	public Transform player;
 
 	private void Start()
@@ -15,7 +16,7 @@ public class TestScript : MonoBehaviour
 		// playerAttribute = Utils.GetPlayerAttribute();
 		// mainUIController = Utils.GetMainUIController();
 		// for (double i = 100000; i > 0; i--) { }
-		// player1 = GameObject.FindGameObjectWithTag("Player");
+		player = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 	private void Update()
 	{
@@ -28,6 +29,13 @@ public class TestScript : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
 			Instantiate(chainPrefab, player);
+		}
+		if (Input.GetKeyUp(KeyCode.V))
+		{
+
+			GameObject gameObject = Instantiate(FirePrefab, player.transform.position, Quaternion.identity);
+			gameObject.transform.eulerAngles =new Vector3(0,0, player.gameObject.GetComponent<PlayerMoveController>().GetMouseAngle());
+
 		}
 	}
 }
