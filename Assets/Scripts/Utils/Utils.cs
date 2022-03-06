@@ -33,6 +33,11 @@ public static class Utils
 	}
 
 
+	public static GameObject GetPlayerObject()
+	{
+		return GameObject.FindGameObjectWithTag(Constants.PlayerTag);
+	}
+
 	/// <summary>
 	/// Find THE Nearest Enemy to the Target
 	/// </summary>

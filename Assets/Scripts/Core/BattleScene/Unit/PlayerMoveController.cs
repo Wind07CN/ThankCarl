@@ -86,12 +86,12 @@ public class PlayerMoveController : MonoBehaviour
 		Vector3 mPos  = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 		float fireAngle = Vector2.Angle(mPos - transform.position, Vector2.up);
+		mPos.z = 0;
 
 		if (mPos.x > this.transform.position.x)
 		{
 			fireAngle = -fireAngle;
 		}
-
 
 		return fireAngle;
 	}
