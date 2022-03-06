@@ -10,6 +10,7 @@ public class TestScript : MonoBehaviour
 	public GameObject chainPrefab;
 	public GameObject FirePrefab;
 	public Transform player;
+	public GameObject WavePreFab;
 
 	private void Start()
 	{
@@ -28,13 +29,17 @@ public class TestScript : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			Instantiate(chainPrefab, player);
+			// Instantiate(chainPrefab, player);
+
+			//GameObject gameObject = Instantiate(FirePrefab, player.transform.position, Quaternion.identity);
+			//gameObject.transform.eulerAngles = new Vector3(0, 0, player.gameObject.GetComponent<PlayerMoveController>().GetMouseAngle());
+
+			Instantiate(WavePreFab, player.position, Quaternion.identity);
 		}
 		if (Input.GetKeyUp(KeyCode.V))
 		{
 
-			GameObject gameObject = Instantiate(FirePrefab, player.transform.position, Quaternion.identity);
-			gameObject.transform.eulerAngles =new Vector3(0,0, player.gameObject.GetComponent<PlayerMoveController>().GetMouseAngle());
+			
 
 		}
 	}

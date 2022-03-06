@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8177046596770704842}
   - component: {fileID: 6391983269198702943}
   m_Layer: 0
-  m_Name: DefenseSprite
+  m_Name: DefenseSprite3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

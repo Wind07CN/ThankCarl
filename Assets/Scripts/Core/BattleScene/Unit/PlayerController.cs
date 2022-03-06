@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 	private bool isInvincible = false;
 	[SerializeField] private float invincibleTime = 2f;
 
+	[SerializeField] private GameObject crash;
+
 	private BattleSceneMainUIController UIController;
 
 	private new PlayerAnimeController animation;
@@ -47,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
 					// Enemy Play dying animation
 					enemyController.KillEnemy();
+					Instantiate(crash, transform.position, Quaternion.identity);
 				}
 			}
 		}
