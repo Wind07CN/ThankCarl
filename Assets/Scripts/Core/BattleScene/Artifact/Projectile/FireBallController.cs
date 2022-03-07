@@ -21,6 +21,7 @@ public class FireBallController : MonoBehaviour
 		{
 			collision.gameObject.GetComponent<EnemyController>().DamageEnemy(damage);
 			animator.SetBool("hit", true);
+			GetComponent<CapsuleCollider2D>().enabled = false;
 		}
 	}
 
