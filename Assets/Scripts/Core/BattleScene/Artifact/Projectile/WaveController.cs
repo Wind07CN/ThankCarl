@@ -34,9 +34,5 @@ public class WaveController : MonoBehaviour
 			enemy.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Force);
 		}
 	}
-	private void OnTriggerStay(Collider2D collision)
-	{
-
-	}
 
 }
