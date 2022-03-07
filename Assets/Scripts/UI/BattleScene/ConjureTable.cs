@@ -30,6 +30,7 @@ public class ConjureTable : MonoBehaviour
 
 	private void Start()
 	{
+		// playerSkillController = Utils.GetPlayerObject().GetComponent<PlayerSkillController>();
 		playerSkillController = GameObject.Find("Player").GetComponent<PlayerSkillController>();
 		InitDic();
 		InitConjure();
@@ -59,12 +60,12 @@ public class ConjureTable : MonoBehaviour
 		}
 	}
 
-	public void UnluckConjure()
+	public void UnlockConjure()
 	{
 		images[++unlockedSubElementCount].sprite = spritesDic[ElementType.None];
 	}
 
-	public void UpadateElement(int pos, ElementType elementType)
+	public void UpdateElement(int pos, ElementType elementType)
 	{
 		// elementType -> sprite
 		images[pos - 1].sprite = spritesDic[elementType];

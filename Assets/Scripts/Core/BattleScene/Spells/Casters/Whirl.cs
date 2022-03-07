@@ -3,10 +3,17 @@
 public class Whirl : AbstractSpellCaster
 {
     public GameObject WhirlPrefab;
+    private GameObject playerGameObj;
+
+    private void Start()
+    {
+        playerGameObj = Utils.GetPlayerObject();
+    }
     
     public override void Cast(SpellAttribute spellAttribute)
     {
-        Debug.Log("Whirl");
+        Instantiate(WhirlPrefab, playerGameObj.transform.position, Quaternion.identity);
     }
+
 
 }

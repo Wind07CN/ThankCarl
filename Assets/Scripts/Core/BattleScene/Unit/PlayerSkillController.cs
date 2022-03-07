@@ -17,7 +17,7 @@ public class PlayerSkillController : MonoBehaviour
 	private void Start()
 	{
 		playerAttribute = Utils.GetPlayerAttribute();
-		// *************** ¼õÉÙÊ¹ÓÃfind*************
+		// *************** ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½find*************
 		conjureTable = GameObject.Find("ConjureTable").GetComponent<ConjureTable>();
 		
 		animeController = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
@@ -87,7 +87,7 @@ public class PlayerSkillController : MonoBehaviour
 		if (conjuredElements.Count < GetConjuredElementsLimit())
 		{
 			conjuredElements.Add(element);
-			conjureTable.UpadateElement(conjuredElements.Count, element);
+			conjureTable.UpdateElement(conjuredElements.Count, element);
 		}
 	}
 
