@@ -7,7 +7,7 @@ public static class Constants
     public const int PlayerDefaultMaxLife = 100;
     public const float PlayerDefaultMoveSpeed = 10;
     public const int PlayerDefaultArmour = 0;
-
+    public const float PlayerDefaultManaRegenSpeed = 5;
     public const int EnemyDefaultMaxLife = 30;
     public const float EnemyDefaultMoveSpeed = 5;
     public const int EnemyDefaultArmour = 0;
@@ -15,6 +15,8 @@ public static class Constants
 
     public const int NormalEnemyTypeDefaultNum = 0;
     public const int EliteEnemyTypeDefaoultNum = 0;
+    
+    public const int ElementManaCost = 5;
 
     public const float nextDefaultSpawnTime = 1f;
 

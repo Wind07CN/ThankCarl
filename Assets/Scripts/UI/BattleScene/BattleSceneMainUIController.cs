@@ -47,6 +47,7 @@ public class BattleSceneMainUIController : MonoBehaviour
 		lifeBar = playerLifeBar.GetComponent<LifeBar>();
 		manaBar = playerManaBar.GetComponent<ManaBar>();
 		lifeBar.shouldUpdate = true;
+		manaBar.shouldUpdate = true;
 	}
 
 	public void UpdateLevelIndicatorUI()

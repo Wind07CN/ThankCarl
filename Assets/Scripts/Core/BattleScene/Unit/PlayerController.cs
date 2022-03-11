@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private int playerMaxLife = Constants.PlayerDefaultMaxLife;
 	[SerializeField] private int playerArmour = Constants.PlayerDefaultArmour;
 	[SerializeField] private float playerMoveSpeed = Constants.PlayerDefaultMoveSpeed;
+	[SerializeField] private float playerManaRegenSpeed = Constants.PlayerDefaultManaRegenSpeed;
 
 	[SerializeField] private int playerDyingLifeThreshold = 3;
 
@@ -28,6 +29,11 @@ public class PlayerController : MonoBehaviour
 	private void Start()
 	{
 		InitPlayer();
+	}
+
+	private void Update()
+	{
+		RegenerateMana();
 	}
 
 
@@ -59,6 +65,7 @@ public class PlayerController : MonoBehaviour
 		playerAttribute.CurrentLife = playerMaxLife;
 		playerAttribute.Armour = playerArmour;
 		playerAttribute.MoveSpeed = playerMoveSpeed;
+		playerAttribute.ManaRegenSpeed = playerManaRegenSpeed;
 
 		animation = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
 		UIController = GameObject.FindGameObjectWithTag("MainUI").GetComponent<BattleSceneMainUIController>();
@@ -101,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
 	}
 
-	public void ConsumeMana(int amount)
+	public void CostMana(int amount)
 	{
 		playerAttribute.CurrentMana -= amount;
 		UIController.UpdateManaBar();

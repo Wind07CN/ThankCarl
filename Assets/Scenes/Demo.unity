@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 31078472}
   - component: {fileID: 31078471}
   m_Layer: 5
-  m_Name: Text
+  m_Name: PointText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1337,7 +1337,7 @@ GameObject:
   - component: {fileID: 752498338}
   - component: {fileID: 752498337}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1374,6 +1374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a96a31f7ba07cc4ab52508be84f613a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PointTextObj: {fileID: 0}
+  BarImageObj: {fileID: 0}
   shouldUpdate: 0
 --- !u!114 &752498338
 MonoBehaviour:
@@ -1396,7 +1398,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -3180297545480056116, guid: a875015d9c0d1d0429ce291242459ee5, type: 3}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
@@ -1424,7 +1426,6 @@ GameObject:
   - component: {fileID: 767726454}
   - component: {fileID: 767726456}
   - component: {fileID: 767726455}
-  - component: {fileID: 767726457}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -1489,19 +1490,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767726453}
   m_CullTransparentMesh: 1
---- !u!114 &767726457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767726453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a96a31f7ba07cc4ab52508be84f613a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shouldUpdate: 0
 --- !u!1 &773615490
 GameObject:
   m_ObjectHideFlags: 0
@@ -2017,6 +2005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 969690663}
+  - component: {fileID: 969690664}
   m_Layer: 5
   m_Name: Lifebar
   m_TagString: Untagged
@@ -2046,6 +2035,21 @@ RectTransform:
   m_AnchoredPosition: {x: 399.9999, y: -228.5479}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &969690664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969690662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a96a31f7ba07cc4ab52508be84f613a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PointTextObj: {fileID: 1581415593}
+  BarImageObj: {fileID: 767726453}
+  shouldUpdate: 0
 --- !u!1 &1016728436
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,9 +2923,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeUI: {fileID: 1016728436}
   playerLevelIndicator: {fileID: 1581415593}
-  playerPointCounter: {fileID: 1581415593}
-  playerLifeBar: {fileID: 767726453}
-  playerManaBar: {fileID: 767726453}
+  playerLifeBar: {fileID: 969690662}
+  playerManaBar: {fileID: 1632210462}
   getDameage: {fileID: 1165230914}
   shakeRange: 10
   shakeTime: 0.15
@@ -3165,6 +3168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1632210463}
+  - component: {fileID: 1632210464}
   m_Layer: 5
   m_Name: ManaBar
   m_TagString: Untagged
@@ -3194,6 +3198,21 @@ RectTransform:
   m_AnchoredPosition: {x: 399.9998, y: -259.24783}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1632210464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632210462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73547758139c4c949b44cc0f7185f956, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PointTextObj: {fileID: 31078469}
+  BarImageObj: {fileID: 752498335}
+  shouldUpdate: 1
 --- !u!1 &1637521187
 GameObject:
   m_ObjectHideFlags: 0
@@ -3776,7 +3795,7 @@ GameObject:
   - component: {fileID: 1955922584}
   - component: {fileID: 1955922583}
   m_Layer: 5
-  m_Name: LifeBar (1)
+  m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

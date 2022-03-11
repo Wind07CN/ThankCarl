@@ -6,6 +6,8 @@ public class PlayerSkillController : MonoBehaviour
 {
 	private PlayerAttribute playerAttribute;
 
+	private PlayerController playerController;
+
 	private List<ElementType> conjuredElements = new List<ElementType>();
 	private List<ElementType> spellElements = new List<ElementType>();
 
@@ -17,7 +19,7 @@ public class PlayerSkillController : MonoBehaviour
 	private void Start()
 	{
 		playerAttribute = Utils.GetPlayerAttribute();
-		
+		playerController = Utils.GetPlayerObject().GetComponent<PlayerController>();
 		animeController = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
 	}
 
@@ -28,7 +30,8 @@ public class PlayerSkillController : MonoBehaviour
 
 	private void HandleKeyInput()
 	{
-		if (IsConjuredTableFull() && !Input.GetKeyDown(KeyCode.Space))
+		if (IsConjureTableFull() && !Input.GetKeyDown(KeyCode.Space)
+			|| Constants.ElementManaCost > playerAttribute.CurrentMana)
 		{
 			return;
 		}
@@ -49,7 +52,7 @@ public class PlayerSkillController : MonoBehaviour
 		{
 			AppendElement(ElementType.Soil);
 		}
-		else if (Input.GetKeyDown(KeyCode.Space))
+		else if (Input.GetKeyDown(KeyCode.Space) && !IsConjureTableEmpty())
 		{
 			animeController.PlayerAttack();
 			
@@ -84,6 +87,8 @@ public class PlayerSkillController : MonoBehaviour
 			conjuredElements.Add(element);
 			conjureTable.UpdateElement(conjuredElements.Count, element);
 		}
+		// cost mana
+		playerController.CostMana(Constants.ElementManaCost);
 	}
 
 	public void ClearConjuredElements()
@@ -103,7 +108,7 @@ public class PlayerSkillController : MonoBehaviour
 		return playerAttribute.Level + Constants.BaseConjuredElementsAmount - 1;
 	}
 
-	public bool IsConjuredTableFull()
+	public bool IsConjureTableFull()
 	{
 		return conjuredElements.Count >= GetConjuredElementsLimit();
 	}
