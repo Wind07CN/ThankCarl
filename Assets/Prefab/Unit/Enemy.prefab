@@ -177,11 +177,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d63041d6c597d498c2fa4fb55d4f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyElementType: 2
   enemySpeed: 5
   enemyMaxLife: 1
   enemyArmour: 0
   difficultyMultiplier: 1
   enemyActiveTime: 1
+  damageToPlayer: 1
 --- !u!95 &3072644246438717477
 Animator:
   serializedVersion: 3

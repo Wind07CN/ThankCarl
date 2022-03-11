@@ -1,3 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 public static class Constants
 {
     public const int PlayerDefaultMaxLife = 100;
@@ -29,4 +33,22 @@ public static class Constants
     public const string EnemyTag = "Enemy";
     public const string MainUITag = "MainUI";
     public const string MainController = "MainController";
+
+    public enum UpdateType
+    {
+        speedLv = 0,
+        healthLv = 1,
+        manaMaxLv = 2,
+        manaRecoverLv = 3,
+    }
+
+    public static Dictionary<UpdateType, string> UpdateData = new Dictionary<UpdateType, string>()
+    {
+        {UpdateType.speedLv, "speedLv" },
+        {UpdateType.healthLv, "healthLv" },
+        {UpdateType.manaMaxLv, "manaMaxLv" },
+        {UpdateType.manaRecoverLv, "manaRecoverLv" }
+    };
+
+    public const string CurrentGold = "CurrentGold";
 }

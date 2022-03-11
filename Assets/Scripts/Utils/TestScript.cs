@@ -22,7 +22,7 @@ public class TestScript : MonoBehaviour
 	private void Update()
 	{
 		// test01();
-		// test02();
+		test02();
 	}
 
 	private void test02()
@@ -38,9 +38,13 @@ public class TestScript : MonoBehaviour
 		}
 		if (Input.GetKeyUp(KeyCode.V))
 		{
-
-			
-
+			Time.timeScale = 0;
+			Debug.Log("hello");
+		}
+		if (Input.GetKeyUp(KeyCode.B))
+		{
+			Time.timeScale = 1;
+			Debug.Log("hello");
 		}
 	}
 }

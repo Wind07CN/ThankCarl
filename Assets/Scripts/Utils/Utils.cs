@@ -68,4 +68,12 @@ public static class Utils
 		return nearestEnemyPosInArray;
 	}
 
+	public static int CalculateGold(int level)
+	{
+		if (level <= 0)
+		{
+			return 0;
+		}
+		return level * 10 + 20;
+	}
 }
