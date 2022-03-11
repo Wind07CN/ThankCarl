@@ -11,14 +11,12 @@ public class PlayerSkillController : MonoBehaviour
 
 	private SpellMatcher spellMatcher = new SpellMatcher();
 
-	private ConjureTable conjureTable;
+	[SerializeField] private ConjureTable conjureTable;
 	private PlayerAnimeController animeController;
 
 	private void Start()
 	{
 		playerAttribute = Utils.GetPlayerAttribute();
-		// *************** ����ʹ��find*************
-		conjureTable = GameObject.Find("ConjureTable").GetComponent<ConjureTable>();
 		
 		animeController = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
 	}
@@ -67,10 +65,7 @@ public class PlayerSkillController : MonoBehaviour
 		ISpell spell = spellMatcher.MatchSpell(GetSpellElements());
 		ISpellCaster caster = spell.FindCasterComponent();
 		caster.Cast(spell.GetSpellAttribute());
-
 	}
-
-
 
 	public List<ElementType> GetConjuredElements()
 	{
