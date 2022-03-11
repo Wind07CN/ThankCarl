@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03dd064a67c64044b9233c28fd7fae8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WhirlPrefab: {fileID: 0}
+  WhirlPrefab: {fileID: 2938598702819760447, guid: 9de19441f99527340a44ae172976d07a, type: 3}
 --- !u!114 &124658311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa3a2ef64b0f214fa14713527a3e6bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireBallPrefab: {fileID: 0}
+  FireBallPrefab: {fileID: 3674848013746234133, guid: c191e424c3348534c9767da2d9569025, type: 3}
 --- !u!114 &124658312
 MonoBehaviour:
   m_ObjectHideFlags: 0
