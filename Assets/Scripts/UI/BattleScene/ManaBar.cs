@@ -5,31 +5,35 @@ using UnityEngine.UI;
 
 public class ManaBar : MonoBehaviour
 {
-	private Image image;
-	private PlayerAttribute mPlayer;
-	[HideInInspector] public bool shouldUpdate = false;
+	public GameObject PointTextObj;
+	public GameObject BarImageObj;
+	private PlayerAttribute playerAttribute;
+	[HideInInspector] public bool shouldUpdate = true;
+
 	private void Start()
 	{
-		image = GetComponent<Image>();
-		image.fillAmount = 1.0f;
-		mPlayer = GameObject.FindWithTag("Player").GetComponent<PlayerController>().playerAttribute;
+		playerAttribute = GameObject.FindWithTag("Player").GetComponent<PlayerController>().playerAttribute;
 	}
 
 	private void Update()
 	{
 		if (shouldUpdate)
 		{
-			image.fillAmount = mPlayer.CurrentMana / mPlayer.MaxMana;
+			UpdateBarLength();
+			UpdatePointText();
 			shouldUpdate = false;
 		}
 	}
 
-	/// <summary>
-	/// if Player life Change Update
-	/// 最好还是放在主控这个方法?
-	/// </summary>
-	public void UpdateManaBar()
+	private void UpdatePointText()
 	{
-		shouldUpdate = true;
+		Text pointText = PointTextObj.GetComponent<Text>();
+		pointText.text = (int) playerAttribute.CurrentMana + "/" + (int) playerAttribute.MaxMana;
+	}
+
+	private void UpdateBarLength()
+	{
+		Image image = BarImageObj.GetComponent<Image>();
+		image.fillAmount = playerAttribute.CurrentMana / playerAttribute.MaxMana;
 	}
 }

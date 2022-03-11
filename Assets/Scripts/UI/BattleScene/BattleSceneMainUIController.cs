@@ -10,7 +10,6 @@ public class BattleSceneMainUIController : MonoBehaviour
 	[SerializeField] private GameObject shakeUI;
 
 	[SerializeField] private GameObject playerLevelIndicator;
-	[SerializeField] private GameObject playerPointCounter;
 	[SerializeField] private GameObject playerLifeBar;
 	[SerializeField] private GameObject playerManaBar;
 
@@ -19,7 +18,6 @@ public class BattleSceneMainUIController : MonoBehaviour
 	[SerializeField] private float shakeTime = 0.15f;
 
 	private Text playerLevelText;
-	private Text playerPointCounterText;
 	private ManaBar manaBar;
 	private LifeBar lifeBar;
 
@@ -35,8 +33,6 @@ public class BattleSceneMainUIController : MonoBehaviour
 
 	private void Update()
 	{
-		UpdatePlayerPointCounterUI();
-
 		if (isShake)
 		{
 			ShakeUI();
@@ -47,20 +43,15 @@ public class BattleSceneMainUIController : MonoBehaviour
 		playerAttribute = Utils.GetPlayerAttribute();
 
 		playerLevelText = playerLevelIndicator.GetComponent<Text>();
-		playerPointCounterText = playerPointCounter.GetComponent<Text>();
 
 		lifeBar = playerLifeBar.GetComponent<LifeBar>();
 		manaBar = playerManaBar.GetComponent<ManaBar>();
+		lifeBar.shouldUpdate = true;
 	}
 
 	public void UpdateLevelIndicatorUI()
 	{
 		playerLevelText.text = "Lv." + playerAttribute.Level;
-	}
-
-	public void UpdatePlayerPointCounterUI()
-	{
-		playerPointCounterText.text = "You Life" + playerAttribute.CurrentLife + "/" + playerAttribute.MaxLife;
 	}
 
 	public void UpdateManaBar()

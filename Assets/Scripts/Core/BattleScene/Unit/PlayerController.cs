@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private int playerArmour = Constants.PlayerDefaultArmour;
 	[SerializeField] private float playerMoveSpeed = Constants.PlayerDefaultMoveSpeed;
 
-	[SerializeField] private int playerDyingHealthLine = 3;
+	[SerializeField] private int playerDyingLifeThreshold = 3;
 
 	
 	[SerializeField] private float invincibleTime = 2f;
@@ -87,7 +88,7 @@ public class PlayerController : MonoBehaviour
 			Invoke(nameof(ResetIincible), invincibleTime);
 
 			// Is player dying
-			if (playerAttribute.CurrentLife <= playerDyingHealthLine)
+			if (playerAttribute.CurrentLife <= playerDyingLifeThreshold)
 			{
 				UIController.PlayerIsDying();
 			}
@@ -98,6 +99,18 @@ public class PlayerController : MonoBehaviour
 			KillPlayer();
 		}
 
+	}
+
+	public void ConsumeMana(int amount)
+	{
+		playerAttribute.CurrentMana -= amount;
+		UIController.UpdateManaBar();
+	}
+
+	private void RegenerateMana()
+	{
+		playerAttribute.CurrentMana +=  playerAttribute.ManaRegenSpeed * Time.deltaTime;
+		UIController.UpdateManaBar();
 	}
 
 	public void KillPlayer()
