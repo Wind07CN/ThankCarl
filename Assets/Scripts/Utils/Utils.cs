@@ -38,6 +38,11 @@ public static class Utils
 		return GameObject.FindGameObjectWithTag(Constants.PlayerTag);
 	}
 
+	public static ExplosionManager GetExplosionManager() 
+	{
+		return GameObject.FindGameObjectWithTag(Constants.MainController).GetComponent<ExplosionManager>();
+	}
+
 	/// <summary>
 	/// Find THE Nearest Enemy to the Target
 	/// </summary>

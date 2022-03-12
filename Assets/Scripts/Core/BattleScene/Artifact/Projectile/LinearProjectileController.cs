@@ -27,13 +27,18 @@ public class LinearProjectileController : MonoBehaviour
 		if (collision.CompareTag("Enemy"))
 		{
 			collision.gameObject.GetComponent<EnemyController>().DamageEnemy(damage);
+			Utils.GetExplosionManager().InitExplosion(elementType, collision.transform.position);
 
-			penetrateTime--;
-			if (penetrateTime <= 0 && !isNoPenetrateLlimit)
+			if (!isNoPenetrateLlimit)
 			{
-				GetComponent<Collider2D>().enabled = false;
-				DestroyGameObj();
+				penetrateTime--;
+				if (penetrateTime < 0)
+				{
+					GetComponent<Collider2D>().enabled = false;
+					DestroyGameObj();
+				}
 			}
+
 		}
 	}
 

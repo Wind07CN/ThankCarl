@@ -9,7 +9,6 @@ public class ExplosionManager : MonoBehaviour
 	[SerializeField] private GameObject SoilExplosion;
 	[SerializeField] private GameObject windSprite;
 
-	[SerializeField] private float hight = -0.2f;
 
 	public void InitExplosion(ElementType elementType, Vector3 position)
 	{
@@ -33,7 +32,6 @@ public class ExplosionManager : MonoBehaviour
 				break;
 		}
 
-		position.z = hight;
 		Instantiate(sprite, position, Quaternion.identity);
 	}
 }
