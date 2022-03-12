@@ -32,10 +32,14 @@ public static class Utils
 		return GameObject.FindGameObjectWithTag(Constants.MainController).GetComponent<BattleSceneController>();
 	}
 
-
 	public static GameObject GetPlayerObject()
 	{
 		return GameObject.FindGameObjectWithTag(Constants.PlayerTag);
+	}
+
+	public static GameObject GetSpellCasterObject()
+	{
+		return GameObject.Find("SpellCaster");
 	}
 
 	/// <summary>

@@ -73,7 +73,7 @@ public class PlayerSkillController : MonoBehaviour
 		ISpell spell = spellMatcher.MatchSpell(GetSpellElements(), playerAttribute.CurrentMana);
 		ISpellCaster caster = spell.FindCasterComponent();
 		playerController.CostMana(spell.GetManaCost());
-		caster.Cast(spell.GetSpellAttribute());
+		caster.Cast(spell);
 	}
 
 	public List<ElementType> GetConjuredElements()

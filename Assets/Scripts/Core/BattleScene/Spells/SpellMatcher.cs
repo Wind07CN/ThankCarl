@@ -17,6 +17,7 @@ public class SpellMatcher
 
         // general spells require only one element
         // this.generalSpells.Add(new Spell<Whirl>(0, ElementType.Water));
+        
         // order spells by mana cost so that the spells with higher come first
         spells = spells.OrderByDescending(spell => spell.GetManaCost()).ToList();
     }

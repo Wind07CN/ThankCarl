@@ -24,7 +24,12 @@ public class Spell<T>: ISpell where T : ISpellCaster
 
     public ISpellCaster FindCasterComponent()
     {
-        return GameObject.Find("SpellCaster").GetComponent<T>();
+        T component = Utils.GetSpellCasterObject().GetComponent<T>();
+        if (component == null)
+        {
+            throw new System.Exception("Spell component not found. Did you forget to attach the spell script to the game object?");
+        }
+        return component;
     }
 
     public SpellAttribute GetSpellAttribute()
