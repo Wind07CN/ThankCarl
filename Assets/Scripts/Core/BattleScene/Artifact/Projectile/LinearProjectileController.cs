@@ -34,7 +34,7 @@ public class LinearProjectileController : MonoBehaviour
 	{
 		if (collision.CompareTag("Enemy"))
 		{
-			collision.gameObject.GetComponent<EnemyController>().DamageEnemy(damage);
+			SpellDamageDealer.Deal(elementType, collision.gameObject, damage);
 			if (explosionPosition == explosionPos.Enemy)
 			{
 				Utils.GetExplosionManager().InitExplosion(elementType, collision.transform.position);

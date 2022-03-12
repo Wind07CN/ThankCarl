@@ -21,7 +21,7 @@ public class ExplosionManager : MonoBehaviour
 			case ElementType.Water:
 				sprite = WaterExplosion;
 				break;
-			case ElementType.Soil:
+			case ElementType.Earth:
 				sprite = SoilExplosion;
 				break;
 			case ElementType.Wind:

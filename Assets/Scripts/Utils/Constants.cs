@@ -4,22 +4,26 @@ using UnityEngine;
 
 public static class Constants
 {
+    // player
     public const int PlayerDefaultMaxLife = 100;
     public const float PlayerDefaultMoveSpeed = 10;
     public const int PlayerDefaultArmour = 0;
     public const float PlayerDefaultManaRegenSpeed = 5;
+
+    // enemy
     public const int EnemyDefaultMaxLife = 30;
     public const float EnemyDefaultMoveSpeed = 5;
     public const int EnemyDefaultArmour = 0;
     public const float EnemyDefaultActiveTime = 1f;
-
     public const int NormalEnemyTypeDefaultNum = 0;
-    public const int EliteEnemyTypeDefaoultNum = 0;
+    public const int EliteEnemyTypeDefaultNum = 0;
     
+    // spell
     public const int ElementManaCost = 20;
-
     public const float nextDefaultSpawnTime = 1f;
-
+    public const float ElementDamageEnhanceMultiplier = 2f;
+    public const float ElementDamageReduceMultiplier = 0.5f;
+    // battlefield
     public const float BattlefieldDefaultMaxX = 14f;
     public const float BattlefieldDefaultMinX = -14f;
     public const float BattlefieldDefaultMaxY = 14;
