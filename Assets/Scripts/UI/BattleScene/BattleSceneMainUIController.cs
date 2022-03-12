@@ -60,6 +60,11 @@ public class BattleSceneMainUIController : MonoBehaviour
 		manaBar.shouldUpdate = true;
 	}
 
+	public void ShakeManaBar()
+	{
+		manaBar.Shake();
+	}
+
 	public void UpdateLifeBar()
 	{
 		lifeBar.shouldUpdate = true;

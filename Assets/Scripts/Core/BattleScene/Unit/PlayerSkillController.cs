@@ -8,6 +8,8 @@ public class PlayerSkillController : MonoBehaviour
 
 	private PlayerController playerController;
 
+	private BattleSceneMainUIController uiController;
+
 	private List<ElementType> conjuredElements = new List<ElementType>();
 	private List<ElementType> spellElements = new List<ElementType>();
 
@@ -20,6 +22,7 @@ public class PlayerSkillController : MonoBehaviour
 	{
 		playerAttribute = Utils.GetPlayerAttribute();
 		playerController = Utils.GetPlayerObject().GetComponent<PlayerController>();
+		uiController = Utils.GetMainUIController();
 		animeController = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
 	}
 
@@ -30,29 +33,16 @@ public class PlayerSkillController : MonoBehaviour
 
 	private void HandleKeyInput()
 	{
-		if (IsConjureTableFull() && !Input.GetKeyDown(KeyCode.Space)
-			|| Constants.ElementManaCost > playerAttribute.CurrentMana)
-		{
+		// element table full
+		if (IsConjureTableFull() && !Input.GetKeyDown(KeyCode.Space))
 			return;
-		}
 
-		if (Input.GetKeyDown(KeyCode.Alpha1))
-		{
-			AppendElement(ElementType.Fire);
-		}
-		else if (Input.GetKeyDown(KeyCode.Alpha2))
-		{
-			AppendElement(ElementType.Water);
-		}
-		else if (Input.GetKeyDown(KeyCode.Alpha3))
-		{
-			AppendElement(ElementType.Wind);
-		}
-		else if (Input.GetKeyDown(KeyCode.Alpha4))
-		{
-			AppendElement(ElementType.Soil);
-		}
-		else if (Input.GetKeyDown(KeyCode.Space) && !IsConjureTableEmpty())
+		HandleElementKeyInput(KeyCode.Alpha1, ElementType.Fire);
+		HandleElementKeyInput(KeyCode.Alpha2, ElementType.Water);
+		HandleElementKeyInput(KeyCode.Alpha3, ElementType.Wind);
+		HandleElementKeyInput(KeyCode.Alpha4, ElementType.Soil);
+		
+		if (Input.GetKeyDown(KeyCode.Space) && !IsConjureTableEmpty())
 		{
 			animeController.PlayerAttack();
 			
@@ -60,7 +50,22 @@ public class PlayerSkillController : MonoBehaviour
 			ClearConjuredElements();
 			TriggerSpell();
 		}
+	}
 
+	private void HandleElementKeyInput(KeyCode key, ElementType element)
+	{
+		bool hasEnoughMana = playerAttribute.CurrentMana >= Constants.ElementManaCost;
+		if (Input.GetKeyDown(key))
+		{
+			if (hasEnoughMana)
+			{
+				AppendElement(element);
+			}
+			else
+			{
+				uiController.ShakeManaBar();
+			}
+		}
 	}
 
 	private void TriggerSpell()

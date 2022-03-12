@@ -16,7 +16,7 @@ public static class Constants
     public const int NormalEnemyTypeDefaultNum = 0;
     public const int EliteEnemyTypeDefaoultNum = 0;
     
-    public const int ElementManaCost = 5;
+    public const int ElementManaCost = 20;
 
     public const float nextDefaultSpawnTime = 1f;
 
