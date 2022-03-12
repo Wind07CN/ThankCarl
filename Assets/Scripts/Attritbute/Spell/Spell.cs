@@ -5,11 +5,15 @@ public class Spell<T>: ISpell where T : ISpellCaster
 {
     private SpellAttribute attribute;
 
-    public Spell(params ElementType[] elementsCombination)
+    public Spell(float cost, params ElementType[] elementsCombination)
     {
         if (elementsCombination.Length > 0)
         {
-            this.attribute = new SpellAttribute(elementsCombination);
+            this.attribute = new SpellAttribute(cost, elementsCombination);
+        }
+        else
+        {
+            throw new System.Exception("Spell must have at least one element");
         }
     }
 
@@ -20,7 +24,12 @@ public class Spell<T>: ISpell where T : ISpellCaster
 
     public ISpellCaster FindCasterComponent()
     {
-        return GameObject.Find("SpellCaster").GetComponent<T>();
+        T component = Utils.GetSpellCasterObject().GetComponent<T>();
+        if (component == null)
+        {
+            throw new System.Exception("Spell component not found. Did you forget to attach the spell script to the game object?");
+        }
+        return component;
     }
 
     public SpellAttribute GetSpellAttribute()
@@ -32,4 +41,15 @@ public class Spell<T>: ISpell where T : ISpellCaster
     {
         this.attribute = attribute;
     }
+
+    public ElementType GetPrincipalElementType()
+    {
+        return attribute.PrincipleType;
+    }
+
+    public float GetManaCost()
+    {
+        return attribute.ManaCost;
+    }
+
 }

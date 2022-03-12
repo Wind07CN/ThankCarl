@@ -10,7 +10,7 @@ public class Whirl : AbstractSpellCaster
         playerGameObj = Utils.GetPlayerObject();
     }
     
-    public override void Cast(SpellAttribute spellAttribute)
+    public override void Cast(ISpell spell)
     {
         Instantiate(WhirlPrefab, playerGameObj.transform.position, Quaternion.identity);
     }

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class ConjureTable : MonoBehaviour
 {
 
-	private PlayerSkillController playerSkillController;
 	[SerializeField] private GameObject PrimaryHolder;
 	[SerializeField] private GameObject SecondaryHolder;
 
@@ -30,8 +29,6 @@ public class ConjureTable : MonoBehaviour
 
 	private void Start()
 	{
-		// playerSkillController = Utils.GetPlayerObject().GetComponent<PlayerSkillController>();
-		playerSkillController = GameObject.Find("Player").GetComponent<PlayerSkillController>();
 		InitDic();
 		InitConjure();
 	}
