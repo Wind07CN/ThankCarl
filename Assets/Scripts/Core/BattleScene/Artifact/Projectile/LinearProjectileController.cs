@@ -10,16 +10,19 @@ public class LinearProjectileController : MonoBehaviour
 	[SerializeField] public bool isNoPenetrateLlimit = false;
 	[SerializeField] public int penetrateTime = 0;
 
-	[SerializeField] private explosionPos explosionPosition = explosionPos.Enemy;
+	[SerializeField] private ExplosionPos explosionPosition = ExplosionPos.Enemy;
 
 	[SerializeField] private float autoDestructionTime = 10f;
 
+	public bool isAreaEffect = false;  
 
-	private enum explosionPos 
+	private enum ExplosionPos 
 	{
 		Projectile = 0,
 		Enemy = 1,
+		Player = 2,
 	}
+
 	private void Start()
 	{
 		Invoke(nameof(DestroyGameObj), autoDestructionTime);
@@ -32,25 +35,33 @@ public class LinearProjectileController : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		
 		if (collision.CompareTag("Enemy"))
 		{
-			collision.gameObject.GetComponent<EnemyController>().DamageEnemy(damage);
-			if (explosionPosition == explosionPos.Enemy)
+			if (!isAreaEffect)
 			{
-				Utils.GetExplosionManager().InitExplosion(elementType, collision.transform.position);
-			}
-			else
-			{
-				Utils.GetExplosionManager().InitExplosion(elementType, transform.position);
-			}
-			if (!isNoPenetrateLlimit)
-			{
-				penetrateTime--;
-				if (penetrateTime < 0)
+				collision.gameObject.GetComponent<EnemyController>().DamageEnemy(damage);
+				if (explosionPosition == ExplosionPos.Enemy)
 				{
-					GetComponent<Collider2D>().enabled = false;
-					DestroyGameObj();
+					Utils.GetExplosionManager().InitCollisionEffect(elementType, collision.transform.position);
 				}
+				else
+				{
+					Utils.GetExplosionManager().InitCollisionEffect(elementType, transform.position);
+				}
+				if (!isNoPenetrateLlimit)
+				{
+					penetrateTime--;
+					if (penetrateTime < 0)
+					{
+						GetComponent<Collider2D>().enabled = false;
+						DestroyGameObj();
+					}
+				}
+			}
+			else 
+			{
+				// Init explosion here
 			}
 
 		}
