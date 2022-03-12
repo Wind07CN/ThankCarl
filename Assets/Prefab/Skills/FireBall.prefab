@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elementType: 1
-  speed: 5
+  speed: 10
   damage: 2
   isNoPenetrateLlimit: 0
   penetrateTime: 0

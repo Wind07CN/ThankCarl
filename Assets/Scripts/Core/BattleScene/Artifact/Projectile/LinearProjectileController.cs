@@ -10,8 +10,16 @@ public class LinearProjectileController : MonoBehaviour
 	[SerializeField] public bool isNoPenetrateLlimit = false;
 	[SerializeField] public int penetrateTime = 0;
 
-	[SerializeField] private float autoDestructionTime = 20f;
+	[SerializeField] private explosionPos explosionPosition = explosionPos.Enemy;
 
+	[SerializeField] private float autoDestructionTime = 10f;
+
+
+	private enum explosionPos 
+	{
+		Projectile = 0,
+		Enemy = 1,
+	}
 	private void Start()
 	{
 		Invoke(nameof(DestroyGameObj), autoDestructionTime);
@@ -27,8 +35,14 @@ public class LinearProjectileController : MonoBehaviour
 		if (collision.CompareTag("Enemy"))
 		{
 			collision.gameObject.GetComponent<EnemyController>().DamageEnemy(damage);
-			Utils.GetExplosionManager().InitExplosion(elementType, collision.transform.position);
-
+			if (explosionPosition == explosionPos.Enemy)
+			{
+				Utils.GetExplosionManager().InitExplosion(elementType, collision.transform.position);
+			}
+			else
+			{
+				Utils.GetExplosionManager().InitExplosion(elementType, transform.position);
+			}
 			if (!isNoPenetrateLlimit)
 			{
 				penetrateTime--;

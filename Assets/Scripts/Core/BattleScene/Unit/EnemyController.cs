@@ -128,6 +128,7 @@ public class EnemyController : MonoBehaviour
 	public void KillEnemy()
 	{
 		enemyAttribute.IsActive = false;
+		mRigidbody.simulated = false;
 		GetComponent<EnemyAnimeController>().EnemyDead();
 	}
 
