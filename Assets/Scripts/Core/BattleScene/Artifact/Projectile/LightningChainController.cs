@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class LineController : MonoBehaviour
+public class LightningChainController : MonoBehaviour
 {
 
 	private LineRenderer lineRenderer;
@@ -30,12 +30,6 @@ public class LineController : MonoBehaviour
 		player = GameObject.FindGameObjectWithTag("Player");
 		animationStep = -1;
 		SetDisplay();
-	}
-
-	private void Start()
-	{
-
-
 	}
 
 	private void Update()

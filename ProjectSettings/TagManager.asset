@@ -8,6 +8,7 @@ TagManager:
   - MainController
   - MainUI
   - PlayerAnimation
+  - ExplosionManager
   layers:
   - Default
   - TransparentFX
