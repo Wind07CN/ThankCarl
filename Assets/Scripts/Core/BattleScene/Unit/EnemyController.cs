@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+	[SerializeField] private ElementType enemyElementType;
 	[SerializeField] private float enemySpeed = Constants.EnemyDefaultMoveSpeed;
 	[SerializeField] private int enemyMaxLife = Constants.EnemyDefaultMaxLife;
 	[SerializeField] private int enemyArmour = Constants.EnemyDefaultArmour;
@@ -10,6 +11,8 @@ public class EnemyController : MonoBehaviour
 
 	// When enemy is inited, is not active mmediately
 	[SerializeField] private float enemyActiveTime = Constants.EnemyDefaultActiveTime;
+
+	public int damageToPlayer = 1;
 
 	public EnemyAttribute enemyAttribute;
 
@@ -96,6 +99,10 @@ public class EnemyController : MonoBehaviour
 			// transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 			mRigidbody.transform.Translate(enemyAttribute.MoveSpeed * Time.deltaTime * orientation);
 		}
+		else if (!playerAttribute.IsAlive && enemyAttribute.IsActive) 
+		{
+			KillEnemy();
+		}
 	}
 
 	public void DamageEnemy(int damage)
@@ -113,11 +120,15 @@ public class EnemyController : MonoBehaviour
 		Invoke(nameof(SetEnemyActive), time);
 	}
 
-
+	public ElementType GetEnemyElementType() 
+	{
+		return enemyElementType;
+	}
 
 	public void KillEnemy()
 	{
 		enemyAttribute.IsActive = false;
+		mRigidbody.simulated = false;
 		GetComponent<EnemyAnimeController>().EnemyDead();
 	}
 

@@ -1,4 +1,4 @@
 ﻿public interface ISpellCaster
 {
-    void Cast(SpellAttribute spellAttribute);
+    void Cast(ISpell spell);
 }

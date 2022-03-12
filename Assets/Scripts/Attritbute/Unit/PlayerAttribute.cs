@@ -6,11 +6,32 @@ public class PlayerAttribute : AbstractUnit
 
 	public int Experience { get; set; }
 	public int Level { get; set; }
+	private float currentMana;
 
-	public int CurrentMana { get; set; }
+	public float CurrentMana { 
+		get { return currentMana; }
+		set {
+			if (value > MaxMana)
+			{
+				currentMana = MaxMana;
+			}
+			else if (value < 0)
+			{
+				currentMana = 0;
+			}
+			else
+			{
+				currentMana = value;
+			}
+		}
+	}
+
 	public int MaxMana { get; set; }
 
 	public int PlayerPoints { get; set; }
+
+	// per second
+	public float ManaRegenSpeed { get; set; }
 
 	public PlayerAttribute()
 	{
@@ -21,6 +42,9 @@ public class PlayerAttribute : AbstractUnit
 		Level = 1;
 		Experience = 0;
 		PlayerPoints = 0;
+		MaxMana = 100;
+		CurrentMana = MaxMana;
+		ManaRegenSpeed = 10;
 	}
 
 	public PlayerAttribute(int maxLife)
@@ -32,6 +56,9 @@ public class PlayerAttribute : AbstractUnit
 		Level = 1;
 		Experience = 0;
 		PlayerPoints = 0;
+		MaxMana = 100;
+		CurrentMana = MaxMana;
+		ManaRegenSpeed = 10;
 	}
 
 	public PlayerAttribute(int maxLife, float moveSpeed, int armour)
@@ -42,6 +69,22 @@ public class PlayerAttribute : AbstractUnit
 		Armour = armour;
 		Level = 1;
 		PlayerPoints = 0;
+		MaxMana = 100;
+		CurrentMana = MaxMana;
+		ManaRegenSpeed = 10;
+	}
+
+	public PlayerAttribute(int maxLife, int maxMana, float moveSpeed, int armour, float manaRegenSpeed)
+	{
+		MaxLife = maxLife;
+		CurrentLife = maxLife;
+		MoveSpeed = moveSpeed;
+		Armour = armour;
+		Level = 1;
+		PlayerPoints = 0;
+		MaxMana = maxMana;
+		CurrentMana = MaxMana;
+		ManaRegenSpeed = manaRegenSpeed;
 	}
 
 }

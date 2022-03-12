@@ -1,9 +1,9 @@
 public abstract class AbstractUnit : IUnit
 {
-	private int mMaxLife;
+	private int maxLife;
 	public int MaxLife
 	{
-		get { return mMaxLife; }
+		get { return maxLife; }
 		set
 		{
 			if (value < 0)
@@ -12,27 +12,27 @@ public abstract class AbstractUnit : IUnit
 			}
 			else
 			{
-				mMaxLife = value;
+				maxLife = value;
 			}
 		}
 	}
-	private int mCurrentLife;
+	private int currentLife;
 	public int CurrentLife
 	{
-		get { return mCurrentLife; }
+		get { return currentLife; }
 		set
 		{
 			if (value > MaxLife)
 			{
-				mCurrentLife = MaxLife;
+				currentLife = MaxLife;
 			}
 			else if (value < 0)
 			{
-				mCurrentLife = 0;
+				currentLife = 0;
 			}
 			else
 			{
-				mCurrentLife = value;
+				currentLife = value;
 			}
 		}
 	}
@@ -43,11 +43,11 @@ public abstract class AbstractUnit : IUnit
 	{
 		get 
 		{ 
-			return mCurrentLife > 0; 
+			return currentLife > 0; 
 		}
 	}
 
-	private bool mIsActive;
+	private bool isActive;
 
 /*	public bool IsActive
 	{

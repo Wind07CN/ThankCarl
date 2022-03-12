@@ -19,15 +19,18 @@ public class EnemySpawnController : MonoBehaviour
 	private bool needSpawn = true;
 	[SerializeField] private float nextSpawnTime = Constants.nextDefaultSpawnTime;
 
+	private PlayerAttribute player;
+
 	private void Start()
 	{
 		normalEnemyTypeNum = normalEnemyPrefabs.Length;
 		eliteEnemyTypeNum = eliteEnemyPrefabs.Length;
+		player = Utils.GetPlayerAttribute();
 	}
 
 	private void Update()
 	{
-		if (needSpawn)
+		if (needSpawn && player.IsActive)
 		{
 			needSpawn = false;
 			Invoke(nameof(SpawnNewEnemy), nextSpawnTime);

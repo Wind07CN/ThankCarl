@@ -1,9 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 public static class Constants
 {
     public const int PlayerDefaultMaxLife = 100;
     public const float PlayerDefaultMoveSpeed = 10;
     public const int PlayerDefaultArmour = 0;
-
+    public const float PlayerDefaultManaRegenSpeed = 5;
     public const int EnemyDefaultMaxLife = 30;
     public const float EnemyDefaultMoveSpeed = 5;
     public const int EnemyDefaultArmour = 0;
@@ -11,6 +15,8 @@ public static class Constants
 
     public const int NormalEnemyTypeDefaultNum = 0;
     public const int EliteEnemyTypeDefaoultNum = 0;
+    
+    public const int ElementManaCost = 20;
 
     public const float nextDefaultSpawnTime = 1f;
 
@@ -29,4 +35,22 @@ public static class Constants
     public const string EnemyTag = "Enemy";
     public const string MainUITag = "MainUI";
     public const string MainController = "MainController";
+
+    public enum UpdateType
+    {
+        speedLv = 0,
+        healthLv = 1,
+        manaMaxLv = 2,
+        manaRecoverLv = 3,
+    }
+
+    public static Dictionary<UpdateType, string> UpdateData = new Dictionary<UpdateType, string>()
+    {
+        {UpdateType.speedLv, "speedLv" },
+        {UpdateType.healthLv, "healthLv" },
+        {UpdateType.manaMaxLv, "manaMaxLv" },
+        {UpdateType.manaRecoverLv, "manaRecoverLv" }
+    };
+
+    public const string CurrentGold = "CurrentGold";
 }

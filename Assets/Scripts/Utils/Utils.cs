@@ -32,6 +32,20 @@ public static class Utils
 		return GameObject.FindGameObjectWithTag(Constants.MainController).GetComponent<BattleSceneController>();
 	}
 
+	public static GameObject GetPlayerObject()
+	{
+		return GameObject.FindGameObjectWithTag(Constants.PlayerTag);
+	}
+
+	public static ExplosionManager GetExplosionManager() 
+	{
+		return GameObject.FindGameObjectWithTag(Constants.MainController).GetComponent<ExplosionManager>();
+	}
+	
+	public static GameObject GetSpellCasterObject()
+	{
+		return GameObject.Find("SpellCaster");
+	}
 
 	/// <summary>
 	/// Find THE Nearest Enemy to the Target
@@ -63,4 +77,12 @@ public static class Utils
 		return nearestEnemyPosInArray;
 	}
 
+	public static int CalculateGold(int level)
+	{
+		if (level <= 0)
+		{
+			return 0;
+		}
+		return level * 10 + 20;
+	}
 }

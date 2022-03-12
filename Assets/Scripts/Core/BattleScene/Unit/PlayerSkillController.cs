@@ -6,19 +6,23 @@ public class PlayerSkillController : MonoBehaviour
 {
 	private PlayerAttribute playerAttribute;
 
+	private PlayerController playerController;
+
+	private BattleSceneMainUIController uiController;
+
 	private List<ElementType> conjuredElements = new List<ElementType>();
 	private List<ElementType> spellElements = new List<ElementType>();
 
 	private SpellMatcher spellMatcher = new SpellMatcher();
 
-	private ConjureTable conjureTable;
+	[SerializeField] private ConjureTable conjureTable;
 	private PlayerAnimeController animeController;
 
 	private void Start()
 	{
 		playerAttribute = Utils.GetPlayerAttribute();
-		conjureTable = GameObject.Find("ConjureTable").GetComponent<ConjureTable>();
-		
+		playerController = Utils.GetPlayerObject().GetComponent<PlayerController>();
+		uiController = Utils.GetMainUIController();
 		animeController = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
 	}
 
@@ -29,28 +33,16 @@ public class PlayerSkillController : MonoBehaviour
 
 	private void HandleKeyInput()
 	{
-		if (IsConjuredTableFull() && !Input.GetKeyDown(KeyCode.Space))
-		{
+		// element table full
+		if (IsConjureTableFull() && !Input.GetKeyDown(KeyCode.Space))
 			return;
-		}
 
-		if (Input.GetKeyDown(KeyCode.Alpha1))
-		{
-			AppendElement(ElementType.Fire);
-		}
-		else if (Input.GetKeyDown(KeyCode.Alpha2))
-		{
-			AppendElement(ElementType.Water);
-		}
-		else if (Input.GetKeyDown(KeyCode.Alpha3))
-		{
-			AppendElement(ElementType.Air);
-		}
-		else if (Input.GetKeyDown(KeyCode.Alpha4))
-		{
-			AppendElement(ElementType.Earth);
-		}
-		else if (Input.GetKeyDown(KeyCode.Space))
+		HandleElementKeyInput(KeyCode.Alpha1, ElementType.Fire);
+		HandleElementKeyInput(KeyCode.Alpha2, ElementType.Water);
+		HandleElementKeyInput(KeyCode.Alpha3, ElementType.Wind);
+		HandleElementKeyInput(KeyCode.Alpha4, ElementType.Soil);
+
+		if (Input.GetKeyDown(KeyCode.Space) && !IsConjureTableEmpty())
 		{
 			animeController.PlayerAttack();
 			
@@ -58,19 +50,31 @@ public class PlayerSkillController : MonoBehaviour
 			ClearConjuredElements();
 			TriggerSpell();
 		}
+	}
 
-		conjureTable.UpdateConjureTableUI();
+	private void HandleElementKeyInput(KeyCode key, ElementType element)
+	{
+		bool hasEnoughMana = playerAttribute.CurrentMana >= Constants.ElementManaCost;
+		if (Input.GetKeyDown(key))
+		{
+			if (hasEnoughMana)
+			{
+				AppendElement(element);
+			}
+			else
+			{
+				uiController.ShakeManaBar();
+			}
+		}
 	}
 
 	private void TriggerSpell()
 	{
-		ISpell spell = spellMatcher.MatchSpell(GetSpellElements());
+		ISpell spell = spellMatcher.MatchSpell(GetSpellElements(), playerAttribute.CurrentMana);
 		ISpellCaster caster = spell.FindCasterComponent();
-		caster.Cast(spell.GetSpellAttribute());
-
+		playerController.CostMana(spell.GetManaCost());
+		caster.Cast(spell);
 	}
-
-
 
 	public List<ElementType> GetConjuredElements()
 	{
@@ -87,12 +91,16 @@ public class PlayerSkillController : MonoBehaviour
 		if (conjuredElements.Count < GetConjuredElementsLimit())
 		{
 			conjuredElements.Add(element);
+			conjureTable.UpdateElement(conjuredElements.Count, element);
 		}
+		// cost mana
+		playerController.CostMana(Constants.ElementManaCost);
 	}
 
 	public void ClearConjuredElements()
 	{
 		conjuredElements.Clear();
+		conjureTable.ClearElement();
 	}
 
 	public void PushConjuredElementsToSpell()
@@ -106,7 +114,7 @@ public class PlayerSkillController : MonoBehaviour
 		return playerAttribute.Level + Constants.BaseConjuredElementsAmount - 1;
 	}
 
-	public bool IsConjuredTableFull()
+	public bool IsConjureTableFull()
 	{
 		return conjuredElements.Count >= GetConjuredElementsLimit();
 	}

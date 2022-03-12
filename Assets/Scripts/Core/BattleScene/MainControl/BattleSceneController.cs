@@ -27,8 +27,6 @@ public class BattleSceneController : MonoBehaviour
 		}
 	}
 
-	
-
 	private void InitScene()
 	{
 		Debug.Log("InitScene");
