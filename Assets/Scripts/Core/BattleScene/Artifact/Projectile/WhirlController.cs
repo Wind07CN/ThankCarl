@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveController : MonoBehaviour
+public class WhirlController : MonoBehaviour
 {
 	[SerializeField] private float rotateSpeed = 120f;
 	[SerializeField] private float expandSpeed = 2f;
