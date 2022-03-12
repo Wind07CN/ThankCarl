@@ -5,11 +5,15 @@ public class Spell<T>: ISpell where T : ISpellCaster
 {
     private SpellAttribute attribute;
 
-    public Spell(params ElementType[] elementsCombination)
+    public Spell(float cost, params ElementType[] elementsCombination)
     {
         if (elementsCombination.Length > 0)
         {
-            this.attribute = new SpellAttribute(elementsCombination);
+            this.attribute = new SpellAttribute(cost, elementsCombination);
+        }
+        else
+        {
+            throw new System.Exception("Spell must have at least one element");
         }
     }
 
@@ -32,4 +36,15 @@ public class Spell<T>: ISpell where T : ISpellCaster
     {
         this.attribute = attribute;
     }
+
+    public ElementType GetPrincipalElementType()
+    {
+        return attribute.PrincipleType;
+    }
+
+    public float GetManaCost()
+    {
+        return attribute.ManaCost;
+    }
+
 }

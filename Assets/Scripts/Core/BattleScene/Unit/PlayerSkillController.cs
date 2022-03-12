@@ -41,7 +41,7 @@ public class PlayerSkillController : MonoBehaviour
 		HandleElementKeyInput(KeyCode.Alpha2, ElementType.Water);
 		HandleElementKeyInput(KeyCode.Alpha3, ElementType.Wind);
 		HandleElementKeyInput(KeyCode.Alpha4, ElementType.Soil);
-		
+
 		if (Input.GetKeyDown(KeyCode.Space) && !IsConjureTableEmpty())
 		{
 			animeController.PlayerAttack();
@@ -70,8 +70,9 @@ public class PlayerSkillController : MonoBehaviour
 
 	private void TriggerSpell()
 	{
-		ISpell spell = spellMatcher.MatchSpell(GetSpellElements());
+		ISpell spell = spellMatcher.MatchSpell(GetSpellElements(), playerAttribute.CurrentMana);
 		ISpellCaster caster = spell.FindCasterComponent();
+		playerController.CostMana(spell.GetManaCost());
 		caster.Cast(spell.GetSpellAttribute());
 	}
 

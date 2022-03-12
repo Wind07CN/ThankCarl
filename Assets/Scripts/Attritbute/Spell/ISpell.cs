@@ -6,4 +6,6 @@ public interface ISpell
     ISpellCaster FindCasterComponent();
     SpellAttribute GetSpellAttribute();
     void SetSpellAttribute(SpellAttribute attribute);
+    ElementType GetPrincipalElementType();
+    float GetManaCost();
 }

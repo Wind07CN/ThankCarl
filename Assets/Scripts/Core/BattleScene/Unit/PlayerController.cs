@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
 	}
 
-	public void CostMana(int amount)
+	public void CostMana(float amount)
 	{
 		playerAttribute.CurrentMana -= amount;
 		UIController.UpdateManaBar();
