@@ -45,9 +45,13 @@ public class LinearProjectileController : MonoBehaviour
 				{
 					Utils.GetExplosionManager().InitCollisionEffect(elementType, collision.transform.position);
 				}
-				else
+				else if (explosionPosition == ExplosionPos.Projectile)
 				{
 					Utils.GetExplosionManager().InitCollisionEffect(elementType, transform.position);
+				}
+				else if (explosionPosition == ExplosionPos.Player) 
+				{
+					Utils.GetExplosionManager().InitCollisionEffect(elementType, Utils.GetPlayerObject().transform.position);
 				}
 				if (!isNoPenetrateLlimit)
 				{
