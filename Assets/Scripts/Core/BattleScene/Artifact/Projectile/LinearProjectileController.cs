@@ -7,6 +7,7 @@ public class LinearProjectileController : MonoBehaviour
 	[SerializeField] public ElementType elementType = ElementType.Fire;
 	[SerializeField] public float speed = 5f;
 	[SerializeField] public int damage = 2;
+	[SerializeField] public bool isNoPenetrateLlimit = false;
 	[SerializeField] public int penetrateTime = 0;
 
 	[SerializeField] private float autoDestructionTime = 20f;
@@ -28,12 +29,11 @@ public class LinearProjectileController : MonoBehaviour
 			collision.gameObject.GetComponent<EnemyController>().DamageEnemy(damage);
 
 			penetrateTime--;
-			if (penetrateTime <= 0)
+			if (penetrateTime <= 0 && !isNoPenetrateLlimit)
 			{
 				GetComponent<Collider2D>().enabled = false;
 				DestroyGameObj();
 			}
-
 		}
 	}
 

@@ -73,14 +73,16 @@ public class PlayerController : MonoBehaviour
 	{
 		playerAttribute.CurrentLife -= damage;
 
+		// UI update
+		UIController.UpdateLifeBar();
+
+		// UI shark
+		UIController.GetDamage();
+
 		if (playerAttribute.IsAlive)
 		{
 			// Anime
 			animation.PlayerGetDamage();
-
-			// UI update
-			UIController.UpdateLifeBar();
-
 
 			// Invincible
 			isInvincible = true;
@@ -92,7 +94,7 @@ public class PlayerController : MonoBehaviour
 			{
 				UIController.PlayerIsDying();
 			}
-			UIController.GetDamage();
+			
 		}
 		else 
 		{
