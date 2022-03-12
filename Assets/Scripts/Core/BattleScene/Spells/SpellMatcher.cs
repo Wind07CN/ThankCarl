@@ -42,7 +42,7 @@ public class SpellMatcher
         // the match of general spells is decided by the principle element
         return MatchGeneralSpell(elements);
 
-        throw new System.Exception("Unexpected error when matching spell");
+        throw new System.Exception("Unexpected error when matching spell. Did you forget to register a spell?");
         
     }
 
