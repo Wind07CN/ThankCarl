@@ -5,8 +5,9 @@ using UnityEngine;
 public class CollisionEffectController : MonoBehaviour
 {
 	[SerializeField] private float lastTime = 1f;
-	[SerializeField] private float disappearTime = 1f;
+	[SerializeField] private float disappearTime = 0.2f;
 	private bool disappearing = false;
+	
 	private void Start()
 	{
 		Invoke(nameof(Disappear), lastTime);

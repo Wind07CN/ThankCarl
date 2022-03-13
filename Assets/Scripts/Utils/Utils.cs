@@ -29,7 +29,7 @@ public static class Utils
 	/// <returns></returns>
 	public static BattleSceneController GetMainController()
 	{
-		return GameObject.FindGameObjectWithTag(Constants.MainController).GetComponent<BattleSceneController>();
+		return GameObject.FindGameObjectWithTag(Constants.MainControllerTag).GetComponent<BattleSceneController>();
 	}
 
 	public static GameObject GetPlayerObject()
@@ -39,7 +39,7 @@ public static class Utils
 
 	public static CollisionEffectManager GetExplosionManager() 
 	{
-		return GameObject.FindGameObjectWithTag(Constants.MainController).GetComponent<CollisionEffectManager>();
+		return GameObject.FindGameObjectWithTag(Constants.MainControllerTag).GetComponent<CollisionEffectManager>();
 	}
 	
 	public static GameObject GetSpellCasterObject()

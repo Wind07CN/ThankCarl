@@ -132,6 +132,9 @@ public class EnemyController : MonoBehaviour
 		GetComponent<EnemyAnimeController>().EnemyDead();
 	}
 
-
+	public SpriteRenderer GetSpriteRenderer()
+	{
+		return transform.GetComponentInChildren<SpriteRenderer>();
+	}
 
 }

@@ -6,17 +6,17 @@ public class ExplosionController : MonoBehaviour
 {
 
 	// ****************should change some to private
-	[SerializeField] public float finalScale = 1f;
-	[SerializeField] public float expandTime = 0.5f;
-	[SerializeField] public float residenceTime = 0.5f;
-	[SerializeField] public float disappearTime = 0.2f;
-	[SerializeField] public ElementType elementType = ElementType.Fire;
+	[SerializeField] public float Scale = 1f;
+	[SerializeField] public float ExpandTime = 0.2f;
+	[SerializeField] public float ResidenceTime = 0.5f;
+	[SerializeField] public float DisappearTime = 0.2f;
+	[SerializeField] public ElementType ElementType = ElementType.Fire;
 
 	// Thrust is positive, suction is negative
-	[SerializeField] public bool haveForce = false;
-	[SerializeField] public float forceFactor = 30f;
+	[SerializeField] public bool HasForce = false;
+	[SerializeField] public float ForceFactor = 30f;
 
-	[SerializeField] public int damage = 10;
+	[SerializeField] public float Damage = 10;
 
 	private float expandSpeed;
 	private float disappearSpeed;
@@ -25,8 +25,8 @@ public class ExplosionController : MonoBehaviour
 	{
 		transform.localScale = Vector3.zero;
 
-		expandSpeed = finalScale / expandTime;
-		disappearSpeed = finalScale / disappearTime;
+		expandSpeed = Scale / ExpandTime;
+		disappearSpeed = Scale / DisappearTime;
 
 	}
 	private void Start()
@@ -41,19 +41,22 @@ public class ExplosionController : MonoBehaviour
 
 	private void ExplosionEffect()
 	{
-		Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 2f * finalScale);
+		Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 2f * Scale);
 		foreach (Collider2D collider in colliders)
 		{
 			if (collider.CompareTag("Enemy"))
 			{
-				GameObject emeny = collider.gameObject;
-				emeny.GetComponent<EnemyController>().DamageEnemy(damage);
+				GameObject enemy = collider.gameObject;
+				SpellDamageDealer.Deal(ElementType, enemy, Damage);
+
+				// hit animation
+				Utils.GetExplosionManager().InitCollisionEffect(ElementType, enemy, new Vector3(0.5f, 1f, 0));
 				
 				// if should give force to enemy, set haveForce true
-				if (haveForce)
+				if (HasForce)
 				{
-					Vector2 force = (collider.transform.position - transform.position).normalized * forceFactor;
-					emeny.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+					Vector2 force = (collider.transform.position - transform.position).normalized * ForceFactor;
+					enemy.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
 				}
 			}
 		}
@@ -61,21 +64,21 @@ public class ExplosionController : MonoBehaviour
 
 	private void UpdateScale()
 	{
-		if (expandTime > 0)
+		if (ExpandTime > 0)
 		{
 			transform.localScale += expandSpeed * Time.deltaTime * Vector3.one;
-			expandTime -= Time.deltaTime;
+			ExpandTime -= Time.deltaTime;
 		}
-		else if (expandTime <= 0 && residenceTime > 0)
+		else if (ExpandTime <= 0 && ResidenceTime > 0)
 		{
-			residenceTime -= Time.deltaTime;
+			ResidenceTime -= Time.deltaTime;
 		}
-		else if (disappearTime > 0 && residenceTime <= 0)
+		else if (DisappearTime > 0 && ResidenceTime <= 0)
 		{
 			transform.localScale -= disappearSpeed * Time.deltaTime * Vector3.one;
-			disappearTime -= Time.deltaTime;
+			DisappearTime -= Time.deltaTime;
 		}
-		else if (disappearTime <= 0)
+		else if (DisappearTime <= 0)
 		{
 			Destroy(gameObject);
 		}

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class LinearProjectileController : MonoBehaviour
 {
-	[SerializeField] public ElementType elementType = ElementType.Fire;
-	[SerializeField] public float speed = 5f;
-	[SerializeField] public int damage = 2;
-	[SerializeField] public bool isNoPenetrateLlimit = false;
-	[SerializeField] public int penetrateTime = 0;
+	[SerializeField] public ElementType ElementType = ElementType.Fire;
+	[SerializeField] public float Speed = 5f;
+	[SerializeField] public int Damage = 2;
+	[SerializeField] public bool HasNoPenetrateLlimit = false;
+	[SerializeField] public int PenetrateTime = 0;
 
 	[SerializeField] private ExplosionPos explosionPosition = ExplosionPos.Enemy;
 
@@ -30,7 +30,7 @@ public class LinearProjectileController : MonoBehaviour
 
 	private void Update()
 	{
-		transform.Translate(speed * Time.deltaTime * Vector3.up, Space.Self);
+		transform.Translate(Speed * Time.deltaTime * Vector3.up, Space.Self);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -40,23 +40,23 @@ public class LinearProjectileController : MonoBehaviour
 		{
 			if (!isAreaEffect)
 			{
-				SpellDamageDealer.Deal(elementType, collision.gameObject, damage);
+				SpellDamageDealer.Deal(ElementType, collision.gameObject, Damage);
 				if (explosionPosition == ExplosionPos.Enemy)
 				{
-					Utils.GetExplosionManager().InitCollisionEffect(elementType, collision.transform.position);
+					Utils.GetExplosionManager().InitCollisionEffect(ElementType, collision.transform.position);
 				}
 				else if (explosionPosition == ExplosionPos.Projectile)
 				{
-					Utils.GetExplosionManager().InitCollisionEffect(elementType, transform.position);
+					Utils.GetExplosionManager().InitCollisionEffect(ElementType, transform.position);
 				}
 				else if (explosionPosition == ExplosionPos.Player) 
 				{
-					Utils.GetExplosionManager().InitCollisionEffect(elementType, Utils.GetPlayerObject().transform.position);
+					Utils.GetExplosionManager().InitCollisionEffect(ElementType, Utils.GetPlayerObject().transform.position);
 				}
-				if (!isNoPenetrateLlimit)
+				if (!HasNoPenetrateLlimit)
 				{
-					penetrateTime--;
-					if (penetrateTime < 0)
+					PenetrateTime--;
+					if (PenetrateTime < 0)
 					{
 						GetComponent<Collider2D>().enabled = false;
 						DestroyGameObj();

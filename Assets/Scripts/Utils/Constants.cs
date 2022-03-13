@@ -38,7 +38,7 @@ public static class Constants
     public const string PlayerTag = "Player";
     public const string EnemyTag = "Enemy";
     public const string MainUITag = "MainUI";
-    public const string MainController = "MainController";
+    public const string MainControllerTag = "MainController";
 
     public enum UpdateType
     {
