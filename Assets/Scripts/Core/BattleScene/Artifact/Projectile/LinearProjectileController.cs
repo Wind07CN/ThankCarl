@@ -47,11 +47,11 @@ public class LinearProjectileController : MonoBehaviour
             SpellDamageDealer.Deal(ElementType, collision.gameObject, CollisionDamage);
             if (hitEffectTarget == HitEffectTarget.Enemy)
             {
-                Utils.GetExplosionManager().InitCollisionEffect(ElementType, collision.transform.position);
+                Utils.GetHitEffectGenerator().InitHitEffect(ElementType, collision.transform.position);
             }
             else if (hitEffectTarget == HitEffectTarget.Projectile)
             {
-                Utils.GetExplosionManager().InitCollisionEffect(ElementType, transform.position);
+                Utils.GetHitEffectGenerator().InitHitEffect(ElementType, transform.position);
             }
             if (HasPenetrateLlimit)
             {
@@ -68,7 +68,7 @@ public class LinearProjectileController : MonoBehaviour
 			if (HasPenetrateLlimit)
             {
                 PenetrateTime--;
-                if (PenetrateTime < 0)
+                if (PenetrateTime <= 0)
                 {
                     GetComponent<Collider2D>().enabled = false;
                     DestroyGameObj();

@@ -2416,7 +2416,7 @@ MonoBehaviour:
   playerDyingLifeThreshold: 3
   invincibleTime: 1
   invincibleAnime: {fileID: 645621879}
-  explosionManager: {fileID: 2121190885}
+  hitEffectGenerator: {fileID: 0}
 --- !u!114 &1438070857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3543,13 +3543,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2121190881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a549849dc3cc7f94c9e5c9b9f5758a08, type: 3}
+  m_Script: {fileID: 11500000, guid: b0056ed2d02f384458e9077c9a5b1e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireExplosion: {fileID: 8548487076321865005, guid: 9c2c958ea8589e74da6c71be92da1f1b, type: 3}
-  WaterExplosion: {fileID: 3146856275991024581, guid: c202a31e2517d444d92ccf8cc7900215, type: 3}
-  SoilExplosion: {fileID: 2858773699364256313, guid: 446574b26eb9d0748a3c75c763ab0c06, type: 3}
-  windSprite: {fileID: 7428791993398438196, guid: 3c86d42219efbc448abb3be4b7d62c03, type: 3}
+  fireExplosion: {fileID: 0}
+  WaterExplosion: {fileID: 0}
+  SoilExplosion: {fileID: 0}
+  windSprite: {fileID: 0}
 --- !u!1001 &8938685993316641792
 PrefabInstance:
   m_ObjectHideFlags: 0

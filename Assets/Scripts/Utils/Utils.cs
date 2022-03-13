@@ -37,9 +37,9 @@ public static class Utils
 		return GameObject.FindGameObjectWithTag(Constants.PlayerTag);
 	}
 
-	public static CollisionEffectManager GetExplosionManager() 
+	public static HitEffectGenerator GetHitEffectGenerator() 
 	{
-		return GameObject.FindGameObjectWithTag(Constants.MainControllerTag).GetComponent<CollisionEffectManager>();
+		return GameObject.FindGameObjectWithTag(Constants.MainControllerTag).GetComponent<HitEffectGenerator>();
 	}
 	
 	public static GameObject GetSpellCasterObject()

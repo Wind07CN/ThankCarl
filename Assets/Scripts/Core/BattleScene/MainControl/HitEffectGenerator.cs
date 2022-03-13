@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionEffectManager : MonoBehaviour
+public class HitEffectGenerator : MonoBehaviour
 {
-    [SerializeField] private GameObject fireExplosion;
-    [SerializeField] private GameObject WaterExplosion;
-    [SerializeField] private GameObject SoilExplosion;
-    [SerializeField] private GameObject windSprite;
+    [SerializeField] private GameObject fireHitEffect;
+    [SerializeField] private GameObject waterHitEffect;
+    [SerializeField] private GameObject earthHitEffect;
+    [SerializeField] private GameObject windHitEffect;
 
 
     /// <summary>
     /// Generate hit effect at given postion, static related to background
     /// </summary>
-    public void InitCollisionEffect(ElementType elementType, Vector3 position)
+    public void InitHitEffect(ElementType elementType, Vector3 position)
     {
         GameObject sprite = MatchSprite(elementType);
 
@@ -23,7 +23,7 @@ public class CollisionEffectManager : MonoBehaviour
     /// <summary>
     /// Generate hit effect at given game object, static related to the game object
     /// </summary>
-    public void InitCollisionEffect(ElementType elementType, GameObject parent, Vector3 offset)
+    public void InitHitEffect(ElementType elementType, GameObject parent, Vector3 offset)
     {
         GameObject sprite = MatchSprite(elementType);
 
@@ -39,16 +39,16 @@ public class CollisionEffectManager : MonoBehaviour
         switch (elementType)
         {
             case ElementType.Fire:
-                sprite = fireExplosion;
+                sprite = fireHitEffect;
                 break;
             case ElementType.Water:
-                sprite = WaterExplosion;
+                sprite = waterHitEffect;
                 break;
             case ElementType.Earth:
-                sprite = SoilExplosion;
+                sprite = earthHitEffect;
                 break;
             case ElementType.Wind:
-                sprite = windSprite;
+                sprite = windHitEffect;
                 break;
             default:
                 sprite = null;
