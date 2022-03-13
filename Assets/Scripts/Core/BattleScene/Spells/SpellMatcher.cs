@@ -12,7 +12,7 @@ public class SpellMatcher
      */
     public SpellMatcher()
     {
-        this.spells.Add(new Spell<FireBall>(10, ElementType.Fire));
+        this.spells.Add(new Spell<FireBall>(0, ElementType.Fire));
         this.spells.Add(new Spell<Whirl>(10, ElementType.Water));
 
         // general spells require only one element

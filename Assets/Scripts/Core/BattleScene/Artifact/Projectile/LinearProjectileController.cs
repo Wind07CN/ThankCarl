@@ -68,7 +68,7 @@ public class LinearProjectileController : MonoBehaviour
 			if (HasPenetrateLlimit)
             {
                 PenetrateTime--;
-                if (PenetrateTime <= 0)
+                if (PenetrateTime < 0)
                 {
                     GetComponent<Collider2D>().enabled = false;
                     DestroyGameObj();

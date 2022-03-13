@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
 					// Enemy Play dying animation
 					enemyController.KillEnemy();
 
-					// 这里需要一个新的控制器专门控制产生爆炸效果
 					hitEffectGenerator.InitHitEffect(enemyController.GetEnemyElementType(), transform.position);
 				}
 			}
