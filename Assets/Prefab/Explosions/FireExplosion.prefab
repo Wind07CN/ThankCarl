@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1473506815382656361}
   - component: {fileID: 5721187638917765404}
-  - component: {fileID: 5721187638917765405}
   - component: {fileID: 5721187638917765406}
   m_Layer: 0
   m_Name: FireExplosion
@@ -84,22 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5721187638917765405
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2658325869160293948}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.00696826, y: -0.13240004}
-  serializedVersion: 2
-  m_Radius: 1.6926868
 --- !u!114 &5721187638917765406
 MonoBehaviour:
   m_ObjectHideFlags: 0

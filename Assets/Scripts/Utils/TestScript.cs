@@ -22,7 +22,7 @@ public class TestScript : MonoBehaviour
 	private void Update()
 	{
 		// test01();
-		test02();
+		// test02();
 	}
 
 	private void test02()
