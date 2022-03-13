@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7849712783026113574
+--- !u!1 &2127572289945435279
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,54 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7333808912040495009}
-  - component: {fileID: 7134583562249115352}
-  - component: {fileID: -6176736551791547531}
-  - component: {fileID: 4034869603308781964}
+  - component: {fileID: 7403019562375515288}
+  - component: {fileID: 2431838231109140187}
+  - component: {fileID: 2431838231109140189}
   m_Layer: 0
-  m_Name: BulletWater
+  m_Name: FireScorchZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7333808912040495009
+--- !u!4 &7403019562375515288
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7849712783026113574}
+  m_GameObject: {fileID: 2127572289945435279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.79, y: -4.74, z: 0}
+  m_LocalPosition: {x: -10.98, y: -3.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &-6176736551791547531
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7849712783026113574}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.565
---- !u!212 &7134583562249115352
+--- !u!212 &2431838231109140187
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7849712783026113574}
+  m_GameObject: {fileID: 2127572289945435279}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -89,53 +72,33 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2346302928887187388, guid: 4f72a74831c9c91438e772dc13a87936, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3c3b7cb77e3ad584d88b5d71728a76a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.13, y: 1.13}
+  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &-6176736551791547531
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7849712783026113574}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.565
---- !u!114 &4034869603308781964
+--- !u!114 &2431838231109140189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7849712783026113574}
+  m_GameObject: {fileID: 2127572289945435279}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d31c6e06b0ef444d9cf6e3eadd5eeb1, type: 3}
+  m_Script: {fileID: 11500000, guid: ebe39fceb1d5a2148b7bf43a5a3f08dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AreaEffectPrefab: {fileID: 0}
-  ElementType: 2
-  Speed: 20
-  CollisionDamage: 2
-  AreaDamage: 0
-  HasPenetrateLlimit: 1
-  PenetrateTimes: 0
-  hitEffectTarget: 1
-  autoDestructionTime: 10
-  isAreaEffect: 0
-  AreaScale: 1
+  elementType: 1
+  damageIntervalTime: 0.5
+  damage: 15
+  durationTime: 5
+  disapperTime: 0.3
+  scaleRatio: 5
+  defaultRadius: 1.6
