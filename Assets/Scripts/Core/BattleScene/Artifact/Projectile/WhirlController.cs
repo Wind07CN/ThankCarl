@@ -10,7 +10,6 @@ public class WhirlController : MonoBehaviour
 	[SerializeField] private float forceFactor = 30f;
 
 	private bool isDisappear = false;
-
 	private void Start()
 	{
 		Invoke(nameof(DestroyObject), lastTime);
@@ -24,6 +23,7 @@ public class WhirlController : MonoBehaviour
 			transform.Rotate(new Vector3(0, 0, Time.deltaTime * rotateSpeed));
 		}
 	}
+
 
 	private void StartDisappear() 
 	{
