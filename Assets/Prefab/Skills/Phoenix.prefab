@@ -122,10 +122,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d31c6e06b0ef444d9cf6e3eadd5eeb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementType: 1
-  speed: 100
-  damage: 10000
-  isNoPenetrateLlimit: 1
-  penetrateTime: 0
-  explosionPosition: 1
+  AreaEffectPrefab: {fileID: 0}
+  ElementType: 1
+  Speed: 100
+  CollisionDamage: 10000
+  isAreaEffect: 0
+  AreaDamage: 0
+  HasPenetrateLlimit: 0
+  PenetrateTimes: 0
+  hitEffectTarget: 1
   autoDestructionTime: 5
+  AreaScale: 1

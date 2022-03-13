@@ -15,6 +15,7 @@ public class SpellMatcher
 		this.spells.Add(new Spell<FireBall>(10, ElementType.Fire));
 		this.spells.Add(new Spell<Whirl>(10, ElementType.Water));
 		this.spells.Add(new Spell<Meteorite>(20, new[] { ElementType.Fire, ElementType.Earth }));
+		this.spells.Add(new Spell<Phoenix>(30, new[] { ElementType.Fire, ElementType.Fire, ElementType.Fire }));
 
 		// general spells require only one element
 		this.generalSpells.Add(new Spell<FireGeneral>(0, ElementType.Fire));

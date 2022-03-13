@@ -5,7 +5,6 @@ using UnityEngine;
 public class Meteorite : AbstractSpellCaster
 {
 	[SerializeField] private MeteoriteController meterorite;
-	private GameObject playerGameobj;
 
 	[SerializeField] private int explosionDamage = 100;
 	[SerializeField] private int scorchDamage = 15;
@@ -15,7 +14,6 @@ public class Meteorite : AbstractSpellCaster
 
 	private void Start()
 	{
-		playerGameobj = Utils.GetPlayerObject();
 		meterorite.InitMetreorite(explosionDamage, scorchDamage, explosionRange, hasForce, forceFactor);
 	}
 
