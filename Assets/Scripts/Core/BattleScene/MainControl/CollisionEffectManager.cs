@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionManager : MonoBehaviour
+public class CollisionEffectManager : MonoBehaviour
 {
 	[SerializeField] private GameObject fireExplosion;
 	[SerializeField] private GameObject WaterExplosion;
@@ -10,7 +10,7 @@ public class ExplosionManager : MonoBehaviour
 	[SerializeField] private GameObject windSprite;
 
 
-	public void InitExplosion(ElementType elementType, Vector3 position)
+	public void InitCollisionEffect(ElementType elementType, Vector3 position)
 	{
 		GameObject sprite;
 		switch (elementType)
