@@ -364,6 +364,10 @@ GameObject:
   - component: {fileID: 124658309}
   - component: {fileID: 124658311}
   - component: {fileID: 124658310}
+  - component: {fileID: 124658315}
+  - component: {fileID: 124658314}
+  - component: {fileID: 124658313}
+  - component: {fileID: 124658312}
   m_Layer: 6
   m_Name: SpellCaster
   m_TagString: Untagged
@@ -411,6 +415,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireBallPrefab: {fileID: 3674848013746234133, guid: c191e424c3348534c9767da2d9569025, type: 3}
+--- !u!114 &124658312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124658308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09cda04825426e54fb359a5a584b2736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 3303221016010839912, guid: 88fe84eaad9808b4faa1d0300a7c1821, type: 3}
+  ProjectileBasicDamage: 8
+  AreaDamagePenalty: 0.2
+--- !u!114 &124658313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124658308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aecb14004b3f84b499c9bcdc74b36f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 3889093922870368045, guid: 8f04c9233ac8e774fb656b0d29df38d6, type: 3}
+  ProjectileBasicDamage: 8
+  AreaDamagePenalty: 0.2
+--- !u!114 &124658314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124658308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8e892e395e4e6d4289a3f971241ead3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 7849712783026113574, guid: a58e8fd81596d1946ae712dec8c5cbd2, type: 3}
+  ProjectileBasicDamage: 8
+  AreaDamagePenalty: 0.2
+--- !u!114 &124658315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124658308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995e656061f5c2d46846d485aa42c2a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 3184523203648263232, guid: 76d410971077f3d4091bfe2baba8eb20, type: 3}
+  ProjectileBasicDamage: 8
+  AreaDamagePenalty: 0.2
 --- !u!1 &260390883
 GameObject:
   m_ObjectHideFlags: 0
@@ -3546,10 +3610,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0056ed2d02f384458e9077c9a5b1e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireExplosion: {fileID: 0}
-  WaterExplosion: {fileID: 0}
-  SoilExplosion: {fileID: 0}
-  windSprite: {fileID: 0}
+  fireHitEffect: {fileID: 8548487076321865005, guid: 9c2c958ea8589e74da6c71be92da1f1b, type: 3}
+  waterHitEffect: {fileID: 3146856275991024581, guid: c202a31e2517d444d92ccf8cc7900215, type: 3}
+  earthHitEffect: {fileID: 2858773699364256313, guid: 446574b26eb9d0748a3c75c763ab0c06, type: 3}
+  windHitEffect: {fileID: 7428791993398438196, guid: 3c86d42219efbc448abb3be4b7d62c03, type: 3}
 --- !u!1001 &8938685993316641792
 PrefabInstance:
   m_ObjectHideFlags: 0

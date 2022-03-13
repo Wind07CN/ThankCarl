@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GeneralBase : AbstractSpellCaster
 {
     public GameObject Prefab;
-    public float ProjectileBasicDamage = 15f;
+    public float ProjectileBasicDamage = 8f;
     public float AreaDamagePenalty = 0.2f;
     private GameObject playerGameobj;
     private List<ElementType> elementList;
