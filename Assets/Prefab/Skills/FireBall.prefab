@@ -125,7 +125,7 @@ MonoBehaviour:
   hitEffectTarget: 1
   autoDestructionTime: 10
   isAreaEffect: 1
-  AreaScale: 2
+  AreaScale: 4
 --- !u!70 &2922927991171019815
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

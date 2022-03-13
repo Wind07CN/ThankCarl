@@ -16,7 +16,10 @@ public class SpellMatcher
         this.spells.Add(new Spell<Whirl>(10, ElementType.Water));
 
         // general spells require only one element
-        // this.generalSpells.Add(new Spell<Whirl>(0, ElementType.Water));
+        this.generalSpells.Add(new Spell<FireGeneral>(0, ElementType.Fire));
+        this.generalSpells.Add(new Spell<WaterGeneral>(0, ElementType.Water));
+        this.generalSpells.Add(new Spell<EarthGeneral>(0, ElementType.Earth));
+        this.generalSpells.Add(new Spell<WindGeneral>(0, ElementType.Wind));
         
         // order spells by mana cost so that the spells with higher come first
         spells = spells.OrderByDescending(spell => spell.GetManaCost()).ToList();
@@ -51,8 +54,20 @@ public class SpellMatcher
         foreach (ISpell spell in this.generalSpells)   
         {
             if (spell.GetPrincipalElementType() == elements[0])
-            {
-                return spell;
+            {   
+                switch (elements[0])
+                {
+                    case ElementType.Fire:
+                        return new Spell<FireGeneral>(0, elements.ToArray());
+                    case ElementType.Water:
+                        return new Spell<WaterGeneral>(0, elements.ToArray());
+                    case ElementType.Earth:
+                        return new Spell<EarthGeneral>(0, elements.ToArray());
+                    case ElementType.Wind:
+                        return new Spell<WindGeneral>(0, elements.ToArray());
+                    default:
+                        throw new System.Exception("Unexpected error when matching general spell");
+                }
             }
         }
         throw new System.Exception("Unexpected error when matching general spell");

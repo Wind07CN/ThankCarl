@@ -63,7 +63,7 @@ public class HitEffectGenerator : MonoBehaviour
         int count = 0;
         // used to render solid color
         Shader solidColorShader = Shader.Find("GUI/Text Shader");
-        Shader originalShader = spriteRenderer.material.shader;
+        Shader originalShader = Shader.Find("Sprites/Default");
 
         spriteRenderer.material.shader = solidColorShader;
 

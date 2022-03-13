@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3303221016010839912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.81, y: -4.94, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -113,11 +113,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AreaEffectPrefab: {fileID: 0}
-  ElementType: 1
-  Speed: 5
+  ElementType: 0
+  Speed: 20
   CollisionDamage: 2
-  HasPenetrateLlimit: 0
-  PenetrateTime: 0
+  AreaDamage: 0
+  HasPenetrateLlimit: 1
+  PenetrateTimes: 0
   hitEffectTarget: 1
   autoDestructionTime: 10
   isAreaEffect: 0

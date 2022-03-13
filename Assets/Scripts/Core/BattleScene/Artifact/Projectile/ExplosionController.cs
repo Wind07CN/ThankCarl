@@ -21,16 +21,12 @@ public class ExplosionController : MonoBehaviour
 	private float expandSpeed;
 	private float disappearSpeed;
 
-	private void Awake()
+	private void Start()
 	{
 		transform.localScale = Vector3.zero;
 
 		expandSpeed = Scale / ExpandTime;
 		disappearSpeed = Scale / DisappearTime;
-
-	}
-	private void Start()
-	{
 		ExplosionEffect();
 	}
 

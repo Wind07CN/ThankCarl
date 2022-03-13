@@ -1,51 +1,107 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
-public abstract class GeneralBase : AbstractSpellCaster
+public class GeneralBase : AbstractSpellCaster
 {
-    
     public GameObject Prefab;
     public float ProjectileBasicDamage = 8f;
     public float AreaDamagePenalty = 0.2f;
+    private GameObject playerGameobj;
+    private List<ElementType> elementList;
+
+    private void Start()
+    {
+        playerGameobj = Utils.GetPlayerObject();
+    }
 
     public override void Cast(ISpell spell)
     {
-        List<ElementType> elementList = spell.GetElementsCombination();
-        LinearProjectileController projectileController = Prefab.GetComponent<LinearProjectileController>();
-        
+        elementList = spell.GetElementsCombination();
+        int repeat = DetermineRepeatTimes();
+        StartCoroutine(LaunchProjectileCoroutine(spell, repeat));
     }
 
-    private float DetermineSingleProjectileDamage(List<ElementType> elementList)
+    private IEnumerator LaunchProjectileCoroutine(ISpell spell, int repeat, float delay = 0.1f)
     {
-        int fireNumber = CountElement(ElementType.Fire, elementList);
+        for (int i = 0; i < repeat; i++)
+        {
+            GameObject projectile = InstantiatePrefab();
+            ConfigureProjectile(
+                spell, projectile,
+                DetermineSingleProjectileDamage(),
+                DetermineExplosionAreaScale(),
+                DeterminePenetrateTimes()
+            );
+            yield return new WaitForSeconds(delay);
+        }
+    }
+
+    private GameObject InstantiatePrefab()
+    {
+        GameObject projectile = Instantiate(Prefab, playerGameobj.transform.position, Quaternion.identity);
+        projectile.transform.eulerAngles = new Vector3(
+            0,
+            0,
+            playerGameobj.gameObject.GetComponent<PlayerMoveController>().GetMouseAngle()
+        );
+        return projectile;
+    }
+
+    private void ConfigureProjectile(ISpell spell, GameObject projectile, float damage, float areaScale, int penetrate)
+    {
+        LinearProjectileController projectileController = projectile.GetComponent<LinearProjectileController>();
+        if (areaScale > 0)
+        {
+            // area
+            projectileController.isAreaEffect = true;
+            projectileController.AreaScale = areaScale;
+            projectileController.AreaDamage = damage * AreaDamagePenalty;
+        }
+        else
+        {
+            // single projectile
+            projectileController.CollisionDamage = damage;
+        }
+        projectileController.PenetrateTimes = penetrate;
+        projectileController.ElementType = spell.GetPrincipalElementType();
+        projectileController.HasPenetrateLlimit = true;
+    }
+
+    private float DetermineSingleProjectileDamage()
+    {
+        int fireNumber = CountElement(ElementType.Fire);
         return ProjectileBasicDamage + fireNumber * 15;
     }
 
-    private float DetermineExplosionRadius(List<ElementType> elementList)
+    private float DetermineExplosionAreaScale()
     {
-        int waterNumber = CountElement(ElementType.Water, elementList);
-        return (float) (waterNumber * 0.5 + 1);
+        int waterNumber = CountElement(ElementType.Water);
+        if (waterNumber == 0) return 0;
+        return (float)(waterNumber * 0.5 + 1);
     }
 
-    private int DetermineRepeatTimes(List<ElementType> elementList)
+    private int DetermineRepeatTimes()
     {
-        int windNumber = CountElement(ElementType.Wind, elementList);
+        int windNumber = CountElement(ElementType.Wind);
         return windNumber + 1;
     }
 
-    private int DeterminePenetrateTimes(List<ElementType> elementList)
+    private int DeterminePenetrateTimes()
     {
-        int earthNumber = CountElement(ElementType.Earth, elementList);
-        return earthNumber + 1;
+        int earthNumber = CountElement(ElementType.Earth);
+        return earthNumber;
     }
 
-    private int CountElement(ElementType target, List<ElementType> list)
+    private int CountElement(ElementType target)
     {
         int count = 0;
-        foreach (ElementType element in list)
+    
+        // first element only affect principle element type
+        for (int i = 1; i < elementList.Count; i++)
         {
-            if (element == target)
-                count++;
+            if (elementList[i] == target)
+            count++;
         }
         return count;
     }
