@@ -25,7 +25,6 @@ public class LinearProjectileController : MonoBehaviour
     {
         Projectile = 0,
         Enemy = 1,
-        Player = 2,
     }
 
     private void Start()
@@ -53,10 +52,6 @@ public class LinearProjectileController : MonoBehaviour
             else if (hitEffectTarget == HitEffectTarget.Projectile)
             {
                 Utils.GetExplosionManager().InitCollisionEffect(ElementType, transform.position);
-            }
-            else if (hitEffectTarget == HitEffectTarget.Player)
-            {
-                Utils.GetExplosionManager().InitCollisionEffect(ElementType, Utils.GetPlayerObject().transform.position);
             }
             if (HasPenetrateLlimit)
             {
