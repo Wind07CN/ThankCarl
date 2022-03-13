@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 	private void Start()
 	{
 		InitPlayer();
+		hitEffectGenerator = Utils.GetHitEffectGenerator();
 	}
 
 	private void Update()

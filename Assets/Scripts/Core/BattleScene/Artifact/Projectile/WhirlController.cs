@@ -17,7 +17,7 @@ public class WhirlController : MonoBehaviour
 
 	private void Update()
 	{
-		if (isDisappear)
+		if (!isDisappear)
 		{
 			transform.localScale = transform.localScale + Time.deltaTime * new Vector3(1, 1, 0) * expandSpeed;
 			transform.Rotate(new Vector3(0, 0, Time.deltaTime * rotateSpeed));
