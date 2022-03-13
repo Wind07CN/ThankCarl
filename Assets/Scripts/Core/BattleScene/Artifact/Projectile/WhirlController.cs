@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveController : MonoBehaviour
+public class WhirlController : MonoBehaviour
 {
 	[SerializeField] private float rotateSpeed = 120f;
 	[SerializeField] private float expandSpeed = 2f;
@@ -10,6 +10,7 @@ public class WaveController : MonoBehaviour
 	[SerializeField] private float forceFactor = 30f;
 
 	private bool isDisappear = false;
+
 	private void Start()
 	{
 		Invoke(nameof(DestroyObject), lastTime);
@@ -23,7 +24,6 @@ public class WaveController : MonoBehaviour
 			transform.Rotate(new Vector3(0, 0, Time.deltaTime * rotateSpeed));
 		}
 	}
-
 
 	private void StartDisappear() 
 	{

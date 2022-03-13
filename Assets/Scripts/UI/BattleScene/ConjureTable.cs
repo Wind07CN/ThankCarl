@@ -39,7 +39,7 @@ public class ConjureTable : MonoBehaviour
 		spritesDic.Add(ElementType.Fire, fire);
 		spritesDic.Add(ElementType.Water, water);
 		spritesDic.Add(ElementType.Wind, wind);
-		spritesDic.Add(ElementType.Soil, soil);
+		spritesDic.Add(ElementType.Earth, soil);
 		spritesDic.Add(ElementType.None, none);
 		spritesDic.Add(ElementType.Locked, locked);
 	}

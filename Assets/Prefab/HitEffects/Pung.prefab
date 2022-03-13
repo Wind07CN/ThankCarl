@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3511335600134105146}
   - component: {fileID: 7638687002496822950}
-  - component: {fileID: 7638687002496822948}
+  - component: {fileID: 8899581885086422617}
   m_Layer: 0
   m_Name: Pung
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7428791993398438196}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7638687002496822948
+--- !u!114 &8899581885086422617
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7428791993398438196}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e0202103e46214da936f50c05283e4, type: 3}
+  m_Script: {fileID: 11500000, guid: f032b1760b842ba459093a52f12e4186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastTime: 2
-  disappearTime: 0.3
+  lastTime: 0.3
+  disappearTime: 0.2

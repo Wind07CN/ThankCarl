@@ -94,7 +94,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -112,10 +112,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d31c6e06b0ef444d9cf6e3eadd5eeb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementType: 3
-  speed: 10
-  damage: 2
-  isNoPenetrateLlimit: 0
-  penetrateTime: 0
-  explosionPosition: 0
+  AreaEffectPrefab: {fileID: 0}
+  ElementType: 1
+  Speed: 5
+  CollisionDamage: 2
+  HasPenetrateLlimit: 0
+  PenetrateTime: 0
+  hitEffectTarget: 1
   autoDestructionTime: 10
+  isAreaEffect: 0
+  AreaScale: 1

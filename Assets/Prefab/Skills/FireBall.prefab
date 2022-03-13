@@ -116,12 +116,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d31c6e06b0ef444d9cf6e3eadd5eeb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementType: 1
-  speed: 10
-  damage: 2
-  isNoPenetrateLlimit: 0
-  penetrateTime: 0
+  AreaEffectPrefab: {fileID: 2658325869160293948, guid: 930ff7ce2e4a3b34d931c07d5a4cf050, type: 3}
+  ElementType: 1
+  Speed: 10
+  CollisionDamage: 2
+  HasPenetrateLlimit: 1
+  PenetrateTime: 2
+  hitEffectTarget: 1
   autoDestructionTime: 10
+  isAreaEffect: 1
+  AreaScale: 2
 --- !u!70 &2922927991171019815
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

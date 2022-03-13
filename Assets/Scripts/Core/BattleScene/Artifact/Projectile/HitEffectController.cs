@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionEffectController : MonoBehaviour
+public class HitEffectController : MonoBehaviour
 {
-	[SerializeField] private float lastTime = 1f;
-	[SerializeField] private float disappearTime = 1f;
+	[SerializeField] private float lastTime = 0.3f;
+	[SerializeField] private float disappearTime = 0.2f;
 	private bool disappearing = false;
+	
 	private void Start()
 	{
 		Invoke(nameof(Disappear), lastTime);

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7357503874969548190}
   - component: {fileID: 2901247883006767689}
   - component: {fileID: 2901247883006767694}
-  - component: {fileID: 2901247883006767695}
+  - component: {fileID: 2432690640677355208}
   m_Layer: 0
   m_Name: WaveImpact
   m_TagString: Untagged
@@ -100,7 +100,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 5.12, y: 5.12}
   m_Direction: 0
---- !u!114 &2901247883006767695
+--- !u!114 &2432690640677355208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,9 +109,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2938598702819760447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22821665bf25c3a4782c366266e3b9fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 30145ac116345744b9b8afa7f26bc291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 240
-  expandSpeed: 4
+  rotateSpeed: 120
+  expandSpeed: 2
   lastTime: 2
+  forceFactor: 30

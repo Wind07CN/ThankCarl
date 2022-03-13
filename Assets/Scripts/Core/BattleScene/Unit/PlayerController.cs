@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private GameObject invincibleAnime;
 	private bool isInvincible = false;
 
-	[SerializeField] private CollisionEffectManager explosionManager;
+	[SerializeField] private HitEffectGenerator hitEffectGenerator;
 
 	private BattleSceneMainUIController UIController;
 
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
 					enemyController.KillEnemy();
 
 					// 这里需要一个新的控制器专门控制产生爆炸效果
-					explosionManager.InitCollisionEffect(enemyController.GetEnemyElementType(), transform.position);
+					hitEffectGenerator.InitHitEffect(enemyController.GetEnemyElementType(), transform.position);
 				}
 			}
 		}
