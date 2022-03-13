@@ -7,11 +7,12 @@ public class LinearProjectileController : MonoBehaviour
 
     public GameObject AreaEffectPrefab;
 
-    [SerializeField] public ElementType ElementType = ElementType.Fire;
-    [SerializeField] public float Speed = 5f;
-    [SerializeField] public int CollisionDamage = 2;
-    [SerializeField] public bool HasPenetrateLlimit = false;
-    [SerializeField] public int PenetrateTime = 0;
+    public ElementType ElementType = ElementType.Fire;
+    public float Speed = 5f;
+    public float CollisionDamage = 2f;
+	public float AreaDamage = 0f; 
+    public bool HasPenetrateLlimit = true;
+    public int PenetrateTimes = 0;
 
     [SerializeField] private HitEffectTarget hitEffectTarget = HitEffectTarget.Enemy;
 
@@ -19,7 +20,7 @@ public class LinearProjectileController : MonoBehaviour
 
     public bool isAreaEffect = false;
 
-	public float AreaScale = 1f;
+    public float AreaScale = 1f;
 
     private enum HitEffectTarget
     {
@@ -47,16 +48,16 @@ public class LinearProjectileController : MonoBehaviour
             SpellDamageDealer.Deal(ElementType, collision.gameObject, CollisionDamage);
             if (hitEffectTarget == HitEffectTarget.Enemy)
             {
-                Utils.GetHitEffectGenerator().InitHitEffect(ElementType, collision.transform.position);
+                Utils.GetHitEffectGenerator().InitHitEffect(ElementType, collision.gameObject, new Vector3(0.5f, 1f, 0));
             }
             else if (hitEffectTarget == HitEffectTarget.Projectile)
             {
-                Utils.GetHitEffectGenerator().InitHitEffect(ElementType, transform.position);
+				Utils.GetHitEffectGenerator().InitHitEffect(ElementType, this.gameObject, new Vector3(0.5f, 1f, 0));
             }
             if (HasPenetrateLlimit)
             {
-                PenetrateTime--;
-                if (PenetrateTime < 0)
+                PenetrateTimes--;
+                if (PenetrateTimes < 0)
                 {
                     GetComponent<Collider2D>().enabled = false;
                     DestroyGameObj();
@@ -65,21 +66,21 @@ public class LinearProjectileController : MonoBehaviour
         }
         else
         {
-			if (HasPenetrateLlimit)
+            if (HasPenetrateLlimit)
             {
-                PenetrateTime--;
-                if (PenetrateTime < 0)
+                PenetrateTimes--;
+                if (PenetrateTimes < 0)
                 {
                     GetComponent<Collider2D>().enabled = false;
                     DestroyGameObj();
                 }
             }
-            GenerateExplosion(transform, AreaScale);
+            GenerateExplosion(transform, AreaScale, AreaDamage);
         }
 
     }
 
-    private void GenerateExplosion(Transform target, float scale)
+    private void GenerateExplosion(Transform target, float scale, float damage)
     {
         GameObject explosion = Instantiate(AreaEffectPrefab, target.position, Quaternion.identity);
         ExplosionController explosionController = explosion.GetComponent<ExplosionController>();

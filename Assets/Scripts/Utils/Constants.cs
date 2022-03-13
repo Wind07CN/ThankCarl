@@ -19,7 +19,7 @@ public static class Constants
     public const int EliteEnemyTypeDefaultNum = 0;
     
     // spell
-    public const int ElementManaCost = 20;
+    public const int ElementManaCost = 5;
     public const float nextDefaultSpawnTime = 1f;
     public const float ElementDamageEnhanceMultiplier = 2f;
     public const float ElementDamageReduceMultiplier = 0.5f;
