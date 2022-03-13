@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class ExplosionController : MonoBehaviour
 {
-
-	// ****************should change some to private
-	[SerializeField] public float Scale = 1f;
-	[SerializeField] public float ExpandTime = 0.2f;
-	[SerializeField] public float ResidenceTime = 0.5f;
-	[SerializeField] public float DisappearTime = 0.2f;
 	[SerializeField] public ElementType ElementType = ElementType.Fire;
+
+	[SerializeField] public float Scale = 1f;
+	[SerializeField] private float ExpandTime = 0.2f;
+	[SerializeField] private float ResidenceTime = 0.5f;
+	[SerializeField] private float DisappearTime = 0.2f;
+
+	// when the scale == Vector3.one, the radius of the sprite
+	[SerializeField] private float defaultRadius = 1.6f;
 
 	// Thrust is positive, suction is negative
 	[SerializeField] public bool HasForce = false;
@@ -37,7 +39,7 @@ public class ExplosionController : MonoBehaviour
 
 	private void ExplosionEffect()
 	{
-		Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 2f * Scale);
+		Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, defaultRadius * Scale);
 		foreach (Collider2D collider in colliders)
 		{
 			if (collider.CompareTag("Enemy"))
@@ -47,7 +49,7 @@ public class ExplosionController : MonoBehaviour
 
 				// hit animation
 				Utils.GetHitEffectGenerator().InitHitEffect(ElementType, enemy, new Vector3(0.5f, 1f, 0));
-				
+
 				// if should give force to enemy, set haveForce true
 				if (HasForce)
 				{

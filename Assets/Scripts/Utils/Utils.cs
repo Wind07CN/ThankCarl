@@ -85,4 +85,5 @@ public static class Utils
 		}
 		return level * 10 + 20;
 	}
+
 }

@@ -112,14 +112,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d31c6e06b0ef444d9cf6e3eadd5eeb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AreaEffectPrefab: {fileID: 0}
+  AreaEffectPrefab: {fileID: 2077726699980165406, guid: 9e9c9db00999c3c4fa6307d3d57a8bd1, type: 3}
   ElementType: 3
   Speed: 20
   CollisionDamage: 2
+  isAreaEffect: 0
   AreaDamage: 0
   HasPenetrateLlimit: 1
   PenetrateTimes: 0
   hitEffectTarget: 1
   autoDestructionTime: 10
-  isAreaEffect: 0
   AreaScale: 1

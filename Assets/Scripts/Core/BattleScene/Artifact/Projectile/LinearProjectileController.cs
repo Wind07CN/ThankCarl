@@ -10,7 +10,10 @@ public class LinearProjectileController : MonoBehaviour
     public ElementType ElementType = ElementType.Fire;
     public float Speed = 5f;
     public float CollisionDamage = 2f;
-	public float AreaDamage = 0f; 
+
+    public bool isAreaEffect = false;
+    public float AreaDamage = 0f; 
+
     public bool HasPenetrateLlimit = true;
     public int PenetrateTimes = 0;
 
@@ -18,7 +21,7 @@ public class LinearProjectileController : MonoBehaviour
 
     [SerializeField] private float autoDestructionTime = 10f;
 
-    public bool isAreaEffect = false;
+
 
     public float AreaScale = 1f;
 

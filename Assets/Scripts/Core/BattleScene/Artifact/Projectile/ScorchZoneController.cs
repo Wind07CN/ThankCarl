@@ -5,27 +5,44 @@ using UnityEngine;
 public class ScorchZoneController : MonoBehaviour
 {
 	[SerializeField] private ElementType elementType = ElementType.Fire;
-	private float damageIntervalTimer = 0f;
-	[SerializeField] public float damageIntervalTime = 1f;
-	[SerializeField] public int damage = 15;
 
-	[SerializeField] public float durationTime = 5;
+	private float damageIntervalTimer = 0f;
+	[SerializeField] private float damageIntervalTime = 0.5f;
+	[SerializeField] public int Damage = 15;
+
+	[SerializeField] private float expandTime = 0.2f;
+	[SerializeField] private float durationTime = 5;
 	[SerializeField] private float disapperTime = 0.3f;
 
-	[SerializeField] public float scaleRatio = 1;
+	[SerializeField] public float ScaleRatio = 1;
 	// when the scale == Vector3.one, the radius of the sprite
 	[SerializeField] private float defaultRadius = 1.6f;
+
+	private float expandSpeed;
 	private float disapperSpeed;
 
-	private void Awake()
+	private void Start()
 	{
-		transform.transform.localScale = Vector3.one * scaleRatio;
-		disapperSpeed = scaleRatio / disapperTime;
+		transform.localScale = Vector3.zero;
+
+		expandSpeed = ScaleRatio / expandTime;
+		disapperSpeed = ScaleRatio / disapperTime;
+		damageIntervalTimer = damageIntervalTime;
 	}
 
 	private void Update()
 	{
-		if (durationTime > 0)
+		UpdateScale();
+	}
+
+	private void UpdateScale()
+	{
+		if (expandTime > 0)
+		{
+			transform.localScale += expandSpeed * Time.deltaTime * Vector3.one;
+			expandTime -= Time.deltaTime;
+		}
+		else if (durationTime > 0 && expandTime <= 0)
 		{
 			if (damageIntervalTimer <= 0f)
 			{
@@ -47,16 +64,15 @@ public class ScorchZoneController : MonoBehaviour
 		}
 	}
 
-
 	private void DamageToEnemies()
 	{
-		Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, defaultRadius * scaleRatio);
+		Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, defaultRadius * ScaleRatio);
 		{
 			foreach (Collider2D collider in colliders)
 			{
 				if (collider.CompareTag("Enemy"))
 				{
-					SpellDamageDealer.Deal(elementType, collider.gameObject, damage);
+					SpellDamageDealer.Deal(elementType, collider.gameObject, Damage);
 				}
 			}
 		}
