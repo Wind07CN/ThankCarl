@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3674848013746234133}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.333, y: -0.461, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6630795431888435285
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -120,11 +120,12 @@ MonoBehaviour:
   ElementType: 1
   Speed: 10
   CollisionDamage: 2
+  isAreaEffect: 1
+  AreaDamage: 0
   HasPenetrateLlimit: 1
-  PenetrateTime: 2
+  PenetrateTimes: 0
   hitEffectTarget: 1
   autoDestructionTime: 10
-  isAreaEffect: 1
   AreaScale: 4
 --- !u!70 &2922927991171019815
 CapsuleCollider2D:
