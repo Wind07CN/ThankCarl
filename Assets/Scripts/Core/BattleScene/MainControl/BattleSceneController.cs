@@ -12,8 +12,6 @@ public class BattleSceneController : MonoBehaviour
 
 	private GameObject mainCameraObject;
 
-
-
 	private void Awake()
 	{
 		InitScene();
@@ -29,7 +27,7 @@ public class BattleSceneController : MonoBehaviour
 
 	private void InitScene()
 	{
-		Debug.Log("InitScene");
+
 	}
 
 

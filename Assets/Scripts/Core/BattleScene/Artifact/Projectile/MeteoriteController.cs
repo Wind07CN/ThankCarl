@@ -43,16 +43,6 @@ public class MeteoriteController : MonoBehaviour
 		}
 	}
 
-	public void InitMetreorite(int explosionDamage, int scorchDamage, 
-		float explosionRange, bool hasForce, float forceFactor) 
-	{
-		this.ExplosionDamage = explosionDamage;
-		this.ScorchDamage = scorchDamage;
-		this.explosionRange = explosionRange;
-		this.hasForce = hasForce;
-		this.forceFactor = forceFactor;
-	}
-
 	private void GenerateExplosion()
 	{
 		ExplosionController explosionController = Instantiate(areaEffectPrefab,
