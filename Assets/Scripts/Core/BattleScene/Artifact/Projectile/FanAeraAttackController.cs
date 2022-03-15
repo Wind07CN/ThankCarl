@@ -9,12 +9,46 @@ public class FanAeraAttackController : MonoBehaviour
     [SerializeField] private float explosionRadius = 7.5f;
     [SerializeField] private float effectAngle = 30f;
 
+    [SerializeField] private float displayTime = 0.3f;
+    [SerializeField] private float disapplearTime = 0.3f;
+
+
+
     private float maxEffectAngle;
     private float minEffectAngle;
     public float currentAngle;
+
+    private float disapplearSpeed;
+
+    private Transform playerGameobj;
+
     private void Start()
     {
         DamageToEnemy();
+        disapplearSpeed = 1 / disapplearTime * transform.localScale.x;
+        playerGameobj = Utils.GetPlayerObject().transform;
+    }
+
+    void Update()
+    {
+        if (displayTime > 0)
+        {
+            displayTime -= Time.deltaTime;
+        }
+        else if (disapplearTime > 0 && displayTime <= 0)
+        {
+            transform.localScale -= disapplearSpeed * Time.deltaTime * Vector3.one;
+            disapplearTime -= Time.deltaTime;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void LateUpdate()
+    {
+        transform.position = playerGameobj.position;
     }
 
     private void DamageToEnemy()
@@ -22,7 +56,6 @@ public class FanAeraAttackController : MonoBehaviour
         currentAngle = transform.localRotation.eulerAngles.z;
         maxEffectAngle = currentAngle + effectAngle / 2;
         minEffectAngle = currentAngle - effectAngle / 2;
-
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach (Collider2D collider in colliders)

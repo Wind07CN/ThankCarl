@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// 主要负责移动, 然后作为玩家的父级带动玩家移动
 public class PlayerMoveController : MonoBehaviour
 {
     // [SerializeField]
@@ -29,12 +28,6 @@ public class PlayerMoveController : MonoBehaviour
             HandleKeyBoardInput();
         }
     }
-
-    public void InitCamera(PlayerAttribute player)
-    {
-        mPlayerAttribute = player;
-    }
-
 
     private void HandleKeyBoardInput()
     {

@@ -9,7 +9,7 @@ public class FireBall : AbstractSpellCaster
     {
         playerGameobj = Utils.GetPlayerObject();
     }
-    
+
     public override void Cast(ISpell spell)
     {
         GameObject gameObject = Instantiate(FireBallPrefab, playerGameobj.transform.position, Quaternion.identity);

@@ -6,134 +6,143 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-	[HideInInspector] public PlayerAttribute playerAttribute = new PlayerAttribute();
+    [HideInInspector] public PlayerAttribute playerAttribute = new PlayerAttribute();
 
-	[SerializeField] private int playerMaxLife = Constants.PlayerDefaultMaxLife;
-	[SerializeField] private int playerArmour = Constants.PlayerDefaultArmour;
-	[SerializeField] private float playerMoveSpeed = Constants.PlayerDefaultMoveSpeed;
-	[SerializeField] private float playerManaRegenSpeed = Constants.PlayerDefaultManaRegenSpeed;
+    [SerializeField] private int playerMaxLife = Constants.PlayerDefaultMaxLife;
+    [SerializeField] private int playerArmour = Constants.PlayerDefaultArmour;
+    [SerializeField] private float playerMoveSpeed = Constants.PlayerDefaultMoveSpeed;
+    [SerializeField] private float playerManaRegenSpeed = Constants.PlayerDefaultManaRegenSpeed;
 
-	[SerializeField] private int playerDyingLifeThreshold = 3;
-
-	
-	[SerializeField] private float invincibleTime = 2f;
-	[SerializeField] private GameObject invincibleAnime;
-	private bool isInvincible = false;
-
-	[SerializeField] private HitEffectGenerator hitEffectGenerator;
-
-	private BattleSceneMainUIController UIController;
-
-	private new PlayerAnimeController animation;
-
-	private void Start()
-	{
-		InitPlayer();
-		hitEffectGenerator = Utils.GetHitEffectGenerator();
-	}
-
-	private void Update()
-	{
-		RegenerateMana();
-	}
+    [SerializeField] private int playerDyingLifeThreshold = 3;
 
 
-	private void OnTriggerEnter2D(Collider2D collision)
-	{
-		if (!isInvincible)
-		{
-			if (collision.gameObject.CompareTag("Enemy"))
-			{
-				EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
+    [SerializeField] private float invincibleTime = 2f;
+    [SerializeField] private GameObject invincibleAnime;
+    private bool isInvincible = false;
 
-				if (enemyController.enemyAttribute.IsActive)
-				{
-					DamagePlayer(enemyController.damageToPlayer);
+    [SerializeField] private HitEffectGenerator hitEffectGenerator;
 
-					// Enemy Play dying animation
-					enemyController.KillEnemy();
+    private BattleSceneMainUIController UIController;
 
-					hitEffectGenerator.InitHitEffect(enemyController.GetEnemyElementType(), transform.position);
-				}
-			}
-		}
-	}
+    private new PlayerAnimeController animation;
 
-	public void InitPlayer()
-	{
-		playerAttribute.MaxLife = playerMaxLife;
-		playerAttribute.CurrentLife = playerMaxLife;
-		playerAttribute.Armour = playerArmour;
-		playerAttribute.MoveSpeed = playerMoveSpeed;
-		playerAttribute.ManaRegenSpeed = playerManaRegenSpeed;
+    private void Start()
+    {
+        InitPlayer();
+        hitEffectGenerator = Utils.GetHitEffectGenerator();
+    }
 
-		animation = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
-		UIController = GameObject.FindGameObjectWithTag("MainUI").GetComponent<BattleSceneMainUIController>();
+    private void Update()
+    {
+        RegenerateMana();
+    }
 
-		// Set Active
-		// 这里需要倒计时
-		// 需要使用协程
-		playerAttribute.IsActive = true;
-	}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!isInvincible)
+        {
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
 
-	public void DamagePlayer(int damage)
-	{
-		playerAttribute.CurrentLife -= damage;
+                if (enemyController.enemyAttribute.IsActive)
+                {
+                    DamagePlayer(enemyController.damageToPlayer);
 
-		// UI update
-		UIController.UpdateLifeBar();
+                    // Enemy Play dying animation
+                    enemyController.KillEnemy();
 
-		// UI shark
-		UIController.GetDamage();
+                    hitEffectGenerator.InitHitEffect(enemyController.GetEnemyElementType(), transform.position);
+                }
+            }
+        }
+    }
 
-		if (playerAttribute.IsAlive)
-		{
-			// Anime
-			animation.PlayerGetDamage();
+    public void InitPlayer()
+    {
+        playerAttribute.MaxLife = playerMaxLife;
+        playerAttribute.CurrentLife = playerMaxLife;
+        playerAttribute.Armour = playerArmour;
+        playerAttribute.MoveSpeed = playerMoveSpeed;
+        playerAttribute.ManaRegenSpeed = playerManaRegenSpeed;
 
-			// Invincible
-			isInvincible = true;
-			invincibleAnime.SetActive(true);
-			Invoke(nameof(ResetIincible), invincibleTime);
+        animation = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
+        UIController = GameObject.FindGameObjectWithTag("MainUI").GetComponent<BattleSceneMainUIController>();
 
-			// Is player dying
-			if (playerAttribute.CurrentLife <= playerDyingLifeThreshold)
-			{
-				UIController.PlayerIsDying();
-			}
-			
-		}
-		else 
-		{
-			KillPlayer();
-		}
+        // Set Active
+        // 这里需要倒计时
+        // 需要使用协程
+        playerAttribute.IsActive = true;
+    }
 
-	}
+    public void DamagePlayer(int damage)
+    {
+        playerAttribute.CurrentLife -= damage;
 
-	public void CostMana(float amount)
-	{
-		playerAttribute.CurrentMana -= amount;
-		UIController.UpdateManaBar();
-	}
+        // UI update
+        UIController.UpdateLifeBar();
 
-	private void RegenerateMana()
-	{
-		playerAttribute.CurrentMana +=  playerAttribute.ManaRegenSpeed * Time.deltaTime;
-		UIController.UpdateManaBar();
-	}
+        // UI shark
+        UIController.GetDamage();
 
-	public void KillPlayer()
-	{
-		Debug.Log("Player Dead!");
-		playerAttribute.IsActive = false;
+        if (playerAttribute.IsAlive)
+        {
+            // Anime
+            animation.PlayerGetDamage();
 
-		animation.PlayerIsDead();
-	}
+            // Invincible
+            isInvincible = true;
+            invincibleAnime.SetActive(true);
+            Invoke(nameof(ResetIincible), invincibleTime);
 
-	private void ResetIincible()
-	{
-		isInvincible = false;
-		invincibleAnime.SetActive(false);
-	}
+            // Is player dying
+            if (playerAttribute.CurrentLife <= playerDyingLifeThreshold)
+            {
+                UIController.PlayerIsDying();
+            }
 
+        }
+        else
+        {
+            KillPlayer();
+        }
+
+    }
+
+    public void CostMana(float amount)
+    {
+        playerAttribute.CurrentMana -= amount;
+        UIController.UpdateManaBar();
+    }
+
+    private void RegenerateMana()
+    {
+        playerAttribute.CurrentMana += playerAttribute.ManaRegenSpeed * Time.deltaTime;
+        UIController.UpdateManaBar();
+    }
+
+    public void KillPlayer()
+    {
+        Debug.Log("Player Dead!");
+        playerAttribute.IsActive = false;
+
+        animation.PlayerIsDead();
+    }
+
+    private void ResetIincible()
+    {
+        isInvincible = false;
+        invincibleAnime.SetActive(false);
+    }
+
+    public void QuickDash(float increaseSpeed, float dashTIme)
+    {
+        playerAttribute.MoveSpeed += increaseSpeed;
+        Invoke(nameof(RecoverSpeed), dashTIme);
+    }
+
+    private void RecoverSpeed()
+    {
+        playerAttribute.MoveSpeed = playerMoveSpeed;
+    }
 }
