@@ -25,6 +25,7 @@ public class SpellMatcher
 
         // Earth Skills
         this.spells.Add(new Spell<Shotgun>(10, ElementType.Earth, ElementType.Water));
+        this.spells.Add(new Spell<RollingStone>(10, ElementType.Earth, ElementType.Fire));
 
         // general spells require only one element
         this.generalSpells.Add(new Spell<FireGeneral>(0, ElementType.Fire));
