@@ -18,6 +18,5 @@ public class Shotgun : AbstractSpellCaster
     {
         fanAera = Instantiate(FanAeraAttackPrefab, playerGameobj.transform.position, Quaternion.identity).transform;
         fanAera.eulerAngles = new Vector3(0, 0, playerGameobj.GetComponent<PlayerMoveController>().GetMouseAngle());
-        playerGameobj.GetComponent<PlayerController>().QuickDash(20, 0.2f);
     }
 }

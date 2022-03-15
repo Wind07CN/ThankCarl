@@ -12,7 +12,9 @@ public class FanAeraAttackController : MonoBehaviour
     [SerializeField] private float displayTime = 0.3f;
     [SerializeField] private float disapplearTime = 0.3f;
 
+    [SerializeField] private ElementType elementType = ElementType.Earth;
 
+    private HitEffectGenerator hitEffectGenerator;
 
     private float maxEffectAngle;
     private float minEffectAngle;
@@ -24,6 +26,7 @@ public class FanAeraAttackController : MonoBehaviour
 
     private void Start()
     {
+        hitEffectGenerator = Utils.GetMainController().GetComponent<HitEffectGenerator>();
         DamageToEnemy();
         disapplearSpeed = 1 / disapplearTime * transform.localScale.x;
         playerGameobj = Utils.GetPlayerObject().transform;
@@ -71,6 +74,7 @@ public class FanAeraAttackController : MonoBehaviour
                 if (angle <= maxEffectAngle && angle >= minEffectAngle)
                 {
                     collider.gameObject.GetComponent<EnemyController>().DamageEnemy(damage);
+                    hitEffectGenerator.InitHitEffect(elementType, collider.transform.position);
                 }
             }
         }

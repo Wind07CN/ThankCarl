@@ -135,6 +135,11 @@ public class PlayerController : MonoBehaviour
         invincibleAnime.SetActive(false);
     }
 
+    /// <summary>
+    /// improve player speed in a short time
+    /// </summary>
+    /// <param name="increaseSpeed"></param>
+    /// <param name="dashTIme"></param>
     public void QuickDash(float increaseSpeed, float dashTIme)
     {
         playerAttribute.MoveSpeed += increaseSpeed;
