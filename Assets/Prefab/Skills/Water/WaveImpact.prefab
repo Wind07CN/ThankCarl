@@ -115,4 +115,4 @@ MonoBehaviour:
   rotateSpeed: 120
   expandSpeed: 2
   lastTime: 2
-  forceFactor: 30
+  forceFactor: 40
