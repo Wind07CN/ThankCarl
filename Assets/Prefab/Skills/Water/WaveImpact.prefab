@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 120
-  expandSpeed: 2
-  lastTime: 2
+  finalScale: 10
+  expandTime: 2
   forceFactor: 40
+  disappearTIme: 0.3
