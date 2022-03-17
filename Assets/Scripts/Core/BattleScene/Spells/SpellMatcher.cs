@@ -42,13 +42,7 @@ public class SpellMatcher
         // spells should be sorted by mana cost so that the spells with higher come first
         foreach (ISpell spell in this.spells)
         {
-            if (spell.GetElementsCombination().Count != elements.Count)
-            {
-                continue;
-            }
-
-            if (Enumerable.SequenceEqual(spell.GetElementsCombination(), elements)
-                && currentMana >= spell.GetManaCost())
+            if (IsSpellMatched(spell, elements) && currentMana >= spell.GetManaCost())
             {
                 return spell;
             }
@@ -59,6 +53,31 @@ public class SpellMatcher
 
         throw new System.Exception("Unexpected error when matching spell. Did you forget to register a spell?");
 
+    }
+
+    private bool IsSpellMatched(ISpell spell, List<ElementType> elements)
+    {
+        if (spell.GetElementsCombination().Count != elements.Count)
+        {
+            return false;
+        }
+
+
+        if (elements[0] != spell.GetPrincipalElementType())
+        {
+            return false;
+        }
+
+        List<ElementType> orderedInputElements = elements.GetRange(1, elements.Count - 1).OrderBy(element => element).ToList();
+        List<ElementType> orderedSpellElements = spell.GetElementsCombination().GetRange(1, spell.GetElementsCombination().Count - 1)
+                                                    .OrderBy(element => element).ToList();
+
+        if (!Enumerable.SequenceEqual(orderedInputElements, orderedSpellElements))
+        {
+            return false;
+        }
+
+        return true;
     }
 
     private ISpell MatchGeneralSpell(List<ElementType> elements)
