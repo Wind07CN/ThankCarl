@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7357503874969548190}
   - component: {fileID: 2901247883006767689}
   - component: {fileID: 2901247883006767694}
-  - component: {fileID: 2432690640677355208}
+  - component: {fileID: 7167856878210620568}
   m_Layer: 0
   m_Name: WaveImpact
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2938598702819760447}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -100,7 +100,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 5.12, y: 5.12}
   m_Direction: 0
---- !u!114 &2432690640677355208
+--- !u!114 &7167856878210620568
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,11 +109,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2938598702819760447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30145ac116345744b9b8afa7f26bc291, type: 3}
+  m_Script: {fileID: 11500000, guid: ebe39fceb1d5a2148b7bf43a5a3f08dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elementType: 2
+  damageIntervalTime: 0.5
+  Damage: 15
+  expandTime: 0.2
+  durationTime: 5
+  disapperTime: 0.3
+  scaleRatio: 4
+  defaultRadius: 2.5
+  hasForce: 1
+  forceFactor: 30
+  isRotate: 1
   rotateSpeed: 120
-  finalScale: 10
-  expandTime: 2
-  forceFactor: 40
-  disappearTIme: 0.3

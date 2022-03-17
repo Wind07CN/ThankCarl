@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RollingStone : AbstractSpellCaster
 {
-    public GameObject RollingStonePrefab;
+    [SerializeField] private GameObject RollingStonePrefab;
     private GameObject playerGameobj;
 
     private void Start()

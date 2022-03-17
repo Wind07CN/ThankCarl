@@ -14,9 +14,15 @@ public class ScorchZoneController : MonoBehaviour
     [SerializeField] private float durationTime = 5;
     [SerializeField] private float disapperTime = 0.3f;
 
-    [SerializeField] public float ScaleRatio = 1;
+    [SerializeField] public float scaleRatio = 1;
     // when the scale == Vector3.one, the radius of the sprite
     [SerializeField] private float defaultRadius = 1.6f;
+
+    [SerializeField] private bool hasForce = false;
+    [SerializeField] private float forceFactor = 10f;
+
+    [SerializeField] private bool isRotate = false;
+    [SerializeField] private float rotateSpeed = 120f;
 
     private float expandSpeed;
     private float disapperSpeed;
@@ -25,14 +31,24 @@ public class ScorchZoneController : MonoBehaviour
     {
         transform.localScale = Vector3.zero;
 
-        expandSpeed = ScaleRatio / expandTime;
-        disapperSpeed = ScaleRatio / disapperTime;
+        expandSpeed = scaleRatio / expandTime;
+        disapperSpeed = scaleRatio / disapperTime;
         damageIntervalTimer = damageIntervalTime;
     }
 
     private void Update()
     {
+        UpdateRotate();
         UpdateScale();
+    }
+
+    private void UpdateRotate()
+    {
+        if (isRotate)
+        {
+            transform.Rotate(new Vector3(0, 0, Time.deltaTime * rotateSpeed));
+        }
+
     }
 
     private void UpdateScale()
@@ -66,7 +82,7 @@ public class ScorchZoneController : MonoBehaviour
 
     private void DamageToEnemies()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, defaultRadius * ScaleRatio);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, defaultRadius * scaleRatio);
         {
             foreach (Collider2D collider in colliders)
             {
@@ -75,12 +91,15 @@ public class ScorchZoneController : MonoBehaviour
                     SpellDamageDealer.Deal(elementType, collider.gameObject, Damage);
                     Utils.GetHitEffectGenerator().InitHitEffect(elementType, collider.transform.position);
 
+                    if (hasForce)
+                    {
+                        Vector2 force = (collider.transform.position - transform.position).normalized * forceFactor;
+                        collider.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+                    }
+
                 }
             }
         }
     }
-
-
-
 
 }
