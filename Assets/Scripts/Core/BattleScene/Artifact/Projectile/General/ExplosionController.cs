@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class ExplosionController : MonoBehaviour
 {
-	[SerializeField] public ElementType ElementType = ElementType.Fire;
+	public ElementType ElementType = ElementType.Fire;
 
-	[SerializeField] public float Scale = 1f;
-	[SerializeField] private float ExpandTime = 0.2f;
-	[SerializeField] private float ResidenceTime = 0.5f;
-	[SerializeField] private float DisappearTime = 0.2f;
+	public float Scale = 1f;
+	public float ExpandTime = 0.2f;
+	public float ResidenceTime = 0.5f;
+	public float DisappearTime = 0.2f;
 
 	// when the scale == Vector3.one, the radius of the sprite
 	[SerializeField] private float defaultRadius = 1.6f;
 
 	// Thrust is positive, suction is negative
-	[SerializeField] public bool HasForce = false;
-	[SerializeField] public float ForceFactor = 30f;
+	public bool HasForce = false;
+	public float ForceFactor = 30f;
 
-	[SerializeField] public float Damage = 10;
+	public float Damage = 10;
 
 	private float expandSpeed;
 	private float disappearSpeed;
