@@ -13,8 +13,8 @@ public class SpellMatcher
     public SpellMatcher()
     {
         // Fire Skills
-        this.spells.Add(new Spell<FireBall>(10, ElementType.Fire));
-        this.spells.Add(new Spell<Meteorite>(20, new[] { ElementType.Fire, ElementType.Earth }));
+        this.spells.Add(new Spell<FireBall>(10, ElementType.Fire, ElementType.Fire));
+        this.spells.Add(new Spell<Meteorite>(20, ElementType.Fire, ElementType.Earth));
         this.spells.Add(new Spell<Phoenix>(30, ElementType.Fire, ElementType.Fire, ElementType.Fire, ElementType.Water, ElementType.Wind, ElementType.Wind));
         this.spells.Add(new Spell<LaserBlast>(20, ElementType.Fire, ElementType.Wind, ElementType.Water));
         this.spells.Add(new Spell<FireBlast>(10, ElementType.Fire, ElementType.Wind));
@@ -32,6 +32,8 @@ public class SpellMatcher
 
         // Wind Skill 
         this.spells.Add(new Spell<Tornado>(10, ElementType.Wind, ElementType.Water));
+        // this.spells.Add(new Spell<Thunder>(30, ElementType.Wind, ElementType.Wind, ElementType.Fire, ElementType.Fire, ElementType.Fire, ElementType.Water));
+        this.spells.Add(new Spell<Thunder>(0, ElementType.Wind, ElementType.Wind));
 
         // general spells require only one element
         this.generalSpells.Add(new Spell<FireGeneral>(0, ElementType.Fire));
