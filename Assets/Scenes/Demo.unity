@@ -378,6 +378,7 @@ GameObject:
   - component: {fileID: 124658323}
   - component: {fileID: 124658324}
   - component: {fileID: 124658325}
+  - component: {fileID: 124658326}
   m_Layer: 6
   m_Name: SpellCaster
   m_TagString: Untagged
@@ -622,6 +623,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThunderboltNumber: 5
   ThunderboltPrefab: {fileID: 5009597771395110969, guid: 4f892682ea0acc74291928fde8dc80cf, type: 3}
+--- !u!114 &124658326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124658308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aab6a9ef6197da74b915d175156ef892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EffectPrefab: {fileID: 8619611591248571954, guid: 0d4fb1417bf4dcf45923c75ed5a97f0c, type: 3}
+  MaxRange: 20
 --- !u!1001 &249137570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1856,6 +1871,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1438070854}
   cameraHeight: -20
+  velocity: {x: 0, y: 0, z: 0}
+  smoothTime: 0.15
 --- !u!1 &895683874
 GameObject:
   m_ObjectHideFlags: 0

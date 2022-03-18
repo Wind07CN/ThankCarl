@@ -76,13 +76,37 @@ public class PlayerMoveController : MonoBehaviour
         transform.Translate(vec);
     }
 
-    private bool IsInsideMapRange(Vector2 pos)
+    public bool IsInsideMapRange(Vector2 pos)
     {
         if (pos.x < MinX || pos.x > MaxX || pos.y < MinY || pos.y > MaxY)
         {
             return false;
         }
         return true;
+    }
+
+    public Vector2 GetLimitedPosition(Vector2 pos)
+    {
+        Vector2 newPos = new Vector2(pos.x, pos.y);
+        if (pos.x < MinX)
+        {
+            pos.x = MinX;
+        }
+        else if (pos.x > MaxX)
+        {
+            pos.x = MaxX;
+        }
+
+        if (pos.y < MinY)
+        {
+            pos.y = MinY;
+        }
+        else if (pos.y > MaxY)
+        {
+            pos.y = MaxY;
+        }
+
+        return pos;
     }
 
     private void AdjustSpriteOrientation()

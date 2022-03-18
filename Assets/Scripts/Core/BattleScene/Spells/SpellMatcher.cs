@@ -32,8 +32,8 @@ public class SpellMatcher
 
         // Wind Skill 
         this.spells.Add(new Spell<Tornado>(10, ElementType.Wind, ElementType.Water));
-        // this.spells.Add(new Spell<Thunder>(30, ElementType.Wind, ElementType.Wind, ElementType.Fire, ElementType.Fire, ElementType.Fire, ElementType.Water));
-        this.spells.Add(new Spell<Thunder>(0, ElementType.Wind, ElementType.Wind));
+        this.spells.Add(new Spell<Thunder>(30, ElementType.Wind, ElementType.Wind, ElementType.Fire, ElementType.Fire, ElementType.Fire, ElementType.Water));
+        this.spells.Add(new Spell<Teleport>(10, ElementType.Wind, ElementType.Wind, ElementType.Fire, ElementType.Earth));
 
         // general spells require only one element
         this.generalSpells.Add(new Spell<FireGeneral>(0, ElementType.Fire));

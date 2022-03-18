@@ -37,9 +37,19 @@ public static class Utils
         return GameObject.FindGameObjectWithTag(Constants.PlayerTag);
     }
 
+    public static PlayerMoveController GetPlayerMoveController()
+    {
+        return GameObject.FindGameObjectWithTag(Constants.PlayerTag).GetComponent<PlayerMoveController>();
+    }
+
     public static HitEffectGenerator GetHitEffectGenerator()
     {
         return GameObject.FindGameObjectWithTag(Constants.MainControllerTag).GetComponent<HitEffectGenerator>();
+    }
+
+    public static Vector3 GetPlayerPosition()
+    {
+        return GameObject.FindGameObjectWithTag(Constants.PlayerTag).transform.position;
     }
 
     public static GameObject GetSpellCasterObject()
