@@ -41,8 +41,8 @@ public class PlayerSkillController : MonoBehaviour
 
 		HandleElementKeyInput(KeyCode.Q, ElementType.Fire);
 		HandleElementKeyInput(KeyCode.W, ElementType.Water);
-		HandleElementKeyInput(KeyCode.E, ElementType.Wind);
-		HandleElementKeyInput(KeyCode.R, ElementType.Earth);
+		HandleElementKeyInput(KeyCode.E, ElementType.Earth);
+		HandleElementKeyInput(KeyCode.R, ElementType.Wind);
 
 		if (Input.GetKeyDown(KeyCode.Space) && !IsConjureTableEmpty())
 		{
