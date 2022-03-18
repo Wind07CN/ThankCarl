@@ -379,6 +379,7 @@ GameObject:
   - component: {fileID: 124658324}
   - component: {fileID: 124658325}
   - component: {fileID: 124658326}
+  - component: {fileID: 124658327}
   m_Layer: 6
   m_Name: SpellCaster
   m_TagString: Untagged
@@ -636,6 +637,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CannonTowerPrefab: {fileID: 1008183812050823698, guid: cf506a11dd1bc3748b7235bcd6cd2196, type: 3}
+--- !u!114 &124658327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124658308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25be1d332e07153458a8e3be466b3a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  schutzwallPrefab: {fileID: 7318207612167196882, guid: 38d46c4f6bc18014caa712e06b221a46, type: 3}
 --- !u!1 &296123110
 GameObject:
   m_ObjectHideFlags: 0
