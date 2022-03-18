@@ -143,8 +143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Color: {r: 1, g: 1, b: 1, a: 1}
-  Width: 0.3
+  Width: 0.2
   StartPoint: {x: 0, y: 0, z: 0}
   EndPoint: {x: 0, y: 0, z: 0}
   SegmentCount: 10
-  GaussianRandomDeviation: 0.5
+  GaussianRandomDeviation: 0.75

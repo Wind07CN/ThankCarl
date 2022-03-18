@@ -155,10 +155,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AreaScale: 3
   Damage: 100
-  ZigzagLineNumber: 3
+  ZigzagLineNumber: 5
   PrimaryColorLineProportion: 0.75
   PrimaryColor: {r: 0.9490197, g: 0.8705883, b: 0.5058824, a: 1}
-  SecondaryColor: {r: 0.78823537, g: 0.6509804, b: 0.43529415, a: 1}
+  SecondaryColor: {r: 0.6039216, g: 0.4784314, b: 0.3529412, a: 1}
   ZigzagLinePrefab: {fileID: 7849120320243557354, guid: c4c0117276bdca9418688a1700e6bcc5, type: 3}
 --- !u!1001 &5948316425967525938
 PrefabInstance:

@@ -17,6 +17,7 @@ public class ThunderboltController : MonoBehaviour
     private float ResidenceTime = 0.5f;
     private float DisappearTime = 0.2f;
     private List<LineRenderer> lineRenderers = new List<LineRenderer>();
+    private List<Color> lineColors = new List<Color>();
 
     private void Start()
     {
@@ -41,7 +42,7 @@ public class ThunderboltController : MonoBehaviour
     private void AddLightningLines()
     {
         Vector3 boltEndPoint = transform.position;
-        Vector3 boltStartPoint = boltEndPoint + new Vector3(0, Camera.main.orthographicSize * 2, 0);
+        Vector3 boltStartPoint = boltEndPoint + new Vector3(0, Camera.main.orthographicSize * 4, 0);
 
         for (int i = 0; i < ZigzagLineNumber; i++)
         {
@@ -51,6 +52,7 @@ public class ThunderboltController : MonoBehaviour
             lineDrawer.StartPoint = boltStartPoint;
             lineDrawer.EndPoint = boltEndPoint;
             lineDrawer.Color = i + 1 > Math.Round((float)ZigzagLineNumber * PrimaryColorLineProportion) ? SecondaryColor : PrimaryColor;
+            lineColors.Add(lineDrawer.Color);
         }
     }
 
@@ -91,6 +93,7 @@ public class ThunderboltController : MonoBehaviour
 
         spriteRenderer.material.shader = originalShader;
         spriteRenderer.color = Color.white;
+        ResetLightningLinesColor();
     }
 
     // Fade-out of lightning lines and the thunderbolt sprite
@@ -114,6 +117,15 @@ public class ThunderboltController : MonoBehaviour
         {
             lineRenderer.startColor = color;
             lineRenderer.endColor = color;
+        }
+    }
+
+    private void ResetLightningLinesColor()
+    {
+        for (int i = 0; i < lineRenderers.Count; i++)
+        {
+            lineRenderers[i].startColor = lineColors[i];
+            lineRenderers[i].endColor = lineColors[i];
         }
     }
 
