@@ -38,7 +38,7 @@ public class PlayerAnimeController : MonoBehaviour
 	public void PlayerGetDamage()
 	{
 		animator.SetBool("getDamage", true);
-		Invoke(nameof(ResetFace), 0.15f);
+		Invoke(nameof(ResetFace), 0.5f);
 	}
 
 	public void PlayerAttack()
