@@ -3393,10 +3393,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normalEnemyPrefabs:
-  - {fileID: 4879297585810891665, guid: 73719a5540532f044a80bf5a1435904c, type: 3}
+  - {fileID: 8068589544198079020, guid: 58cfce6dc90c7944082fbeb275a1a960, type: 3}
+  - {fileID: 742313394204802393, guid: a136f6ce3341f1342a83b57db8e6c3bf, type: 3}
+  - {fileID: 156542848281769717, guid: 73719a5540532f044a80bf5a1435904c, type: 3}
+  - {fileID: 9220582574361967393, guid: 21a799382be29e84d86984106765cee1, type: 3}
   eliteEnemyPrefabs:
-  - {fileID: 4879297585810891665, guid: 73719a5540532f044a80bf5a1435904c, type: 3}
-  eliteRate: 0.1
+  - {fileID: 742313394204802393, guid: a136f6ce3341f1342a83b57db8e6c3bf, type: 3}
+  eliteRate: 0
   battlefieldMaxX: 14
   battlefieldMinX: -14
   battlefieldMaxY: 14

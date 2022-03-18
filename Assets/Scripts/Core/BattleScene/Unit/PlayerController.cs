@@ -49,10 +49,11 @@ public class PlayerController : MonoBehaviour
                 {
                     DamagePlayer(enemyController.damageToPlayer);
 
+                    hitEffectGenerator.InitHitEffect(enemyController.GetEnemyElementType(), transform.position);
                     // Enemy Play dying animation
                     enemyController.KillEnemy();
 
-                    hitEffectGenerator.InitHitEffect(enemyController.GetEnemyElementType(), transform.position);
+                    
                 }
             }
         }

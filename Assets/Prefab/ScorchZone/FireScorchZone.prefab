@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7403019562375515288}
   - component: {fileID: 2431838231109140187}
   - component: {fileID: 2431838231109140189}
+  - component: {fileID: 1771393621173241043}
   m_Layer: 0
   m_Name: FireScorchZone
   m_TagString: Untagged
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3c3b7cb77e3ad584d88b5d71728a76a7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 727b63dfb19a46b448856d01176d45df, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,8 +98,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementType: 1
   damageIntervalTime: 0.5
-  damage: 15
+  Damage: 15
+  expandTime: 0.2
   durationTime: 5
   disapperTime: 0.3
   scaleRatio: 5
   defaultRadius: 1.6
+  hasForce: 0
+  forceFactor: 10
+  isRotate: 0
+  rotateSpeed: 120
+--- !u!95 &1771393621173241043
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127572289945435279}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bbb53648285dc464788ddd62d18cb96f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

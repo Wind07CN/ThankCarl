@@ -70,12 +70,10 @@ public class EnemyController : MonoBehaviour
 	private void SetEnemyActive()
 	{
 		enemyAttribute.IsActive = true;
-
-		// 结束待机（无敌）动画
+		GetComponent<EnemyAnimeController>().EnemyActive();
 	}
 
 
-	// *************
 
 	private void TrackPlayer()
 	{
