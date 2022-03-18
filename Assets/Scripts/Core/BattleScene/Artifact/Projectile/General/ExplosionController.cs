@@ -39,6 +39,7 @@ public class ExplosionController : MonoBehaviour
 
 	private void ExplosionEffect()
 	{
+		if (!HasForce && Damage == 0) return;
 		Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.transform.position, defaultRadius * Scale);
 		foreach (Collider2D collider in colliders)
 		{
