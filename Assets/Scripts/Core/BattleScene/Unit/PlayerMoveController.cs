@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class PlayerMoveController : MonoBehaviour
 {
-    // [SerializeField]
     private PlayerAttribute mPlayerAttribute;
     private PlayerAnimeController animeController;
 
-    [SerializeField] private float maxRangeX1 = -60f;
-    [SerializeField] private float maxRangeX2 = 60f;
-    [SerializeField] private float maxRangeY1 = 30f;
-    [SerializeField] private float maxRangeY2 = -30f;
+    public float MinX = -100f;
+    public float MaxX = 30f;
+    public float MaxY = 48f;
+    public float MinY = -25f;
 
     private bool isLastStateRun = false;
 
@@ -25,17 +24,69 @@ public class PlayerMoveController : MonoBehaviour
     {
         if (mPlayerAttribute.IsActive && mPlayerAttribute.IsAlive)
         {
-            HandleKeyBoardInput();
+            HandleInput();
         }
     }
 
-    private void HandleKeyBoardInput()
+    private void HandleInput()
     {
         bool isRun = false;
         Vector2 direction = Vector2.zero;
 
         // Debug.Log(Camera.main.WorldToScreenPoint(transform.position) + "+" + Input.mousePosition);
 
+        // spriate orientation, left or right
+        AdjustSpriteOrientation();
+
+        if (!IsInsideMapRange(transform.position))
+        {
+            return;
+        }
+
+        // if left mouse is held
+        if (Input.GetMouseButton(0))
+        {
+            isRun = true;
+            direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        }
+        else
+        {
+            isRun = false;
+        }
+
+        // animation control
+        if (isRun != isLastStateRun)
+        {
+            animeController.PlayMoveState(isRun);
+            isLastStateRun = isRun;
+        }
+
+        Vector2 moveVector = mPlayerAttribute.MoveSpeed * Time.deltaTime * direction.normalized;
+        Vector3 targetPosition = new Vector2(transform.position.x, transform.position.y) + moveVector;
+
+        if (IsInsideMapRange(targetPosition))
+        {
+            MovePlayer(moveVector);
+        }
+    }
+
+
+    private void MovePlayer(Vector3 vec)
+    {
+        transform.Translate(vec);
+    }
+
+    private bool IsInsideMapRange(Vector2 pos)
+    {
+        if (pos.x < MinX || pos.x > MaxX || pos.y < MinY || pos.y > MaxY)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    private void AdjustSpriteOrientation()
+    {
         if (Camera.main.WorldToScreenPoint(transform.position).x > Input.mousePosition.x)
         {
             transform.localScale = new Vector3(1, 1, 1);
@@ -44,34 +95,6 @@ public class PlayerMoveController : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-
-
-        if (Input.GetKey(KeyCode.W) && transform.position.y <= maxRangeY1)
-        {
-            isRun = true;
-            direction += Vector2.up;
-        }
-        if (Input.GetKey(KeyCode.S) && transform.position.y >= maxRangeY2)
-        {
-            isRun = true;
-            direction += Vector2.down;
-        }
-        if (Input.GetKey(KeyCode.A) && transform.position.x >= maxRangeX1)
-        {
-            isRun = true;
-            direction += Vector2.left;
-        }
-        if (Input.GetKey(KeyCode.D) && transform.position.x <= maxRangeX2)
-        {
-            isRun = true;
-            direction += Vector2.right;
-        }
-        if (isRun != isLastStateRun)
-        {
-            animeController.PlayMoveState(isRun);
-            isLastStateRun = isRun;
-        }
-        transform.Translate(mPlayerAttribute.MoveSpeed * Time.deltaTime * direction.normalized);
     }
 
     public float GetMouseAngle()
