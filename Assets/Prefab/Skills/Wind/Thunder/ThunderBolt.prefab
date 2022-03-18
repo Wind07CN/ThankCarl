@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AreaScale: 3
   Damage: 100
-  ZigzagLineNumber: 5
+  ZigzagLineNumber: 3
   PrimaryColorLineProportion: 0.75
   PrimaryColor: {r: 0.9490197, g: 0.8705883, b: 0.5058824, a: 1}
   SecondaryColor: {r: 0.6039216, g: 0.4784314, b: 0.3529412, a: 1}
