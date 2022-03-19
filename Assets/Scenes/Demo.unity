@@ -1888,13 +1888,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 860951946}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3a878e0cbb335418654ee5e7ae4d68, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d6cec692a74d694c8a7b2e1006084db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1438070854}
+  player: {fileID: 0}
   cameraHeight: -20
   velocity: {x: 0, y: 0, z: 0}
-  smoothTime: 0.15
+  smoothTime: 0
 --- !u!1 &895683874
 GameObject:
   m_ObjectHideFlags: 0
