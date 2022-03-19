@@ -24,6 +24,7 @@ public class SpellMatcher
 		this.spells.Add(new Spell<MagicCircle>(10, ElementType.Water, ElementType.Water, ElementType.Earth, ElementType.Earth));
 		this.spells.Add(new Spell<TimeStop>(10, ElementType.Water, ElementType.Water, ElementType.Water, ElementType.Water, ElementType.Wind, ElementType.Wind));
 		this.spells.Add(new Spell<WaterDropProtector>(10, ElementType.Water, ElementType.Wind, ElementType.Wind));
+		this.spells.Add(new Spell<WaterBulletStorm>(10, ElementType.Water, ElementType.Fire, ElementType.Earth));
 
 		// Earth Skills
 		this.spells.Add(new Spell<Shotgun>(10, ElementType.Earth, ElementType.Water));

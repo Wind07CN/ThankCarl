@@ -381,6 +381,7 @@ GameObject:
   - component: {fileID: 124658326}
   - component: {fileID: 124658327}
   - component: {fileID: 124658328}
+  - component: {fileID: 124658329}
   m_Layer: 6
   m_Name: SpellCaster
   m_TagString: Untagged
@@ -675,6 +676,22 @@ MonoBehaviour:
   ArrowPrefab: {fileID: 5053727158087827864, guid: 2d69b0ffd4eeee1438b6b420dc0578f7, type: 3}
   ArrowNumber: 3
   Interval: 0.4
+--- !u!114 &124658329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124658308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06b11a64cb5d1b40bfc3d99f0b15eb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 950336098575156671, guid: ebf9b008de282a245b6b7c1d66013800, type: 3}
+  RoundCount: 1
+  BulletCount: 30
+  Interval: 0.02
 --- !u!1001 &249137570
 PrefabInstance:
   m_ObjectHideFlags: 0
