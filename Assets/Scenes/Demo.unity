@@ -379,6 +379,7 @@ GameObject:
   - component: {fileID: 124658324}
   - component: {fileID: 124658325}
   - component: {fileID: 124658326}
+  - component: {fileID: 124658327}
   m_Layer: 6
   m_Name: SpellCaster
   m_TagString: Untagged
@@ -637,6 +638,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EffectPrefab: {fileID: 8619611591248571954, guid: 0d4fb1417bf4dcf45923c75ed5a97f0c, type: 3}
   MaxRange: 20
+--- !u!114 &124658327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124658308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0cb431bac274e439b49bbc2557ccf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LightningBallPrefab: {fileID: 2106181839046941315, guid: f76345f101ddbf8478886a4fc6f594bf, type: 3}
+  LightningChainPrefab: {fileID: 4961607990314474453, guid: 6ba7fea40874c8a46b0b5423168e3cbf, type: 3}
+  ElementType: 0
+  MaxCaptureDistance: 30
+  EffectExistTime: 0.2
+  EffectDisappearTime: 0.2
+  Damage: 20
+  BulletSpeed: 30
+  MaxJumpCount: 3
 --- !u!1001 &249137570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3576,67 +3598,6 @@ MonoBehaviour:
   waterHitEffect: {fileID: 3146856275991024581, guid: c202a31e2517d444d92ccf8cc7900215, type: 3}
   earthHitEffect: {fileID: 2858773699364256313, guid: 446574b26eb9d0748a3c75c763ab0c06, type: 3}
   windHitEffect: {fileID: 7428791993398438196, guid: 3c86d42219efbc448abb3be4b7d62c03, type: 3}
---- !u!1001 &1008183812376549738
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1008183811937233324, guid: cf506a11dd1bc3748b7235bcd6cd2196, type: 3}
-      propertyPath: m_SortingOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008183812050823697, guid: cf506a11dd1bc3748b7235bcd6cd2196, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008183812050823697, guid: cf506a11dd1bc3748b7235bcd6cd2196, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 14.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008183812050823697, guid: cf506a11dd1bc3748b7235bcd6cd2196, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008183812050823697, guid: cf506a11dd1bc3748b7235bcd6cd2196, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008183812050823697, guid: cf506a11dd1bc3748b7235bcd6cd2196, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008183812050823697, guid: cf506a11dd1bc3748b7235bcd6cd2196, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008183812050823697, guid: cf506a11dd1bc3748b7235bcd6cd2196, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008183812050823697, guid: cf506a11dd1bc3748b7235bcd6cd2196, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008183812050823697, guid: cf506a11dd1bc3748b7235bcd6cd2196, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008183812050823697, guid: cf506a11dd1bc3748b7235bcd6cd2196, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008183812050823697, guid: cf506a11dd1bc3748b7235bcd6cd2196, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1008183812050823698, guid: cf506a11dd1bc3748b7235bcd6cd2196, type: 3}
-      propertyPath: m_Name
-      value: CannonTower
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cf506a11dd1bc3748b7235bcd6cd2196, type: 3}
 --- !u!1001 &8938685993316641792
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -64,27 +64,23 @@ public static class Utils
     /// <param name="startPos"></param>
     /// <param name="maxDistance"></param>
     /// <returns></returns>
-    public static int FindTheNearestEnemy(List<GameObject> enemiesPos, GameObject startPos, float maxDistance)
+    public static GameObject FindTheNearestEnemy(Vector3 center, float radius, List<GameObject> excludeList = null)
     {
-        int nearestEnemyPosInArray = -1;
-        float minDistance = Vector3.Distance(enemiesPos[0].transform.position, startPos.transform.position);
-
-        if (minDistance <= maxDistance)
+        GameObject nearestEnemy = null;
+        float shortestDistance = float.MaxValue;
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, radius);
+        foreach (var hitCollider in hitColliders)
         {
-            nearestEnemyPosInArray = 0;
-        }
-
-        for (int i = 1; i < enemiesPos.Count; i++)
-        {
-            float nextDistance = Vector3.Distance(enemiesPos[i].transform.position, startPos.transform.position);
-            if (nextDistance <= maxDistance && nextDistance < minDistance)
+            if (!hitCollider.gameObject.CompareTag(Constants.EnemyTag)) continue;
+            if (excludeList != null && excludeList.Contains(hitCollider.gameObject)) continue;
+            Vector2 distanceVector = hitCollider.gameObject.transform.position - center;
+            if (distanceVector.magnitude < shortestDistance)
             {
-                nearestEnemyPosInArray = i;
-                minDistance = nextDistance;
+                shortestDistance = distanceVector.magnitude;
+                nearestEnemy = hitCollider.gameObject;
             }
         }
-
-        return nearestEnemyPosInArray;
+        return nearestEnemy;
     }
 
     /// <summary>

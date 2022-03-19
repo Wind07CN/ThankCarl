@@ -9,10 +9,11 @@ public class RandomZigzagLineDrawer : MonoBehaviour
     public Vector3 EndPoint = Vector3.zero;
     public int SegmentCount = 10;
     public float GaussianRandomDeviation = 0.3f;
+    private LineRenderer lineRenderer;
 
     void Start()
     {
-        LineRenderer lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer = GetComponent<LineRenderer>();
 
         lineRenderer.positionCount = SegmentCount + 1;
         lineRenderer.SetPosition(0, StartPoint);
@@ -22,7 +23,21 @@ public class RandomZigzagLineDrawer : MonoBehaviour
         lineRenderer.startWidth = Width;
         lineRenderer.endWidth = Width;
 
-        // determine intermediate points
+        DetermineIntermediatePoints();
+    }
+
+    public void UpdatePosition(Vector3 startPoint, Vector3 endPoint)
+    {
+        if (lineRenderer == null) return;
+        lineRenderer.SetPosition(0, startPoint);
+        lineRenderer.SetPosition(SegmentCount, endPoint);
+        StartPoint = startPoint;
+        EndPoint = endPoint;
+        DetermineIntermediatePoints();
+    }
+
+    private void DetermineIntermediatePoints()
+    {
         float unifiedDeltaX = (EndPoint.x - StartPoint.x) / SegmentCount;
         float unifiedDeltaY = (EndPoint.y - StartPoint.y) / SegmentCount;
         for (int i = 1; i < SegmentCount; i++)
