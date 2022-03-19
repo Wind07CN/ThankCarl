@@ -43,7 +43,7 @@ public class EnemyController : MonoBehaviour
 	private void InitEnemy()
 	{
 
-		enemyAttribute = new EnemyAttribute(ElementType.Water);
+		enemyAttribute = new EnemyAttribute(enemyElementType);
 
 		mRigidbody = GetComponent<Rigidbody2D>();
 

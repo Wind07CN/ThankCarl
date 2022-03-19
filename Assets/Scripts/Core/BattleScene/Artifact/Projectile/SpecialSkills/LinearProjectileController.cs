@@ -89,6 +89,7 @@ public class LinearProjectileController : MonoBehaviour
         ExplosionController explosionController = explosion.GetComponent<ExplosionController>();
         explosionController.ElementType = ElementType;
         explosionController.Scale = scale;
+        explosionController.Damage = damage;
     }
 
     private void DestroyGameObj()
