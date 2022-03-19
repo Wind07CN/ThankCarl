@@ -119,9 +119,9 @@ MonoBehaviour:
   AreaEffectPrefab: {fileID: 2658325869160293948, guid: 930ff7ce2e4a3b34d931c07d5a4cf050, type: 3}
   ElementType: 1
   Speed: 30
-  CollisionDamage: 2
+  CollisionDamage: 10
   isAreaEffect: 1
-  AreaDamage: 0
+  AreaDamage: 5
   HasPenetrateLlimit: 1
   PenetrateTimes: 0
   hitEffectTarget: 1

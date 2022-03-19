@@ -21,8 +21,8 @@ public static class Constants
     // spell
     public const int ElementManaCost = 5;
     public const float nextDefaultSpawnTime = 1f;
-    public const float ElementDamageEnhanceMultiplier = 2f;
-    public const float ElementDamageReduceMultiplier = 0.5f;
+    public const float ElementDamageEnhanceMultiplier = 4f;
+    public const float ElementDamageReduceMultiplier = 0.25f;
     // battlefield
     public const float BattlefieldDefaultMaxX = 14f;
     public const float BattlefieldDefaultMinX = -14f;

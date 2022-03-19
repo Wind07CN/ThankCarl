@@ -2576,7 +2576,7 @@ MonoBehaviour:
   playerMaxLife: 8
   playerArmour: 0
   playerBaseMoveSpeed: 15
-  playerBaseManaRegenSpeed: 5
+  playerBaseManaRegenSpeed: 15
   playerDyingLifeThreshold: 3
   invincibleTime: 1
   invincibleAnime: {fileID: 645621879}

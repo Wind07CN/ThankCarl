@@ -18,6 +18,11 @@ public class SpellDamageDealer
 
         int definitiveDamage = (int) Math.Round(amount * multiplier * PlayerAttribute.DamageMultiplier);
 
+        Debug.Log("Raw damage " + amount);
+        Debug.Log("Multiplier " + multiplier);
+        Debug.Log("Enemy type " + enemyController.enemyAttribute.ElementType);
+        Debug.Log("Deal " + definitiveDamage + " damage to " + enemyController.enemyAttribute.GetHashCode());
+
         enemyController.DamageEnemy(definitiveDamage);
 
     }
