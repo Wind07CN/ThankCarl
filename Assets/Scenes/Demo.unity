@@ -380,6 +380,7 @@ GameObject:
   - component: {fileID: 124658325}
   - component: {fileID: 124658326}
   - component: {fileID: 124658327}
+  - component: {fileID: 124658328}
   m_Layer: 6
   m_Name: SpellCaster
   m_TagString: Untagged
@@ -659,6 +660,19 @@ MonoBehaviour:
   Damage: 20
   BulletSpeed: 30
   MaxJumpCount: 3
+--- !u!114 &124658328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124658308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c563fbd13773b242baaa378778438cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArrowPrefab: {fileID: 5053727158087827864, guid: 2d69b0ffd4eeee1438b6b420dc0578f7, type: 3}
 --- !u!1001 &249137570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1891,10 +1905,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6cec692a74d694c8a7b2e1006084db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1438070854}
   cameraHeight: -20
-  velocity: {x: 0, y: 0, z: 0}
-  smoothTime: 0
+  Velocity: {x: 0, y: 0, z: 0}
+  SmoothTime: 0
 --- !u!1 &895683874
 GameObject:
   m_ObjectHideFlags: 0
