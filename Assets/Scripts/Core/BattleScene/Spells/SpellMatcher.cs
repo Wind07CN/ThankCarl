@@ -31,9 +31,10 @@ public class SpellMatcher
 		this.spells.Add(new Spell<RollingStone>(10, ElementType.Earth, ElementType.Fire));
 		this.spells.Add(new Spell<CannonTower>(10, ElementType.Earth, ElementType.Fire, ElementType.Wind, ElementType.Water));
 		this.spells.Add(new Spell<Schutzwall>(10, ElementType.Earth, ElementType.Earth, ElementType.Earth, ElementType.Earth, ElementType.Wind, ElementType.Fire));
+		this.spells.Add(new Spell<DefensiveWalls>(10, ElementType.Earth, ElementType.Earth));
 
-        // Wind Skill 
-        this.spells.Add(new Spell<Tornado>(10, ElementType.Wind, ElementType.Water));
+		// Wind Skill 
+		this.spells.Add(new Spell<Tornado>(10, ElementType.Wind, ElementType.Water));
         this.spells.Add(new Spell<Thunder>(30, ElementType.Wind, ElementType.Wind, ElementType.Fire, ElementType.Fire, ElementType.Fire, ElementType.Water));
         this.spells.Add(new Spell<Teleport>(10, ElementType.Wind, ElementType.Wind, ElementType.Fire, ElementType.Earth));
 		this.spells.Add(new Spell<LightningChain>(20, ElementType.Wind, ElementType.Wind, ElementType.Fire, ElementType.Fire));
