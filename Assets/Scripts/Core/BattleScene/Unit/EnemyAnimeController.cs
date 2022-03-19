@@ -11,6 +11,11 @@ public class EnemyAnimeController : MonoBehaviour
 		animator = GetComponent<Animator>();
 	}
 
+	public void EnemyActive()
+	{
+		animator.SetBool("active", true);
+	}
+
 	public void EnemyDead()
 	{
 		animator.SetBool("dead", true);

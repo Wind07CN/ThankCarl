@@ -48,11 +48,11 @@ public class EnemySpawnController : MonoBehaviour
 		Vector2 vector2 = new Vector2(Random.Range(battlefieldMinX, battlefieldMaxX), Random.Range(battlefieldMinY, battlefieldMaxY));
 		if (Random.Range(0f, 1f) < eliteRate)
 		{
-			Instantiate(eliteEnemyPrefabs[Random.Range(0, normalEnemyTypeNum)], vector2, Quaternion.identity);
+			Instantiate(eliteEnemyPrefabs[Random.Range(0, eliteEnemyTypeNum)], vector2, Quaternion.identity);
 		}
 		else
 		{
-			Instantiate(normalEnemyPrefabs[Random.Range(0, eliteEnemyTypeNum)], vector2, Quaternion.identity);
+			Instantiate(normalEnemyPrefabs[Random.Range(0, normalEnemyTypeNum )], vector2, Quaternion.identity);
 		}
 
 		needSpawn = true;

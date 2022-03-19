@@ -18,7 +18,7 @@ public class WaterDropController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy")
+        if (collision.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<EnemyController>().DamageEnemy(damage);
             this.transform.parent.GetComponent<WaterDropMoveController>().DestroySub();
