@@ -673,6 +673,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ArrowPrefab: {fileID: 5053727158087827864, guid: 2d69b0ffd4eeee1438b6b420dc0578f7, type: 3}
+  ArrowNumber: 3
+  Interval: 0.4
 --- !u!1001 &249137570
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -206,8 +206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AreaEffectPrefab: {fileID: 0}
   ElementType: 0
-  Speed: 30
-  CollisionDamage: 2
+  Speed: 40
+  CollisionDamage: 15
   isAreaEffect: 0
   AreaDamage: 0
   HasPenetrateLlimit: 1
