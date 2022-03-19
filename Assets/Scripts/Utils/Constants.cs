@@ -6,7 +6,7 @@ public static class Constants
 {
     // player
     public const int PlayerDefaultMaxLife = 100;
-    public const float PlayerDefaultMoveSpeed = 10;
+    public const float PlayerDefaultMoveSpeed = 20;
     public const int PlayerDefaultArmour = 0;
     public const float PlayerDefaultManaRegenSpeed = 5;
 

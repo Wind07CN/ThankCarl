@@ -551,9 +551,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 2658325869160293948, guid: 930ff7ce2e4a3b34d931c07d5a4cf050, type: 3}
-  exploosionScale: 4
+  explosionScale: 2
   damage: 10
-  ForceFactor: 20
+  forceFactor: 10
 --- !u!114 &124658321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2520,8 +2520,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMaxLife: 8
   playerArmour: 0
-  playerMoveSpeed: 20
-  playerManaRegenSpeed: 5
+  playerBaseMoveSpeed: 15
+  playerBaseManaRegenSpeed: 5
   playerDyingLifeThreshold: 3
   invincibleTime: 1
   invincibleAnime: {fileID: 645621879}

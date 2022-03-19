@@ -37,6 +37,7 @@ public abstract class AbstractUnit : IUnit
 		}
 	}
 	public float MoveSpeed { get; set; }
+
 	public int Armour { get; set; }
 
 	public bool IsAlive

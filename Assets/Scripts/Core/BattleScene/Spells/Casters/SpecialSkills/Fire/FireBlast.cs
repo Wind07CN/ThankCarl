@@ -7,9 +7,9 @@ public class FireBlast : AbstractSpellCaster
     public GameObject explosionPrefab;
     private GameObject playerGameobj;
 
-    [SerializeField] private float exploosionScale = 2f;
+    [SerializeField] private float explosionScale = 2f;
     [SerializeField] private float damage = 100f;
-    [SerializeField] private float ForceFactor = 10f;
+    [SerializeField] private float forceFactor = 10f;
 
     private void Start()
     {
@@ -22,9 +22,9 @@ public class FireBlast : AbstractSpellCaster
         ExplosionController explosionController = explosion.GetComponent<ExplosionController>();
         explosionController.Damage = damage;
         explosionController.ElementType = ElementType.Fire;
-        explosionController.Scale = exploosionScale;
+        explosionController.Scale = explosionScale;
         explosionController.HasForce = true;
-        explosionController.ForceFactor = ForceFactor;
-        playerGameobj.GetComponent<PlayerController>().QuickDash(20, 0.2f);
+        explosionController.ForceFactor = forceFactor;
+        playerGameobj.GetComponent<PlayerController>().TemporarySpeedUp(3f, 0.2f);
     }
 }

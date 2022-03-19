@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class SpellDamageDealer
 {
+    public static PlayerAttribute PlayerAttribute = Utils.GetPlayerAttribute();
     public static void Deal(ElementType spellElementType, GameObject enemy, float amount)
     {
         EnemyController enemyController = enemy.GetComponent<EnemyController>();
@@ -15,7 +16,7 @@ public class SpellDamageDealer
 
         float multiplier = ElementDamageMultiplierCalculator.Get(spellElementType, enemyController.enemyAttribute.ElementType);
 
-        int definitiveDamage = (int) Math.Round(amount * multiplier);
+        int definitiveDamage = (int) Math.Round(amount * multiplier * PlayerAttribute.DamageMultiplier);
 
         enemyController.DamageEnemy(definitiveDamage);
 

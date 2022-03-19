@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private int playerMaxLife = Constants.PlayerDefaultMaxLife;
     [SerializeField] private int playerArmour = Constants.PlayerDefaultArmour;
-    [SerializeField] private float playerMoveSpeed = Constants.PlayerDefaultMoveSpeed;
-    [SerializeField] private float playerManaRegenSpeed = Constants.PlayerDefaultManaRegenSpeed;
+    [SerializeField] private float playerBaseMoveSpeed = Constants.PlayerDefaultMoveSpeed;
+    [SerializeField] private float playerBaseManaRegenSpeed = Constants.PlayerDefaultManaRegenSpeed;
 
     [SerializeField] private int playerDyingLifeThreshold = 3;
 
@@ -64,8 +64,8 @@ public class PlayerController : MonoBehaviour
         playerAttribute.MaxLife = playerMaxLife;
         playerAttribute.CurrentLife = playerMaxLife;
         playerAttribute.Armour = playerArmour;
-        playerAttribute.MoveSpeed = playerMoveSpeed;
-        playerAttribute.ManaRegenSpeed = playerManaRegenSpeed;
+        playerAttribute.BaseMoveSpeed = playerBaseMoveSpeed;
+        playerAttribute.BaseManaRegenSpeed = playerBaseManaRegenSpeed;
 
         animation = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
         UIController = GameObject.FindGameObjectWithTag("MainUI").GetComponent<BattleSceneMainUIController>();
@@ -137,18 +137,40 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// improve player speed in a short time
+    /// Increase player's speed in a short time
     /// </summary>
-    /// <param name="increaseSpeed"></param>
-    /// <param name="dashTIme"></param>
-    public void QuickDash(float increaseSpeed, float dashTIme)
+    /// <param name="multiplier"></param>
+    /// <param name="duration"></param>
+    public void TemporarySpeedUp(float multiplier, float duration)
     {
-        playerAttribute.MoveSpeed += increaseSpeed;
-        Invoke(nameof(RecoverSpeed), dashTIme);
+        playerAttribute.SpeedMultiplier = multiplier;
+        Invoke(nameof(ResetSpeed), duration);
     }
 
-    private void RecoverSpeed()
+    public void TemporaryDamageIncrease(float multiplier, float duration)
     {
-        playerAttribute.MoveSpeed = playerMoveSpeed;
+        playerAttribute.DamageMultiplier = multiplier;
+        Invoke(nameof(ResetDamage), duration);
+    }
+
+    public void TemporaryManaRegenSpeedUp(float multiplier, float duration)
+    {
+        playerAttribute.ManaRegenSpeedMultiplier = multiplier;
+        Invoke(nameof(ResetManaRegen), duration);
+    }
+
+    private void ResetSpeed()
+    {
+       playerAttribute.SpeedMultiplier = 1f;
+    }
+    
+    private void ResetDamage()
+    {
+        playerAttribute.DamageMultiplier = 1f;
+    }
+
+    private void ResetManaRegen()
+    {
+        playerAttribute.ManaRegenSpeedMultiplier = 1f;
     }
 }
