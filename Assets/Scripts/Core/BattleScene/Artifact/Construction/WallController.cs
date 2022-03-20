@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SchutzWallController : MonoBehaviour
+public class WallController : MonoBehaviour
 {
     [SerializeField] private float expandTime = 0.2f;
     [SerializeField] private float durationTime = 5;

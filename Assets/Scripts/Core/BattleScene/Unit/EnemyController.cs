@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
 	[SerializeField] private ElementType enemyElementType;
+	[SerializeField] private int EnemyPoint = 100;
 	[SerializeField] private float enemySpeed = Constants.EnemyDefaultMoveSpeed;
 	[SerializeField] private int enemyMaxLife = Constants.EnemyDefaultMaxLife;
 	[SerializeField] private int enemyArmour = Constants.EnemyDefaultArmour;
@@ -47,7 +48,7 @@ public class EnemyController : MonoBehaviour
 
 		mRigidbody = GetComponent<Rigidbody2D>();
 
-		mPlayer = GameObject.FindWithTag("Player");
+		mPlayer = Utils.GetPlayerObject();
 		playerAttribute = Utils.GetPlayerAttribute();
 		difficultyMultiplier = Utils.GetMainController().difficultyMultiplier;
 
@@ -66,6 +67,7 @@ public class EnemyController : MonoBehaviour
 	{
 		difficultyMultiplier = multiplier;
 	}
+
 
 	private void SetEnemyActive()
 	{
@@ -112,6 +114,11 @@ public class EnemyController : MonoBehaviour
 		}
 	}
 
+
+	/// <summary>
+	/// Cause short stun to the enemy
+	/// </summary>
+	/// <param name="time"></param>
 	public void StunEnemy(float time)
 	{
 		enemyAttribute.IsActive = false;
@@ -123,7 +130,23 @@ public class EnemyController : MonoBehaviour
 		return enemyElementType;
 	}
 
+	/// <summary>
+	/// Ignore the life value, directly kill the enemy,
+	/// At the same time, players gain points
+	/// </summary>
 	public void KillEnemy()
+	{
+		KillEnemyWithoutPoint();
+		playerAttribute.PlayerPoints += EnemyPoint;
+		Utils.GetMainUIController().UpdatePointText();
+	}
+
+
+	/// <summary>
+	/// Ignore the life value, directly kill the enemy,
+	/// Players do not get points
+	/// </summary>
+	public void KillEnemyWithoutPoint()
 	{
 		enemyAttribute.IsActive = false;
 		mRigidbody.simulated = false;
@@ -134,5 +157,7 @@ public class EnemyController : MonoBehaviour
 	{
 		return transform.GetComponentInChildren<SpriteRenderer>();
 	}
+
+
 
 }
