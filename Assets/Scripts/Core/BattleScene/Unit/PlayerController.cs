@@ -51,9 +51,7 @@ public class PlayerController : MonoBehaviour
 
                     hitEffectGenerator.InitHitEffect(enemyController.GetEnemyElementType(), transform.position);
                     // Enemy Play dying animation
-                    enemyController.KillEnemy();
-
-                    
+                    enemyController.KillEnemyWithoutPoint();
                 }
             }
         }
@@ -70,10 +68,6 @@ public class PlayerController : MonoBehaviour
         animation = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
         UIController = GameObject.FindGameObjectWithTag("MainUI").GetComponent<BattleSceneMainUIController>();
 
-        // Set Active
-        // 这里需要倒计时
-        // 需要使用协程
-        playerAttribute.IsActive = true;
     }
 
     public void DamagePlayer(int damage)
@@ -173,4 +167,10 @@ public class PlayerController : MonoBehaviour
     {
         playerAttribute.ManaRegenSpeedMultiplier = 1f;
     }
+
+    public void SetPlayerActive()
+    {
+        playerAttribute.IsActive = true;
+    }
 }
+

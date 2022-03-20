@@ -9,17 +9,13 @@ public class BattleSceneMainUIController : MonoBehaviour
 	private PlayerAttribute playerAttribute;
 	[SerializeField] private GameObject shakeUI;
 
-	[SerializeField] private GameObject playerLevelIndicator;
-	[SerializeField] private GameObject playerLifeBar;
-	[SerializeField] private GameObject playerManaBar;
+	[SerializeField] private Text playerPointText;
+	[SerializeField] private LifeBar lifeBar;
+	[SerializeField] private ManaBar manaBar;
 
 	[SerializeField] private GameObject getDameage;
 	[SerializeField] private float shakeRange = 10f;
 	[SerializeField] private float shakeTime = 0.15f;
-
-	private Text playerLevelText;
-	private ManaBar manaBar;
-	private LifeBar lifeBar;
 
 	private Vector3 shakePos = Vector3.zero;
 
@@ -41,18 +37,15 @@ public class BattleSceneMainUIController : MonoBehaviour
 	private void InitMainUI()
 	{
 		playerAttribute = Utils.GetPlayerAttribute();
-
-		playerLevelText = playerLevelIndicator.GetComponent<Text>();
-
-		lifeBar = playerLifeBar.GetComponent<LifeBar>();
-		manaBar = playerManaBar.GetComponent<ManaBar>();
-		lifeBar.shouldUpdate = true;
-		manaBar.shouldUpdate = true;
+		UpdateLifeBar();
+		UpdateManaBar();
+		UpdatePointText();
+		
 	}
 
-	public void UpdateLevelIndicatorUI()
+	public void UpdatePointText()
 	{
-		playerLevelText.text = "Lv." + playerAttribute.Level;
+		playerPointText.text = string.Format("{0:D8}", playerAttribute.PlayerPoints);
 	}
 
 	public void UpdateManaBar()
