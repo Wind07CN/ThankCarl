@@ -6,103 +6,109 @@ using UnityEngine.UI;
 public class BattleSceneMainUIController : MonoBehaviour
 {
 
-	private PlayerAttribute playerAttribute;
-	[SerializeField] private GameObject shakeUI;
+    private PlayerAttribute playerAttribute;
+    [SerializeField] private GameObject shakeUI;
+    
+    [SerializeField] private Text playerPointText;
+    [SerializeField] private LifeBar lifeBar;
+    [SerializeField] private ManaBar manaBar;
 
-	[SerializeField] private Text playerPointText;
-	[SerializeField] private LifeBar lifeBar;
-	[SerializeField] private ManaBar manaBar;
+    [SerializeField] private GameObject getDameage;
+    [SerializeField] private float shakeRange = 10f;
+    [SerializeField] private float shakeTime = 0.15f;
 
-	[SerializeField] private GameObject getDameage;
-	[SerializeField] private float shakeRange = 10f;
-	[SerializeField] private float shakeTime = 0.15f;
+    [SerializeField] private GameObject EndUI;
 
-	private Vector3 shakePos = Vector3.zero;
+    private Vector3 shakePos = Vector3.zero;
 
-	private bool isShake = false;
-	private bool isDying = false;
+    private bool isShake = false;
+    private bool isDying = false;
 
-	private void Start()
-	{
-		InitMainUI();
-	}
+    private void Start()
+    {
+        InitMainUI();
+    }
 
-	private void Update()
-	{
-		if (isShake)
-		{
-			ShakeUI();
-		}
-	}
-	private void InitMainUI()
-	{
-		playerAttribute = Utils.GetPlayerAttribute();
-		UpdateLifeBar();
-		UpdateManaBar();
-		UpdatePointText();
-		
-	}
+    private void Update()
+    {
+        if (isShake)
+        {
+            ShakeUI();
+        }
+    }
+    private void InitMainUI()
+    {
+        playerAttribute = Utils.GetPlayerAttribute();
+        UpdateLifeBar();
+        UpdateManaBar();
+        UpdatePointText();
 
-	public void UpdatePointText()
-	{
-		playerPointText.text = string.Format("{0:D8}", playerAttribute.PlayerPoints);
-	}
+    }
 
-	public void UpdateManaBar()
-	{
-		manaBar.shouldUpdate = true;
-	}
+    public void UpdatePointText()
+    {
+        playerPointText.text = string.Format("{0:D8}", playerAttribute.PlayerPoints);
+    }
 
-	public void ShakeManaBar()
-	{
-		manaBar.Shake();
-	}
+    public void UpdateManaBar()
+    {
+        manaBar.shouldUpdate = true;
+    }
 
-	public void UpdateLifeBar()
-	{
-		lifeBar.shouldUpdate = true;
-	}
+    public void ShakeManaBar()
+    {
+        manaBar.Shake();
+    }
 
-	public void GetDamage()
-	{
-		if (!isDying) 
-		{
-			getDameage.SetActive(true);
-			Invoke(nameof(ResetGetDamage), shakeTime);
-		}
-		isShake = true;
-		Invoke(nameof(StopShake), shakeTime);
-	}
+    public void UpdateLifeBar()
+    {
+        lifeBar.shouldUpdate = true;
+    }
 
-	private void ResetGetDamage()
-	{
-		getDameage.SetActive(false);
-		shakeUI.transform.localPosition = Vector3.zero;
-	}
+    public void GetDamage()
+    {
+        if (!isDying)
+        {
+            getDameage.SetActive(true);
+            Invoke(nameof(ResetGetDamage), shakeTime);
+        }
+        isShake = true;
+        Invoke(nameof(StopShake), shakeTime);
+    }
 
-	private void StopShake() 
-	{
-		isShake = false;
-	}
+    private void ResetGetDamage()
+    {
+        getDameage.SetActive(false);
+        shakeUI.transform.localPosition = Vector3.zero;
+    }
 
-	private void ShakeUI()
-	{
-		shakeUI.transform.localPosition += shakePos;
-		shakePos = Random.insideUnitSphere * shakeRange;
-		shakeUI.transform.localPosition -= shakePos;
-	}
+    private void StopShake()
+    {
+        isShake = false;
+    }
 
-	public void PlayerIsDying()
-	{
-		isDying = true;
-		getDameage.SetActive(true);
-	}
-	
-	public void PlayerIsNotDying()
-	{
-		isDying = false;
-		getDameage.SetActive(false);
-	}
+    private void ShakeUI()
+    {
+        shakeUI.transform.localPosition += shakePos;
+        shakePos = Random.insideUnitSphere * shakeRange;
+        shakeUI.transform.localPosition -= shakePos;
+    }
 
+    public void PlayerIsDying()
+    {
+        isDying = true;
+        getDameage.SetActive(true);
+    }
 
+    public void PlayerIsNotDying()
+    {
+        isDying = false;
+        getDameage.SetActive(false);
+    }
+
+    public void ShowEndUI()
+    {
+        Instantiate(EndUI, transform);
+        getDameage.SetActive(false);
+    }
 }
