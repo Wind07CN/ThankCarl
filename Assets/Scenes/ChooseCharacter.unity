@@ -1740,7 +1740,7 @@ MonoBehaviour:
   needGoldText: {fileID: 767158819}
   nextLevelText: {fileID: 1541923696}
   nextLv: 1
-  MaxLv: 10
+  MaxLv: 5
 --- !u!1 &738051065
 GameObject:
   m_ObjectHideFlags: 0
@@ -2983,7 +2983,7 @@ MonoBehaviour:
   needGoldText: {fileID: 1230171158}
   nextLevelText: {fileID: 501292008}
   nextLv: 1
-  MaxLv: 10
+  MaxLv: 5
 --- !u!1 &1393287875
 GameObject:
   m_ObjectHideFlags: 0
@@ -3730,7 +3730,7 @@ MonoBehaviour:
   needGoldText: {fileID: 1393287877}
   nextLevelText: {fileID: 990121260}
   nextLv: 1
-  MaxLv: 10
+  MaxLv: 5
 --- !u!1 &1755012658
 GameObject:
   m_ObjectHideFlags: 0
@@ -4073,7 +4073,7 @@ MonoBehaviour:
   needGoldText: {fileID: 1611845500}
   nextLevelText: {fileID: 1916027378}
   nextLv: 1
-  MaxLv: 10
+  MaxLv: 5
 --- !u!1 &1942382273
 GameObject:
   m_ObjectHideFlags: 0

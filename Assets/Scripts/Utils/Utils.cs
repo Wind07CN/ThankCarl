@@ -132,5 +132,21 @@ public static class Utils
         return level * 10 + 20;
     }
 
+    public static void ListRandom<T>(List<T> sources)
+    {
+        System.Random rd = new System.Random();
+        int index;
+        T temp;
+        for (int i = 0; i < sources.Count; i++)
+        {
+            index = rd.Next(0, sources.Count - 1);
+            if (index != i)
+            {
+                temp = sources[i];
+                sources[i] = sources[index];
+                sources[index] = temp;
+            }
+        }
+    }
 
 }

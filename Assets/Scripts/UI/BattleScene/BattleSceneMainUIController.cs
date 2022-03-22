@@ -25,6 +25,8 @@ public class BattleSceneMainUIController : MonoBehaviour
     [SerializeField] private GameObject getNewElementUI;
     [SerializeField] private Transform getUI;
 
+    [SerializeField] private ConjureTable conjureTable;
+
     private Vector3 shakePos = Vector3.zero;
 
     private bool isShake = false;
@@ -74,6 +76,11 @@ public class BattleSceneMainUIController : MonoBehaviour
     public void UpdateLifeBar()
     {
         lifeBar.shouldUpdate = true;
+    }
+
+    public void Addconjure()
+    {
+        conjureTable.UnlockConjure();
     }
 
     public void GetDamage()

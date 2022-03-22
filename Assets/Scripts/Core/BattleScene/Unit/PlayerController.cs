@@ -26,9 +26,17 @@ public class PlayerController : MonoBehaviour
 
 	private new PlayerAnimeController animation;
 
+	private int killCounter;
+	private int level = 0;
+	[SerializeField] private int killCountForLevelUp = 20;
+
+	[SerializeField] private int levelUpforGetNewElement = 5;
+	[SerializeField] private LevelupUI levelupUI;
+
 	private void Awake()
 	{
 		InitPlayer();
+		killCounter = killCountForLevelUp;
 		hitEffectGenerator = Utils.GetHitEffectGenerator();
 		UIController = Utils.GetMainUIController();
 	}
@@ -75,7 +83,7 @@ public class PlayerController : MonoBehaviour
 		playerAttribute.SpeedLevel = 0;
 		playerAttribute.MaxManaLevel = 0;
 		playerAttribute.ManaRegenSpeedLevel = 0;
-		playerAttribute.CurrentSubElement = 1;
+		playerAttribute.CurrentSubElement = 2;
 
 		// Init Multiplier
 		playerAttribute.SpeedMultiplier = playerAttribute.SpeedBaseMultiplier;
@@ -198,6 +206,23 @@ public class PlayerController : MonoBehaviour
 	public void SetPlayerActive()
 	{
 		playerAttribute.IsActive = true;
+	}
+
+	public void GainPoints(int enemyPoint)
+	{
+		playerAttribute.PlayerPoints += enemyPoint;
+		Utils.GetMainUIController().UpdatePointText();
+		killCounter--;
+		if (killCounter == 0) 
+		{
+			levelupUI.levelupNotChooseTime++;
+			level += 1;
+			if (level % levelUpforGetNewElement == 0) 
+			{
+				levelupUI.restOfUnchooseAddElement++;
+			}
+			killCounter = killCountForLevelUp;
+		}
 	}
 }
 

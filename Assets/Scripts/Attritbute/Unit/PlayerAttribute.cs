@@ -11,9 +11,9 @@ public class PlayerAttribute : AbstractUnit
 		get { return currentMana; }
 		set
 		{
-			if (value > BaseMaxMana)
+			if (value > MaxMana)
 			{
-				currentMana = BaseMaxMana;
+				currentMana = MaxMana;
 			}
 			else if (value < 0)
 			{

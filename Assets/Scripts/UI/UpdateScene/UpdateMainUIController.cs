@@ -22,6 +22,7 @@ public class UpdateMainUIController : MonoBehaviour
 
 	private void Awake()
 	{
+		PlayerPrefs.DeleteAll();
 		PlayerPrefs.SetInt(Constants.CurrentGold, 990);
 
 		charactorSkillIcon.sprite = skillIcons[currentCharactorNum];

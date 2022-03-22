@@ -22,7 +22,11 @@ public class UpdateButtonController : MonoBehaviour
 
 	private void Awake()
 	{
-		nextLv = PlayerPrefs.GetInt(Constants.UpdateData[updateType]);
+		if (PlayerPrefs.GetInt(Constants.UpdateData[updateType]) != 0) 
+		{ 
+			nextLv = PlayerPrefs.GetInt(Constants.UpdateData[updateType]); 
+		}
+		
 		levelUp.SetActive(true);
 		levelMax.SetActive(false);
 		UpdateUINum();

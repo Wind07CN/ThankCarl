@@ -351,8 +351,7 @@ MonoBehaviour:
   - {fileID: 386889045}
   - {fileID: 1021182536}
   - {fileID: 1637521187}
-  unlockedSubElementCount: 5
-  emptyPrefab: {fileID: 1369926189737875484, guid: a2e4666b18f68cb40aa827c734131c3c, type: 3}
+  unlockedSubElementCount: 1
 --- !u!1 &124658308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1882,10 +1881,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7a48bcfb5ff60478aa5f21029e0bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffSprites: []
-  AddElementSprite: {fileID: 0}
-  buttons: []
-  images: []
+  recoverHealthSprite: {fileID: 8049885976776599914, guid: 324c2356b5e984c40abc158af8ee51f8, type: 3}
+  addDamageSprite: {fileID: 21300000, guid: 828d3973a391d374b81f169c16693b6e, type: 3}
+  addSpeedSprite: {fileID: -229256013063241344, guid: 324c2356b5e984c40abc158af8ee51f8, type: 3}
+  addManaMaxLimitSprite: {fileID: -3885610455112514396, guid: 324c2356b5e984c40abc158af8ee51f8, type: 3}
+  addManaRecoverSpeedSprite: {fileID: 4014287730522540239, guid: 324c2356b5e984c40abc158af8ee51f8, type: 3}
+  addNewElementSprite: {fileID: 4743126897691936252, guid: 324c2356b5e984c40abc158af8ee51f8, type: 3}
+  buttons:
+  - {fileID: 538279529}
+  - {fileID: 767976569}
+  - {fileID: 805919731}
+  images:
+  - {fileID: 987618267}
+  - {fileID: 887715338}
+  - {fileID: 1321416074}
+  levelupNotChooseTime: 0
+  restOfUnchooseAddElement: 0
 --- !u!1 &752498335
 GameObject:
   m_ObjectHideFlags: 0
@@ -3467,6 +3478,9 @@ MonoBehaviour:
   invincibleTime: 1
   invincibleAnime: {fileID: 645621879}
   hitEffectGenerator: {fileID: 2121190885}
+  killCountForLevelUp: 20
+  levelUpforGetNewElement: 5
+  levelupUI: {fileID: 730634106}
 --- !u!114 &1438070857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3479,7 +3493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0364f0c5bbf910f4f838eae421371c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conjuredElementsLimit: 6
   conjureTable: {fileID: 116805455}
 --- !u!50 &1438070858
 Rigidbody2D:
@@ -3650,6 +3663,7 @@ MonoBehaviour:
   getNewSkillUI: {fileID: 7760079435752953613, guid: 964b1710c913d0e4ea759d6610e4196c, type: 3}
   getNewElementUI: {fileID: 7937583067232110039, guid: 802eafeabe138504d9d843c416d86762, type: 3}
   getUI: {fileID: 1031190652}
+  conjureTable: {fileID: 116805455}
 --- !u!1 &1474239383
 GameObject:
   m_ObjectHideFlags: 0

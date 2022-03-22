@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,18 +18,20 @@ public class LevelupUI : MonoBehaviour
 	[SerializeField] private Button[] buttons;
 	[SerializeField] private Image[] images;
 
+	private BattleSceneMainUIController mainUIController;
+
 	private BuffType[] buttonBuff = new BuffType[3];
 
 	private Animator animator;
 
 	private PlayerAttribute playerAttribute;
 
-	private int levelupNotChooseTime = 0;
-	private int restOfUnchooseAddElement = 0;
+	public int levelupNotChooseTime = 0;
+	public int restOfUnchooseAddElement = 0;
 	private bool isActive = false;
 
 
-	private readonly List<BuffType> normalBuff = new List<BuffType>()
+	private static List<BuffType> normalBuff = new List<BuffType>()
 	{
 		BuffType.RecoverHealth,
 		BuffType.AddDamage,
@@ -49,8 +52,11 @@ public class LevelupUI : MonoBehaviour
 
 	private void Start()
 	{
+		InitSpriteDic();
 		animator = GetComponent<Animator>();
 		playerAttribute = Utils.GetPlayerAttribute();
+		mainUIController = Utils.GetMainUIController();
+		UpdateBuff(restOfUnchooseAddElement > 0);
 	}
 
 	private void Update()
@@ -61,6 +67,11 @@ public class LevelupUI : MonoBehaviour
 			animator.SetBool("isActive", true);
 			animator.SetBool("levelUp", true);
 			isActive = true;
+		}
+		if (levelupNotChooseTime < 0 && isActive) 
+		{
+			isActive = false;
+			animator.SetBool("levelUp", false);
 		}
 	}
 
@@ -87,7 +98,7 @@ public class LevelupUI : MonoBehaviour
 		if (levelupNotChooseTime == 0)
 		{
 			isActive = false;
-			animator.SetBool("isActive", false);
+			animator.SetBool("levelUp", false);
 		}
 		else if (levelupNotChooseTime <= 0)
 		{
@@ -95,7 +106,6 @@ public class LevelupUI : MonoBehaviour
 		}
 
 		HandleButtonInput(buttonBuff[buttonNum]);
-
 		UpdateBuff(restOfUnchooseAddElement > 0);
 	}
 
@@ -105,22 +115,30 @@ public class LevelupUI : MonoBehaviour
 		{
 			case BuffType.RecoverHealth:
 				playerAttribute.CurrentLife += 3;
+				mainUIController.UpdateLifeBar();
 				break;
 			case BuffType.AddDamage:
 				playerAttribute.DamageLevel++;
+				playerAttribute.DamageMultiplier = playerAttribute.DamageBaseMultiplier;
 				break;
 			case BuffType.AddSpeed:
 				playerAttribute.SpeedLevel++;
+				playerAttribute.SpeedMultiplier = playerAttribute.SpeedBaseMultiplier;
 				break;
 			case BuffType.AddManaMaxLimit:
 				playerAttribute.MaxManaLevel++;
+				playerAttribute.MaxManaMultiplier = playerAttribute.MaxManaBaseMultiplier;
+				mainUIController.UpdateManaBar();
 				break;
 			case BuffType.AddManaRecoverSpeed:
 				playerAttribute.ManaRegenSpeedLevel++;
+				playerAttribute.ManaRegenSpeedMultiplier = playerAttribute.ManaRegenSpeedBaseMultiplier;
+				mainUIController.UpdateManaBar();
 				break;
 			case BuffType.AddNewElement:
 				playerAttribute.CurrentSubElement++;
-				if (playerAttribute.CurrentSubElement > Constants.MaxSubElementsCount) 
+				mainUIController.Addconjure();
+				if (playerAttribute.CurrentSubElement > Constants.MaxSubElementsCount)
 				{
 					throw new System.Exception("Unexpecteded error: the SubElementsCount is bigger than limit");
 				}
@@ -135,16 +153,26 @@ public class LevelupUI : MonoBehaviour
 	private void UpdateBuff(bool hasGetNewElement)
 	{
 		// Use the shuffle algorithm for random buff
-		List<BuffType> tempList = normalBuff;
-		System.Random random = new System.Random();
-		foreach (BuffType type in tempList)
+		List<BuffType> tempList = new List<BuffType>()
 		{
-			tempList.Insert(random.Next(tempList.Count), type);
-		}
+			BuffType.RecoverHealth,
+			BuffType.AddDamage,
+			BuffType.AddSpeed,
+			BuffType.AddManaMaxLimit,
+			BuffType.AddManaRecoverSpeed
+		};
+		
+
+		Utils.ListRandom(tempList);
+
 		buttonBuff[0] = hasGetNewElement ? BuffType.AddNewElement : tempList[2];
 		buttonBuff[1] = tempList[0];
 		buttonBuff[2] = tempList[1];
+		UpdateBuffIcon();
+
 	}
+
+
 
 	private void UpdateBuffIcon()
 	{

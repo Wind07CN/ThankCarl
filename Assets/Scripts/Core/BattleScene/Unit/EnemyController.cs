@@ -137,8 +137,7 @@ public class EnemyController : MonoBehaviour
 	public void KillEnemy()
 	{
 		KillEnemyWithoutPoint();
-		playerAttribute.PlayerPoints += EnemyPoint;
-		Utils.GetMainUIController().UpdatePointText();
+		Utils.GetPlayerObject().GetComponent<PlayerController>().GainPoints(EnemyPoint);
 	}
 
 

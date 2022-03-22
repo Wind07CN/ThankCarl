@@ -9,9 +9,6 @@ public class PlayerSkillController : MonoBehaviour
     private PlayerController playerController;
     private BattleSceneMainUIController uiController;
 
-    //********** need link to conjured
-    [SerializeField] private int conjuredElementsLimit = 2;
-
     private List<ElementType> conjuredElements = new List<ElementType>();
     private List<ElementType> spellElements = new List<ElementType>();
 
@@ -110,10 +107,10 @@ public class PlayerSkillController : MonoBehaviour
         spellElements.Clear();
         spellElements.AddRange(conjuredElements);
     }
-    //****************
+
     public int GetConjuredElementsLimit()
     {
-        return conjuredElementsLimit;
+        return playerAttribute.CurrentSubElement + 1;
         // return playerAttribute.Level + Constants.BaseConjuredElementsAmount - 1;
     }
 
