@@ -6,171 +6,198 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    [HideInInspector] public PlayerAttribute playerAttribute = new PlayerAttribute();
+	[HideInInspector] public PlayerAttribute playerAttribute = new PlayerAttribute();
 
-    [SerializeField] private int playerMaxLife = Constants.PlayerDefaultMaxLife;
-    [SerializeField] private int playerArmour = Constants.PlayerDefaultArmour;
-    [SerializeField] private float playerBaseMoveSpeed = Constants.PlayerDefaultMoveSpeed;
-    [SerializeField] private float playerBaseManaRegenSpeed = Constants.PlayerDefaultManaRegenSpeed;
+	[SerializeField] private int playerMaxLife = Constants.PlayerDefaultMaxLife;
+	[SerializeField] private int playerArmour = Constants.PlayerDefaultArmour;
+	[SerializeField] private float playerBaseMoveSpeed = Constants.PlayerDefaultMoveSpeed;
+	[SerializeField] private float playerBaseManaRegenSpeed = Constants.PlayerDefaultManaRegenSpeed;
 
-    [SerializeField] private int playerDyingLifeThreshold = 3;
+	[SerializeField] private int playerDyingLifeThreshold = 3;
 
 
-    [SerializeField] private float invincibleTime = 2f;
-    [SerializeField] private GameObject invincibleAnime;
-    private bool isInvincible = false;
+	[SerializeField] private float invincibleTime = 2f;
+	[SerializeField] private GameObject invincibleAnime;
+	private bool isInvincible = false;
 
-    [SerializeField] private HitEffectGenerator hitEffectGenerator;
+	[SerializeField] private HitEffectGenerator hitEffectGenerator;
 
-    private BattleSceneMainUIController UIController;
+	private BattleSceneMainUIController UIController;
 
-    private new PlayerAnimeController animation;
+	private new PlayerAnimeController animation;
 
-    private void Start()
-    {
-        InitPlayer();
-        hitEffectGenerator = Utils.GetHitEffectGenerator();
-    }
+	private void Awake()
+	{
+		InitPlayer();
+		hitEffectGenerator = Utils.GetHitEffectGenerator();
+		UIController = Utils.GetMainUIController();
+	}
+	private void Start()
+	{
+		UIController.UpdateAllUI();
+	}
 
-    private void Update()
-    {
-        RegenerateMana();
-    }
+	private void Update()
+	{
+		RegenerateMana();
+	}
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!isInvincible)
-        {
-            if (collision.gameObject.CompareTag("Enemy"))
-            {
-                EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (!isInvincible)
+		{
+			if (collision.gameObject.CompareTag("Enemy"))
+			{
+				EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
 
-                if (enemyController.enemyAttribute.IsActive)
-                {
-                    DamagePlayer(enemyController.damageToPlayer);
+				if (enemyController.enemyAttribute.IsActive)
+				{
+					DamagePlayer(enemyController.damageToPlayer);
 
-                    hitEffectGenerator.InitHitEffect(enemyController.GetEnemyElementType(), transform.position);
-                    // Enemy Play dying animation
-                    enemyController.KillEnemyWithoutPoint();
-                }
-            }
-        }
-    }
+					hitEffectGenerator.InitHitEffect(enemyController.GetEnemyElementType(), transform.position);
+					// Enemy Play dying animation
+					enemyController.KillEnemyWithoutPoint();
+				}
+			}
+		}
+	}
 
-    public void InitPlayer()
-    {
-        playerAttribute.MaxLife = playerMaxLife;
-        playerAttribute.CurrentLife = playerMaxLife;
-        playerAttribute.Armour = playerArmour;
-        playerAttribute.BaseMoveSpeed = playerBaseMoveSpeed;
-        playerAttribute.BaseManaRegenSpeed = playerBaseManaRegenSpeed;
+	public void InitPlayer()
+	{
+		/*        // Init Multiplier
+				playerAttribute.MaxLifeLevel = PlayerPrefs.GetInt("MaxLifeLevel"); 
+				playerAttribute.SpeedLevel = PlayerPrefs.GetInt("SpeedLevel"); 
+				playerAttribute.MaxManaLevel = PlayerPrefs.GetInt("MaxManaLevel");
+				playerAttribute.ManaRegenSpeedLevel = PlayerPrefs.GetInt("ManaRegenSpeedLevel");
+				playerAttribute.CurrentSubElement = PlayerPrefs.GetInt("CurrentSubElement");*/
 
-        animation = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
-        UIController = GameObject.FindGameObjectWithTag("MainUI").GetComponent<BattleSceneMainUIController>();
+		playerAttribute.MaxLifeLevel = 1;
+		playerAttribute.SpeedLevel = 0;
+		playerAttribute.MaxManaLevel = 0;
+		playerAttribute.ManaRegenSpeedLevel = 0;
+		playerAttribute.CurrentSubElement = 1;
 
-    }
+		// Init Multiplier
+		playerAttribute.SpeedMultiplier = playerAttribute.SpeedBaseMultiplier;
+		playerAttribute.MaxManaMultiplier = playerAttribute.MaxManaBaseMultiplier;
+		playerAttribute.ManaRegenSpeedMultiplier = playerAttribute.MaxManaBaseMultiplier;
+		playerAttribute.DamageMultiplier = playerAttribute.DamageBaseMultiplier;
 
-    public void DamagePlayer(int damage)
-    {
-        playerAttribute.CurrentLife -= damage;
+		// Init Life and MaxMana
+		playerAttribute.MaxLife = playerMaxLife + playerAttribute.MaxLifeLevel;
+		playerAttribute.CurrentLife = playerAttribute.MaxLife;
+		playerAttribute.CurrentMana = playerAttribute.MaxMana;
 
-        // UI update
-        UIController.UpdateLifeBar();
+		playerAttribute.Armour = playerArmour;
+		playerAttribute.BaseMoveSpeed = playerBaseMoveSpeed;
+		playerAttribute.BaseManaRegenSpeed = playerBaseManaRegenSpeed;
 
-        // UI shark
-        UIController.GetDamage();
+		animation = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
+		UIController = GameObject.FindGameObjectWithTag("MainUI").GetComponent<BattleSceneMainUIController>();
 
-        if (playerAttribute.IsAlive)
-        {
-            // Anime
-            animation.PlayerGetDamage();
+	}
 
-            // Invincible
-            isInvincible = true;
-            invincibleAnime.SetActive(true);
-            Invoke(nameof(ResetIincible), invincibleTime);
+	public void DamagePlayer(int damage)
+	{
+		playerAttribute.CurrentLife -= damage;
 
-            // Is player dying
-            if (playerAttribute.CurrentLife <= playerDyingLifeThreshold)
-            {
-                UIController.PlayerIsDying();
-            }
+		// UI update
+		UIController.UpdateLifeBar();
 
-        }
-        else
-        {
-            KillPlayer();
-        }
+		// UI shark
+		UIController.GetDamage();
 
-    }
+		if (playerAttribute.IsAlive)
+		{
+			// Anime
+			animation.PlayerGetDamage();
 
-    public void CostMana(float amount)
-    {
-        playerAttribute.CurrentMana -= amount;
-        UIController.UpdateManaBar();
-    }
+			// Invincible
+			isInvincible = true;
+			invincibleAnime.SetActive(true);
+			Invoke(nameof(ResetIincible), invincibleTime);
 
-    private void RegenerateMana()
-    {
-        playerAttribute.CurrentMana += playerAttribute.ManaRegenSpeed * Time.deltaTime;
-        UIController.UpdateManaBar();
-    }
+			// Is player dying
+			if (playerAttribute.CurrentLife <= playerDyingLifeThreshold)
+			{
+				UIController.PlayerIsDying();
+			}
 
-    public void KillPlayer()
-    {
-        Debug.Log("Player Dead!");
-        playerAttribute.IsActive = false;
+		}
+		else
+		{
+			KillPlayer();
+		}
 
-        animation.PlayerIsDead();
-    }
+	}
 
-    private void ResetIincible()
-    {
-        isInvincible = false;
-        invincibleAnime.SetActive(false);
-    }
+	public void CostMana(float amount)
+	{
+		playerAttribute.CurrentMana -= amount;
+		UIController.UpdateManaBar();
+	}
 
-    /// <summary>
-    /// Increase player's speed in a short time
-    /// </summary>
-    /// <param name="multiplier"></param>
-    /// <param name="duration"></param>
-    public void TemporarySpeedUp(float multiplier, float duration)
-    {
-        playerAttribute.SpeedMultiplier = multiplier;
-        Invoke(nameof(ResetSpeed), duration);
-    }
+	private void RegenerateMana()
+	{
+		playerAttribute.CurrentMana += playerAttribute.ManaRegenSpeed * Time.deltaTime;
+		UIController.UpdateManaBar();
+	}
 
-    public void TemporaryDamageIncrease(float multiplier, float duration)
-    {
-        playerAttribute.DamageMultiplier = multiplier;
-        Invoke(nameof(ResetDamage), duration);
-    }
+	public void KillPlayer()
+	{
+		Debug.Log("Player Dead!");
+		playerAttribute.IsActive = false;
 
-    public void TemporaryManaRegenSpeedUp(float multiplier, float duration)
-    {
-        playerAttribute.ManaRegenSpeedMultiplier = multiplier;
-        Invoke(nameof(ResetManaRegen), duration);
-    }
+		animation.PlayerIsDead();
+	}
 
-    private void ResetSpeed()
-    {
-       playerAttribute.SpeedMultiplier = 1f;
-    }
-    
-    private void ResetDamage()
-    {
-        playerAttribute.DamageMultiplier = 1f;
-    }
+	private void ResetIincible()
+	{
+		isInvincible = false;
+		invincibleAnime.SetActive(false);
+	}
 
-    private void ResetManaRegen()
-    {
-        playerAttribute.ManaRegenSpeedMultiplier = 1f;
-    }
+	/// <summary>
+	/// Increase player's speed in a short time
+	/// </summary>
+	/// <param name="multiplier"></param>
+	/// <param name="duration"></param>
+	public void TemporarySpeedUp(float multiplier, float duration)
+	{
+		playerAttribute.SpeedMultiplier += multiplier;
+		Invoke(nameof(ResetSpeed), duration);
+	}
 
-    public void SetPlayerActive()
-    {
-        playerAttribute.IsActive = true;
-    }
+	public void TemporaryDamageIncrease(float multiplier, float duration)
+	{
+		playerAttribute.DamageMultiplier += multiplier;
+		Invoke(nameof(ResetDamage), duration);
+	}
+
+	public void TemporaryManaRegenSpeedUp(float multiplier, float duration)
+	{
+		playerAttribute.ManaRegenSpeedMultiplier += multiplier;
+		Invoke(nameof(ResetManaRegen), duration);
+	}
+
+	private void ResetSpeed()
+	{
+		playerAttribute.SpeedMultiplier = playerAttribute.SpeedBaseMultiplier;
+	}
+
+	private void ResetDamage()
+	{
+		playerAttribute.DamageMultiplier = playerAttribute.DamageBaseMultiplier;
+	}
+
+	private void ResetManaRegen()
+	{
+		playerAttribute.ManaRegenSpeedMultiplier = playerAttribute.ManaRegenSpeedBaseMultiplier;
+	}
+
+	public void SetPlayerActive()
+	{
+		playerAttribute.IsActive = true;
+	}
 }
 

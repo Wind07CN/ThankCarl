@@ -10,8 +10,6 @@ public class BattleSceneController : MonoBehaviour
 
 	private bool isPlayerDead = false;
 
-	private GameObject mainCameraObject;
-
 	private void Awake()
 	{
 		InitScene();

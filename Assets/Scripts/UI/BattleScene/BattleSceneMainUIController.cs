@@ -8,23 +8,29 @@ public class BattleSceneMainUIController : MonoBehaviour
 
     private PlayerAttribute playerAttribute;
     [SerializeField] private GameObject shakeUI;
-    
+
     [SerializeField] private Text playerPointText;
     [SerializeField] private LifeBar lifeBar;
     [SerializeField] private ManaBar manaBar;
 
+    [SerializeField] private Image avatar;
+    [SerializeField] private Sprite[] charactorSprites;
     [SerializeField] private GameObject getDameage;
     [SerializeField] private float shakeRange = 10f;
     [SerializeField] private float shakeTime = 0.15f;
 
-    [SerializeField] private GameObject EndUI;
+    [SerializeField] private GameObject endUI;
+
+    [SerializeField] private GameObject getNewSkillUI;
+    [SerializeField] private GameObject getNewElementUI;
+    [SerializeField] private Transform getUI;
 
     private Vector3 shakePos = Vector3.zero;
 
     private bool isShake = false;
     private bool isDying = false;
 
-    private void Start()
+    private void Awake()
     {
         InitMainUI();
     }
@@ -39,10 +45,15 @@ public class BattleSceneMainUIController : MonoBehaviour
     private void InitMainUI()
     {
         playerAttribute = Utils.GetPlayerAttribute();
+        avatar.sprite = charactorSprites[Utils.GetDataRecord().currentCharactorNum];
+    }
+
+    public void UpdateAllUI() 
+    {
+        playerAttribute = Utils.GetPlayerAttribute();
         UpdateLifeBar();
         UpdateManaBar();
         UpdatePointText();
-
     }
 
     public void UpdatePointText()
@@ -108,7 +119,17 @@ public class BattleSceneMainUIController : MonoBehaviour
 
     public void ShowEndUI()
     {
-        Instantiate(EndUI, transform);
+        Instantiate(endUI, transform);
         getDameage.SetActive(false);
+    }
+
+    public void ShowGetNewSkillUI() 
+    {
+        Instantiate(getNewSkillUI, getUI);
+    }
+
+    public void ShowGetNewElementUI()
+    {
+        Instantiate(getNewElementUI, getUI);
     }
 }

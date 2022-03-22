@@ -7,8 +7,8 @@ public class EnemySpawnController : MonoBehaviour
 {
 	[SerializeField] private GameObject[] normalEnemyPrefabs;
 	[SerializeField] private GameObject[] eliteEnemyPrefabs;
-	private int normalEnemyTypeNum = Constants.NormalEnemyTypeDefaultNum;
-	private int eliteEnemyTypeNum = Constants.EliteEnemyTypeDefaultNum;
+	private int normalEnemyTypeNum;
+	private int eliteEnemyTypeNum;
 
 	[SerializeField] private float eliteRate = Constants.EliteDefaultRate;
 	[SerializeField] private float battlefieldMaxX = Constants.BattlefieldDefaultMaxX;

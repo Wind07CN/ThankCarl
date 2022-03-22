@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class EnemyAnimeController : MonoBehaviour
 {
-	private Animator animator;
+    private Animator animator;
 
-	private void Awake()
-	{
-		animator = GetComponent<Animator>();
-	}
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
-	public void EnemyActive()
-	{
-		animator.SetBool("active", true);
-	}
+    public void EnemyActive()
+    {
+        animator.SetBool("active", true);
+    }
 
-	public void EnemyDead()
-	{
-		animator.SetBool("dead", true);
-	}
+    public void EnemyDead()
+    {
+        animator.SetBool("dead", true);
+    }
 
-	// For animeENd 
-	public void DestroyGameObject()
-	{
-		Destroy(gameObject);
-	}
+    // For animeENd 
+    public void DestroyGameObject()
+    {
+        Destroy(gameObject);
+    }
 }

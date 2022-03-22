@@ -30,13 +30,13 @@ public class ManaBar : MonoBehaviour
 	private void UpdatePointText()
 	{
 		Text pointText = PointTextObj.GetComponent<Text>();
-		pointText.text = (int) playerAttribute.CurrentMana + "/" + (int) playerAttribute.MaxMana;
+		pointText.text = (int) playerAttribute.CurrentMana + "/" + (int) playerAttribute.BaseMaxMana;
 	}
 
 	private void UpdateBarLength()
 	{
 		Image image = BarImageObj.GetComponent<Image>();
-		image.fillAmount = playerAttribute.CurrentMana / playerAttribute.MaxMana;
+		image.fillAmount = playerAttribute.CurrentMana / playerAttribute.BaseMaxMana;
 	}
 
 	private void StartShake(float dur, float mag)

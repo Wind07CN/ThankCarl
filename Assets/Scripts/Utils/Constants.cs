@@ -15,8 +15,6 @@ public static class Constants
     public const float EnemyDefaultMoveSpeed = 5;
     public const int EnemyDefaultArmour = 0;
     public const float EnemyDefaultActiveTime = 1f;
-    public const int NormalEnemyTypeDefaultNum = 0;
-    public const int EliteEnemyTypeDefaultNum = 0;
     
     // spell
     public const int ElementManaCost = 5;
@@ -39,6 +37,17 @@ public static class Constants
     public const string EnemyTag = "Enemy";
     public const string MainUITag = "MainUI";
     public const string MainControllerTag = "MainController";
+
+    public const int MaxSubElementsCount = 5;
+    public const int EachTimeLifeRecover = 3;
+
+    public const float EachLevelAddSpeed = 0.05f;
+    public const float EachLevelAddManaRegenSpeedLevel = 0.05f;
+    public const float EachLevelAddMaxMana = 0.05f;
+    public const float EachLevelAddDamage = 0.05f;
+
+    public const int PlayerDefaultMaxMana = 100;
+    public const float PlayerDefaultBaseManaRegenSpeed = 10f;
 
     public enum UpdateType
     {

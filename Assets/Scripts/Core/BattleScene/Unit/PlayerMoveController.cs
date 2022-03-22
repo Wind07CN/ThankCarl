@@ -44,7 +44,7 @@ public class PlayerMoveController : MonoBehaviour
         }
 
         // if left mouse is held
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(1))
         {
             isRun = true;
             direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;

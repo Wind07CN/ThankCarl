@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spell<T>: ISpell where T : ISpellCaster
+public class Spell<T> : ISpell where T : ISpellCaster
 {
     private SpellAttribute attribute;
 
@@ -50,6 +50,11 @@ public class Spell<T>: ISpell where T : ISpellCaster
     public float GetManaCost()
     {
         return attribute.ManaCost;
+    }
+
+    public string GetSpellName()
+    {
+        return this.GetType().Name;
     }
 
 }

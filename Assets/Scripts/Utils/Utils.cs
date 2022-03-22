@@ -57,6 +57,11 @@ public static class Utils
         return GameObject.Find("SpellCaster");
     }
 
+    public static SkillFirstCastChecker GetSkillChecker()
+    {
+        return GameObject.FindGameObjectWithTag(Constants.MainControllerTag).GetComponent<SkillFirstCastChecker>();
+    }
+
     /// <summary>
     /// Find THE Nearest Enemy to the Target
     /// </summary>
@@ -103,6 +108,20 @@ public static class Utils
         return angle;
     }
 
+    /// <summary>
+    /// Get CrossSceneDate
+    /// </summary>
+    /// <returns></returns>
+    public static CrossSceneData GetDataRecord()
+    {
+        GameObject DataObj = GameObject.FindGameObjectWithTag("Data");
+        if (DataObj != null)
+        {
+            return DataObj.GetComponent<CrossSceneData>();
+        }
+        throw new System.Exception("The CrossData Not Find, Please Check The Scene!");
+    }
+
 
     public static int CalculateGold(int level)
     {
@@ -112,5 +131,6 @@ public static class Utils
         }
         return level * 10 + 20;
     }
+
 
 }

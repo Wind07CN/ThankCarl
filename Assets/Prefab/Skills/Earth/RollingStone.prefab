@@ -117,6 +117,6 @@ MonoBehaviour:
   enemyStunTime: 1
   durationTime: 3
   moveSpeed: 10
-  scaleSpeed: 1
+  scaleSpeed: 2
   rotateSpeed: 120
   disappearTime: 0.3

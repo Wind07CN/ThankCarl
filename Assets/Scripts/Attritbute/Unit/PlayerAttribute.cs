@@ -3,104 +3,98 @@ using System.Collections.Generic;
 
 public class PlayerAttribute : AbstractUnit
 {
+	public int CurrentSubElement { get; set; }
 
-    public int Experience { get; set; }
-    public int Level { get; set; }
-    private float currentMana;
+	private float currentMana;
+	public float CurrentMana
+	{
+		get { return currentMana; }
+		set
+		{
+			if (value > BaseMaxMana)
+			{
+				currentMana = BaseMaxMana;
+			}
+			else if (value < 0)
+			{
+				currentMana = 0;
+			}
+			else
+			{
+				currentMana = value;
+			}
+		}
+	}
 
-    public float CurrentMana
-    {
-        get { return currentMana; }
-        set
-        {
-            if (value > MaxMana)
-            {
-                currentMana = MaxMana;
-            }
-            else if (value < 0)
-            {
-                currentMana = 0;
-            }
-            else
-            {
-                currentMana = value;
-            }
-        }
-    }
+	// Life
+	public int MaxLifeLevel { get; set; }
 
-    public float SpeedMultiplier = 1f;
-    public float DamageMultiplier = 1f;
-    public float ManaRegenSpeedMultiplier = 1f;
-
-    public int MaxMana { get; set; }
-
-    public int PlayerPoints { get; set; }
-
-    public float BaseMoveSpeed { get; set; }
+	// Speed
+	public float BaseMoveSpeed { get; set; }
+	public int SpeedLevel { get; set; }
+	public float SpeedMultiplier { get; set; }
+	public float SpeedBaseMultiplier
+	{
+		get { return SpeedLevel * Constants.EachLevelAddSpeed; }
+	}
 	public new float MoveSpeed
 	{
-		get { return BaseMoveSpeed * SpeedMultiplier; }
+		get { return BaseMoveSpeed * (1 + SpeedMultiplier); }
 	}
 
-    // per second
-    public float BaseManaRegenSpeed { get; set; }
-    public float ManaRegenSpeed	
+	// Damage
+	public int DamageLevel { get; set; }
+	public float DamageMultiplier { get; set; }
+	public float DamageBaseMultiplier
 	{
-		get { return BaseManaRegenSpeed * ManaRegenSpeedMultiplier; }
+		get { return DamageLevel * Constants.EachLevelAddDamage; }
 	}
 
-    public PlayerAttribute()
-    {
-        MaxLife = Constants.PlayerDefaultMaxLife;
-        CurrentLife = MaxLife;
-        BaseMoveSpeed = Constants.PlayerDefaultMoveSpeed;
-        Armour = Constants.PlayerDefaultArmour;
-        Level = 1;
-        Experience = 0;
-        PlayerPoints = 0;
-        MaxMana = 100;
-        CurrentMana = MaxMana;
-        BaseManaRegenSpeed = 10;
-    }
+	// per second
+	public float BaseManaRegenSpeed { get; set; }
+	public int ManaRegenSpeedLevel { get; set; }
+	public float ManaRegenSpeedMultiplier { get; set; }
+	public float ManaRegenSpeedBaseMultiplier
+	{
+		get { return ManaRegenSpeedLevel * Constants.EachLevelAddManaRegenSpeedLevel; }
+	}
+	public float ManaRegenSpeed
+	{
+		get { return BaseManaRegenSpeed * (1 + ManaRegenSpeedMultiplier); }
+	}
 
-    public PlayerAttribute(int maxLife)
-    {
-        MaxLife = maxLife;
-        CurrentLife = maxLife;
-        BaseMoveSpeed = Constants.PlayerDefaultMoveSpeed;
-        Armour = Constants.PlayerDefaultArmour;
-        Level = 1;
-        Experience = 0;
-        PlayerPoints = 0;
-        MaxMana = 100;
-        CurrentMana = MaxMana;
-        BaseManaRegenSpeed = 10;
-    }
+	// Max Mana
+	public int BaseMaxMana { get; set; }
+	public int MaxManaLevel { get; set; }
+	public float MaxManaMultiplier { get; set; }
+	public float MaxManaBaseMultiplier
+	{
+		get { return MaxManaLevel * Constants.EachLevelAddMaxMana; }
+	}
+	public float MaxMana 
+	{
+		get { return BaseMaxMana * (1 + MaxManaMultiplier); }
+	}
 
-    public PlayerAttribute(int maxLife, float moveSpeed, int armour)
-    {
-        MaxLife = maxLife;
-        CurrentLife = maxLife;
-        BaseMoveSpeed = moveSpeed;
-        Armour = armour;
-        Level = 1;
-        PlayerPoints = 0;
-        MaxMana = 100;
-        CurrentMana = MaxMana;
-        BaseManaRegenSpeed = 10;
-    }
+	public int PlayerPoints { get; set; }
 
-    public PlayerAttribute(int maxLife, int maxMana, float moveSpeed, int armour, float manaRegenSpeed)
-    {
-        MaxLife = maxLife;
-        CurrentLife = maxLife;
-        BaseMoveSpeed = moveSpeed;
-        Armour = armour;
-        Level = 1;
-        PlayerPoints = 0;
-        MaxMana = maxMana;
-        CurrentMana = MaxMana;
-        BaseManaRegenSpeed = manaRegenSpeed;
-    }
+	public PlayerAttribute()
+	{
+
+		DamageLevel = 0;
+		// Life
+		MaxLife = Constants.PlayerDefaultMaxLife;
+		CurrentLife = MaxLife;
+
+		BaseMoveSpeed = Constants.PlayerDefaultMoveSpeed;
+
+		Armour = Constants.PlayerDefaultArmour;
+
+		PlayerPoints = 0;
+		BaseMaxMana = Constants.PlayerDefaultMaxMana;
+		CurrentMana = BaseMaxMana;
+		BaseManaRegenSpeed = Constants.PlayerDefaultManaRegenSpeed;
+	}
+
 
 }
