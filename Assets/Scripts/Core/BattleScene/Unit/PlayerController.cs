@@ -33,16 +33,21 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private int levelUpforGetNewElement = 5;
 	[SerializeField] private LevelupUI levelupUI;
 
+	[SerializeField] private GameObject[] playerAnimations;
+	private int currentChar = 0;
+
 	private void Awake()
 	{
+		currentChar = Utils.GetDataRecord().currentCharactorNum;
 		InitPlayer();
 		killCounter = killCountForLevelUp;
 		hitEffectGenerator = Utils.GetHitEffectGenerator();
-		UIController = Utils.GetMainUIController();
+		UIController = Utils.GetMainUIController();	
 	}
 	private void Start()
 	{
 		UIController.UpdateAllUI();
+		
 	}
 
 	private void Update()
@@ -72,13 +77,15 @@ public class PlayerController : MonoBehaviour
 
 	public void InitPlayer()
 	{
-		/*        // Init Multiplier
-				playerAttribute.MaxLifeLevel = PlayerPrefs.GetInt("MaxLifeLevel"); 
-				playerAttribute.SpeedLevel = PlayerPrefs.GetInt("SpeedLevel"); 
-				playerAttribute.MaxManaLevel = PlayerPrefs.GetInt("MaxManaLevel");
-				playerAttribute.ManaRegenSpeedLevel = PlayerPrefs.GetInt("ManaRegenSpeedLevel");
-				playerAttribute.CurrentSubElement = PlayerPrefs.GetInt("CurrentSubElement");*/
-
+		Instantiate(playerAnimations[2], transform);
+/*
+		// Init Multiplier *********
+		playerAttribute.MaxLifeLevel = PlayerPrefs.GetInt("MaxLifeLevel");
+		playerAttribute.SpeedLevel = PlayerPrefs.GetInt("SpeedLevel");
+		playerAttribute.MaxManaLevel = PlayerPrefs.GetInt("MaxManaLevel");
+		playerAttribute.ManaRegenSpeedLevel = PlayerPrefs.GetInt("ManaRegenSpeedLevel");
+		playerAttribute.CurrentSubElement = PlayerPrefs.GetInt("CurrentSubElement");
+*/
 		playerAttribute.MaxLifeLevel = 1;
 		playerAttribute.SpeedLevel = 0;
 		playerAttribute.MaxManaLevel = 0;

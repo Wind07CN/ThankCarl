@@ -23,7 +23,8 @@ public class LoadingSceneController : MonoBehaviour
 
     IEnumerator LoadNextAsyncScene()
     {
-        AsyncOperation load = SceneManager.LoadSceneAsync("Demo");
+        string sceneTag = Utils.GetDataRecord().NextSceneNum;
+        AsyncOperation load = SceneManager.LoadSceneAsync(sceneTag);
 
         while (!load.isDone)
         {

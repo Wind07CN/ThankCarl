@@ -6,7 +6,7 @@ public class CrossSceneData : MonoBehaviour
 {
     public int currentCharactorNum = 0;
 
-    public int currentGold = 0;
+    public string NextSceneNum = Constants.LevelUpSceneTag;
 
 
     private void Awake()

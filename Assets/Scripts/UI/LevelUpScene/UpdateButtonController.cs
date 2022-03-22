@@ -10,26 +10,36 @@ public class UpdateButtonController : MonoBehaviour
 	[SerializeField] private GameObject levelUp;
 	[SerializeField] private GameObject levelMax;
 
-	[SerializeField] private UpdateMainUIController mainUIController;
+	[SerializeField] private LevelUpMainUIController mainUIController;
 
 	[SerializeField] private Text needGoldText;
 	[SerializeField] private Text nextLevelText;
 
 	[SerializeField] private int nextLv = 1;
-	[SerializeField] private int MaxLv = 10;
+	[SerializeField] private int MaxLv = 5;
 
 	private int currentGold = 0;
+	private int currentchar;
 
 	private void Awake()
 	{
-		if (PlayerPrefs.GetInt(Constants.UpdateData[updateType]) != 0) 
-		{ 
-			nextLv = PlayerPrefs.GetInt(Constants.UpdateData[updateType]); 
+		currentchar = Utils.GetDataRecord().currentCharactorNum;
+		if (PlayerPrefs.GetInt("char" + currentchar + Constants.UpdateData[updateType]) != 0)
+		{
+			nextLv = PlayerPrefs.GetInt("char" + currentchar + Constants.UpdateData[updateType]);
+		}
+		if (nextLv <= MaxLv)
+		{
+			levelUp.SetActive(true);
+			levelMax.SetActive(false);
+			UpdateUINum();
+		}
+		else 
+		{
+			levelUp.SetActive(false);
+			levelMax.SetActive(true);
 		}
 		
-		levelUp.SetActive(true);
-		levelMax.SetActive(false);
-		UpdateUINum();
 	}
 
 	/// <summary>
@@ -37,19 +47,17 @@ public class UpdateButtonController : MonoBehaviour
 	/// </summary>
 	public void LevelUp()
 	{
-		
+
 		if (nextLv <= MaxLv)
 		{
 			int lastGold = PlayerPrefs.GetInt(Constants.CurrentGold) - currentGold;
-			Debug.Log(lastGold +" + "+ PlayerPrefs.GetInt(Constants.UpdateData[updateType]));
 
-			
-			if (lastGold >= 0) 
+			if (lastGold >= 0)
 			{
 				nextLv++;
 				PlayerPrefs.SetInt(Constants.UpdateData[updateType], nextLv);
 				UpdateUINum();
-				
+
 				if (nextLv > MaxLv)
 				{
 					levelUp.SetActive(false);
@@ -62,13 +70,13 @@ public class UpdateButtonController : MonoBehaviour
 		}
 	}
 
-	
 
-	private void UpdateUINum() 
+
+	private void UpdateUINum()
 	{
 		currentGold = Utils.CalculateGold(nextLv);
 		needGoldText.text = string.Format("{0:D3}", currentGold);
 		nextLevelText.text = string.Format("{0:D2}", nextLv);
 	}
-	
+
 }

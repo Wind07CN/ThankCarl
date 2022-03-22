@@ -21,6 +21,7 @@ public class SkillFirstCastChecker : MonoBehaviour
         if (PlayerPrefs.GetInt("Skill" + num) != 1)
         {
             PlayerPrefs.SetInt("Skill" + num, 1);
+            PlayerPrefs.SetInt(Constants.LearnSkillNum, PlayerPrefs.GetInt(Constants.LearnSkillNum));
             Utils.GetMainUIController().ShowGetNewSkillUI();
         }
     }

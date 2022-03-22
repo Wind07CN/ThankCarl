@@ -38,6 +38,14 @@ public static class Constants
     public const string MainUITag = "MainUI";
     public const string MainControllerTag = "MainController";
 
+    public const string BattleSceneTag = "Battle";
+    public const string LoadingSceneTag = "Loading";
+    public const string LevelUpSceneTag = "LevelUp";
+    public const string CharChooseSceneTag = "Choose";
+
+    public const string LearnSkillNum = "SkillNum";
+
+
     public const int MaxSubElementsCount = 5;
     public const int EachTimeLifeRecover = 3;
 
