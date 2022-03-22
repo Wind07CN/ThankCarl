@@ -219,7 +219,10 @@ public class PlayerController : MonoBehaviour
 			level += 1;
 			if (level % levelUpforGetNewElement == 0) 
 			{
-				levelupUI.restOfUnchooseAddElement++;
+				if (levelupUI.restOfUnchooseAddElement + playerAttribute.CurrentSubElement < Constants.MaxSubElementsCount)
+				{
+					levelupUI.restOfUnchooseAddElement++;
+				}
 			}
 			killCounter = killCountForLevelUp;
 		}

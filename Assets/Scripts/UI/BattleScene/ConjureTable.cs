@@ -20,7 +20,7 @@ public class ConjureTable : MonoBehaviour
 	private List<Image> images = new List<Image>();
 
 	[SerializeField] private int unlockedSubElementCount = 1;
-	[SerializeField] private PlayerAttribute PlayerAttribute;
+	[SerializeField] private PlayerAttribute playerAttribute;
 
 
 	private Dictionary<ElementType, Sprite> spritesDic = new Dictionary<ElementType, Sprite>();
@@ -28,6 +28,7 @@ public class ConjureTable : MonoBehaviour
 
 	private void Start()
 	{
+		playerAttribute = Utils.GetPlayerAttribute();
 		InitDic();
 		InitConjure();
 	}
@@ -59,8 +60,8 @@ public class ConjureTable : MonoBehaviour
 
 	public void UnlockConjure()
 	{
-		unlockedSubElementCount = PlayerAttribute.CurrentSubElement + 1;
-		images[unlockedSubElementCount - 1].sprite = spritesDic[ElementType.None];
+		unlockedSubElementCount = playerAttribute.CurrentSubElement;
+		images[unlockedSubElementCount].sprite = spritesDic[ElementType.None];
 	}
 
 	public void UpdateElement(int pos, ElementType elementType)

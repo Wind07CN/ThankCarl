@@ -169,7 +169,6 @@ public class LevelupUI : MonoBehaviour
 		buttonBuff[1] = tempList[0];
 		buttonBuff[2] = tempList[1];
 		UpdateBuffIcon();
-
 	}
 
 
@@ -190,5 +189,4 @@ public class LevelupUI : MonoBehaviour
 		}
 		levelupNotChooseTime++;
 	}
-
 }
