@@ -16,8 +16,8 @@ public class PlayerMoveController : MonoBehaviour
 
     private void Start()
     {
-        mPlayerAttribute = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().playerAttribute;
-        animeController = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
+        mPlayerAttribute = Utils.GetPlayerAttribute();
+        animeController = GetComponent<PlayerAnimeController>();
     }
 
     private void Update()

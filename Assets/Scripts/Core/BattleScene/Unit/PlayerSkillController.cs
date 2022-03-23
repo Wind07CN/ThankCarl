@@ -22,7 +22,7 @@ public class PlayerSkillController : MonoBehaviour
         playerAttribute = Utils.GetPlayerAttribute();
         playerController = Utils.GetPlayerObject().GetComponent<PlayerController>();
         uiController = Utils.GetMainUIController();
-        animeController = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
+        animeController = GetComponent<PlayerAnimeController>();
     }
 
     private void Update()

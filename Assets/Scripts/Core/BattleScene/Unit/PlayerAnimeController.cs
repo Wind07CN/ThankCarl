@@ -4,60 +4,49 @@ using UnityEngine;
 
 public class PlayerAnimeController : MonoBehaviour
 {
-    Animator animator;
+	private Animator animator;
+	private int charactorNum = 0;
+	[SerializeField] private GameObject[] playerAnimation;
 
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
+	private void Awake()
+	{
+		charactorNum = Utils.GetDataRecord().currentCharactorNum;
+		animator = Instantiate(playerAnimation[charactorNum], transform).GetComponent<Animator>();
 
-        animator.SetBool("dead", false);
-        animator.SetBool("attack", false);
-        animator.SetBool("getDamage", false);
-        animator.SetBool("isRun", false);
+		animator.SetBool("dead", false);
+		animator.SetBool("attack", false);
+		animator.SetBool("getDamage", false);
+		animator.SetBool("isRun", false);
+	}
 
-    }
+	private void Start()
+	{
+	}
 
-    private void Start()
-    {
-        if (animator == null)
-        {
+	public void PlayMoveState(bool isRun)
+	{
+		animator.SetBool("isRun", isRun);
+	}
 
-        }
-    }
+	public void PlayerIsDead()
+	{
+		animator.SetBool("dead", true);
+	}
 
-    public void PlayMoveState(bool isRun)
-    {
-        animator.SetBool("isRun", isRun);
-    }
+	public void PlayerGetDamage()
+	{
+		animator.SetBool("getDamage", true);
+		Invoke(nameof(ResetFace), 0.5f);
+	}
 
-    public void PlayerIsDead()
-    {
-        animator.SetBool("dead", true);
-    }
+	public void PlayerAttack()
+	{
+		animator.SetBool("attack", true);
+	}
 
-    public void PlayerGetDamage()
-    {
-        animator.SetBool("getDamage", true);
-        Invoke(nameof(ResetFace), 0.5f);
-    }
+	private void ResetFace()
+	{
+		animator.SetBool("getDamage", false);
+	}
 
-    public void PlayerAttack()
-    {
-        animator.SetBool("attack", true);
-    }
-
-    private void ResetFace()
-    {
-        animator.SetBool("getDamage", false);
-    }
-
-    private void ResetBody()
-    {
-        animator.SetBool("attack", false);
-    }
-
-    public void ShowEndUI()
-    {
-        Utils.GetMainUIController().ShowEndUI();
-    }
 }

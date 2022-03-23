@@ -11,10 +11,10 @@ public class LevelUpMainUIController : MonoBehaviour
 
 	[SerializeField] private int currentCharactorNum = 0;
 
-	[SerializeField] private UpdateButtonController speedUpButton;
-	[SerializeField] private UpdateButtonController lifeUpButton;
-	[SerializeField] private UpdateButtonController manaMaxUpButton;
-	[SerializeField] private UpdateButtonController manaRecoverUpButton;
+	[SerializeField] private LevelButtonController speedUpButton;
+	[SerializeField] private LevelButtonController lifeUpButton;
+	[SerializeField] private LevelButtonController manaMaxUpButton;
+	[SerializeField] private LevelButtonController manaRecoverUpButton;
 
 	[SerializeField] private Text currentGoldText;
 	[SerializeField] private Text currentUnlockSkillNumText;

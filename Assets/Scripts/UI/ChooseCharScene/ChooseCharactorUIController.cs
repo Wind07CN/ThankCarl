@@ -18,7 +18,7 @@ public class ChooseCharactorUIController : MonoBehaviour
 	{
 		for (int i = 0; i < 3; i++)
 		{
-			unlockState[i] = PlayerPrefs.GetInt("Char" + i) == 1;
+			unlockState[i] = PlayerPrefs.GetInt(Constants.Char + i) == 1;
 			CharsButton[i].GetComponent<Image>().sprite = unlockState[i] ? unlockedStateSprite :lockedStateSprite;
 		}
 		learnedSkillText.text = string.Format("{0:D3}", PlayerPrefs.GetInt(Constants.LearnSkillNum));
@@ -52,7 +52,7 @@ public class ChooseCharactorUIController : MonoBehaviour
 			CharsButton[buttonId].GetComponent<Image>().sprite = unlockedStateSprite;
 			unlockState[buttonId] = true;
 
-			PlayerPrefs.SetInt("Char" + buttonId, 1);
+			PlayerPrefs.SetInt(Constants.Char + buttonId, 1);
 			PlayerPrefs.SetInt(Constants.CurrentGold, PlayerPrefs.GetInt(Constants.CurrentGold) - 300); 
 			UpdateGold();
 		}

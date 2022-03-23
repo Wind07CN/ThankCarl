@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpdateButtonController : MonoBehaviour
+public class LevelButtonController : MonoBehaviour
 {
-	[SerializeField] private Constants.UpdateType updateType;
+	[SerializeField] private Constants.LevelType updateType;
 
 	[SerializeField] private GameObject levelUp;
 	[SerializeField] private GameObject levelMax;
@@ -15,20 +15,30 @@ public class UpdateButtonController : MonoBehaviour
 	[SerializeField] private Text needGoldText;
 	[SerializeField] private Text nextLevelText;
 
-	[SerializeField] private int nextLv = 1;
+	[SerializeField] private int CurrentLv = 1;
 	[SerializeField] private int MaxLv = 5;
+	private string stringForCheck;
 
 	private int currentGold = 0;
-	private int currentchar;
+	private int currentchar = 0;
 
 	private void Awake()
 	{
 		currentchar = Utils.GetDataRecord().currentCharactorNum;
-		if (PlayerPrefs.GetInt("char" + currentchar + Constants.UpdateData[updateType]) != 0)
+		stringForCheck = Constants.Char + currentchar + Constants.LevelTypeString[updateType];
+		if (PlayerPrefs.GetInt(stringForCheck) >= 1)
 		{
-			nextLv = PlayerPrefs.GetInt("char" + currentchar + Constants.UpdateData[updateType]);
+			CurrentLv = PlayerPrefs.GetInt(stringForCheck);
 		}
-		if (nextLv <= MaxLv)
+		else 
+		{
+			// init Data
+			PlayerPrefs.SetInt(stringForCheck, 1);
+			CurrentLv = 1;
+		}
+
+		// InitUI
+		if (CurrentLv <= MaxLv)
 		{
 			levelUp.SetActive(true);
 			levelMax.SetActive(false);
@@ -39,7 +49,6 @@ public class UpdateButtonController : MonoBehaviour
 			levelUp.SetActive(false);
 			levelMax.SetActive(true);
 		}
-		
 	}
 
 	/// <summary>
@@ -48,17 +57,17 @@ public class UpdateButtonController : MonoBehaviour
 	public void LevelUp()
 	{
 
-		if (nextLv <= MaxLv)
+		if (CurrentLv <= MaxLv)
 		{
 			int lastGold = PlayerPrefs.GetInt(Constants.CurrentGold) - currentGold;
 
 			if (lastGold >= 0)
 			{
-				nextLv++;
-				PlayerPrefs.SetInt(Constants.UpdateData[updateType], nextLv);
+				CurrentLv++;
+				PlayerPrefs.SetInt(stringForCheck, CurrentLv);
 				UpdateUINum();
 
-				if (nextLv > MaxLv)
+				if (CurrentLv > MaxLv)
 				{
 					levelUp.SetActive(false);
 					levelMax.SetActive(true);
@@ -74,9 +83,9 @@ public class UpdateButtonController : MonoBehaviour
 
 	private void UpdateUINum()
 	{
-		currentGold = Utils.CalculateGold(nextLv);
+		currentGold = Utils.CalculateGold(CurrentLv);
 		needGoldText.text = string.Format("{0:D3}", currentGold);
-		nextLevelText.text = string.Format("{0:D2}", nextLv);
+		nextLevelText.text = string.Format("{0:D2}", CurrentLv);
 	}
 
 }

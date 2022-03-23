@@ -20,9 +20,9 @@ public class WelcomeUIController : MonoBehaviour
 		PlayerPrefs.SetInt("DataExist", 1);
 
 		// Unlock Default Char
-		PlayerPrefs.SetInt("Char" + 1, 1);
-		PlayerPrefs.SetInt("Char" + 0, 0);
-		PlayerPrefs.SetInt("Char" + 2, 0);
+		PlayerPrefs.SetInt(Constants.Char + 1, 1);
+		PlayerPrefs.SetInt(Constants.Char + 0, 0);
+		PlayerPrefs.SetInt(Constants.Char + 2, 0);
 
 		// Set Gold
 		PlayerPrefs.SetInt(Constants.CurrentGold, 0);

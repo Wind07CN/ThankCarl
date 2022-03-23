@@ -892,7 +892,7 @@ GameObject:
   - component: {fileID: 408017329}
   - component: {fileID: 408017328}
   m_Layer: 5
-  m_Name: Current End
+  m_Name: Current Skill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1763,7 +1763,7 @@ MonoBehaviour:
   mainUIController: {fileID: 1346478052}
   needGoldText: {fileID: 767158819}
   nextLevelText: {fileID: 1541923696}
-  nextLv: 1
+  CurrentLv: 1
   MaxLv: 5
 --- !u!1 &738051065
 GameObject:
@@ -2851,7 +2851,7 @@ MonoBehaviour:
   manaMaxUpButton: {fileID: 1936718470}
   manaRecoverUpButton: {fileID: 1655452812}
   currentGoldText: {fileID: 255821029}
-  currentUnlockText: {fileID: 408017328}
+  currentUnlockSkillNumText: {fileID: 408017328}
   charactorAnimator: {fileID: 1550679273}
 --- !u!1 &1390335774
 GameObject:
@@ -3006,7 +3006,7 @@ MonoBehaviour:
   mainUIController: {fileID: 1346478052}
   needGoldText: {fileID: 1230171158}
   nextLevelText: {fileID: 501292008}
-  nextLv: 1
+  CurrentLv: 1
   MaxLv: 5
 --- !u!1 &1393287875
 GameObject:
@@ -3753,7 +3753,7 @@ MonoBehaviour:
   mainUIController: {fileID: 1346478052}
   needGoldText: {fileID: 1393287877}
   nextLevelText: {fileID: 990121260}
-  nextLv: 1
+  CurrentLv: 1
   MaxLv: 5
 --- !u!1 &1755012658
 GameObject:
@@ -4096,7 +4096,7 @@ MonoBehaviour:
   mainUIController: {fileID: 1346478052}
   needGoldText: {fileID: 1611845500}
   nextLevelText: {fileID: 1916027378}
-  nextLv: 1
+  CurrentLv: 1
   MaxLv: 5
 --- !u!1 &1942382273
 GameObject:

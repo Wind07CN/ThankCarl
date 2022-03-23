@@ -52,26 +52,31 @@ public static class Constants
     public const float EachLevelAddSpeed = 0.05f;
     public const float EachLevelAddManaRegenSpeedLevel = 0.05f;
     public const float EachLevelAddMaxMana = 0.05f;
-    public const float EachLevelAddDamage = 0.05f;
+    public const float EachLevelAddDamage = 0.10f;
 
     public const int PlayerDefaultMaxMana = 100;
     public const float PlayerDefaultBaseManaRegenSpeed = 10f;
 
-    public enum UpdateType
+    public enum LevelType
     {
         speedLv = 0,
         healthLv = 1,
         manaMaxLv = 2,
         manaRecoverLv = 3,
+        damageLv = 4
     }
 
-    public static Dictionary<UpdateType, string> UpdateData = new Dictionary<UpdateType, string>()
+    public static Dictionary<LevelType, string> LevelTypeString = new Dictionary<LevelType, string>()
     {
-        {UpdateType.speedLv, "speedLv" },
-        {UpdateType.healthLv, "healthLv" },
-        {UpdateType.manaMaxLv, "manaMaxLv" },
-        {UpdateType.manaRecoverLv, "manaRecoverLv" }
+        {LevelType.speedLv, "speedLv" },
+        {LevelType.healthLv, "healthLv" },
+        {LevelType.manaMaxLv, "manaMaxLv" },
+        {LevelType.manaRecoverLv, "manaRecoverLv" },
+        {LevelType.damageLv, "DamageLv" }
     };
 
     public const string CurrentGold = "CurrentGold";
+    public const string Char = "CharNo";
+
+    public const int DefaultSubElementNum = 1;
 }

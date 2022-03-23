@@ -32,8 +32,6 @@ public class PlayerController : MonoBehaviour
 
 	[SerializeField] private int levelUpforGetNewElement = 5;
 	[SerializeField] private LevelupUI levelupUI;
-
-	[SerializeField] private GameObject[] playerAnimations;
 	private int currentChar = 0;
 
 	private void Awake()
@@ -77,20 +75,23 @@ public class PlayerController : MonoBehaviour
 
 	public void InitPlayer()
 	{
-		Instantiate(playerAnimations[2], transform);
-/*
-		// Init Multiplier *********
-		playerAttribute.MaxLifeLevel = PlayerPrefs.GetInt("MaxLifeLevel");
-		playerAttribute.SpeedLevel = PlayerPrefs.GetInt("SpeedLevel");
-		playerAttribute.MaxManaLevel = PlayerPrefs.GetInt("MaxManaLevel");
-		playerAttribute.ManaRegenSpeedLevel = PlayerPrefs.GetInt("ManaRegenSpeedLevel");
-		playerAttribute.CurrentSubElement = PlayerPrefs.GetInt("CurrentSubElement");
-*/
-		playerAttribute.MaxLifeLevel = 1;
-		playerAttribute.SpeedLevel = 0;
-		playerAttribute.MaxManaLevel = 0;
-		playerAttribute.ManaRegenSpeedLevel = 0;
-		playerAttribute.CurrentSubElement = 2;
+
+		// Init Multiplier Because every Level begin with 1 need - 1
+		playerAttribute.MaxLifeLevel = PlayerPrefs.GetInt(Constants.Char + currentChar + Constants.LevelTypeString[Constants.LevelType.healthLv]) - 1;
+		playerAttribute.SpeedLevel = PlayerPrefs.GetInt(Constants.Char + currentChar + Constants.LevelTypeString[Constants.LevelType.speedLv]) - 1;
+		playerAttribute.MaxManaLevel = PlayerPrefs.GetInt(Constants.Char + currentChar + Constants.LevelTypeString[Constants.LevelType.manaMaxLv]) - 1;
+		playerAttribute.ManaRegenSpeedLevel = PlayerPrefs.GetInt(Constants.Char + currentChar + Constants.LevelTypeString[Constants.LevelType.manaRecoverLv]) - 1;
+		playerAttribute.CurrentSubElement = Constants.DefaultSubElementNum;
+		playerAttribute.DamageLevel = 0;
+
+		// Char Skill
+		if (currentChar == 0) { playerAttribute.CurrentSubElement++; }
+		if (currentChar == 1) { playerAttribute.MaxLifeLevel += 2; }
+		if (currentChar == 2) { 
+			playerAttribute.SpeedLevel += 4;
+			playerAttribute.MaxLifeLevel -= 2;
+		}
+		
 
 		// Init Multiplier
 		playerAttribute.SpeedMultiplier = playerAttribute.SpeedBaseMultiplier;
@@ -107,8 +108,8 @@ public class PlayerController : MonoBehaviour
 		playerAttribute.BaseMoveSpeed = playerBaseMoveSpeed;
 		playerAttribute.BaseManaRegenSpeed = playerBaseManaRegenSpeed;
 
-		animation = GameObject.FindGameObjectWithTag("PlayerAnimation").GetComponent<PlayerAnimeController>();
-		UIController = GameObject.FindGameObjectWithTag("MainUI").GetComponent<BattleSceneMainUIController>();
+		animation = GetComponent<PlayerAnimeController>();
+		UIController = Utils.GetMainUIController();
 
 	}
 
