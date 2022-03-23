@@ -6,40 +6,32 @@ public class BattleSceneController : MonoBehaviour
 {
 
 	[HideInInspector] public PlayerAttribute playerAttribute;
-	public float difficultyMultiplier = 1.0f;
 
-	private bool isPlayerDead = false;
+	[SerializeField] private float EnemyLvUpTime = 60f;
+	private float timer = 0f;
+	public int EnemyLv = 0;
 
 	private void Awake()
 	{
-		InitScene();
+		timer = EnemyLvUpTime;
 	}
 
 	private void Update()
 	{
-		if (isPlayerDead)
+		if (timer <= 0) 
 		{
-			SwitchSence();
+			timer = EnemyLvUpTime;
+			EnemyLv++;
 		}
-	}
 
-	private void InitScene()
-	{
-
+		timer -= Time.deltaTime;
 	}
 
 
-	public void PlayerIsKilled()
-	{
-		isPlayerDead = true;
-		Debug.Log("Player is dead");
 
-	}
 
-	private void SwitchSence()
-	{
-		Debug.Log("ChangeSence");
-	}
+
+
 
 
 }

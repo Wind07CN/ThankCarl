@@ -51,11 +51,11 @@ public class LinearProjectileController : MonoBehaviour
             SpellDamageDealer.Deal(ElementType, collision.gameObject, CollisionDamage);
             if (hitEffectTarget == HitEffectTarget.Enemy)
             {
-                Utils.GetHitEffectGenerator().InitHitEffect(ElementType, collision.gameObject, new Vector3(0.5f, 1f, 0));
+                Utils.GetHitEffectGenerator().InitHitEffect(ElementType, collision.gameObject.transform.position);
             }
             else if (hitEffectTarget == HitEffectTarget.Projectile)
             {
-				Utils.GetHitEffectGenerator().InitHitEffect(ElementType, this.gameObject, new Vector3(0.5f, 1f, 0));
+				Utils.GetHitEffectGenerator().InitHitEffect(ElementType, this.gameObject.transform.position);
             }
             if (HasPenetrateLlimit)
             {

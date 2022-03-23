@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 742313394204802393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.98, y: -1.52, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 4170f1caff1bdc44889233e404b20f0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -146,12 +146,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d63041d6c597d498c2fa4fb55d4f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isElite: 1
   enemyElementType: 0
+  EnemyPoint: 100
   enemySpeed: 5
-  enemyMaxLife: 20
+  enemyDefaltMaxLife: 20
   enemyArmour: 0
   difficultyMultiplier: 1
   enemyActiveTime: 2
+  eachLvAddLife: 2
   damageToPlayer: 1
 --- !u!114 &2699354072744252331
 MonoBehaviour:

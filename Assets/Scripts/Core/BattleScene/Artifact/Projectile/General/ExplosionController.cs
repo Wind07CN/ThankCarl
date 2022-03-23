@@ -49,7 +49,7 @@ public class ExplosionController : MonoBehaviour
 				SpellDamageDealer.Deal(ElementType, enemy, Damage);
 
 				// hit animation
-				Utils.GetHitEffectGenerator().InitHitEffect(ElementType, enemy, new Vector3(0.5f, 1f, 0));
+				Utils.GetHitEffectGenerator().InitHitEffect(ElementType, enemy.transform.position);
 
 				// if should give force to enemy, set haveForce true
 				if (HasForce)

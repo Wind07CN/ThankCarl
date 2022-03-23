@@ -25,7 +25,7 @@ public class LightningBallController : MonoBehaviour
         if (collision.gameObject.CompareTag(Constants.EnemyTag))
         {
             SpellDamageDealer.Deal(ElementType, collision.gameObject, CollisionDamage);
-            Utils.GetHitEffectGenerator().InitHitEffect(ElementType, collision.gameObject, new Vector3(0.5f, 1f, 0));
+            Utils.GetHitEffectGenerator().InitHitEffect(ElementType, collision.gameObject.transform.position);
             GameObject chain = Instantiate(LightningChainPrefab, transform.position, Quaternion.identity);
             LightningChainController chainController = chain.GetComponent<LightningChainController>();
             chainController.InitialEnemy = collision.gameObject;

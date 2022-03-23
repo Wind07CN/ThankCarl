@@ -115,7 +115,7 @@ public class LightningChainController : MonoBehaviour
             return;
         }
 		visitedEnemies.Add(nextEnemyPosition.Enemy);
-        Utils.GetHitEffectGenerator().InitHitEffect(ElementType, nextEnemyPosition.Enemy, new Vector3(0.5f, 1f, 0));
+        Utils.GetHitEffectGenerator().InitHitEffect(ElementType, nextEnemyPosition.Enemy.transform.position);
         DealDamage(nextEnemyPosition.Enemy);
         CreateZigzagLine(currentEnemyPosition, nextEnemyPosition);
     }

@@ -19,6 +19,8 @@ public class EnemySpawnController : MonoBehaviour
 	private bool needSpawn = true;
 	[SerializeField] private float nextSpawnTime = Constants.nextDefaultSpawnTime;
 
+	[SerializeField] private float eachLevelAddEliteRate = 2;
+
 	private PlayerAttribute player;
 
 	private void Start()
@@ -37,9 +39,10 @@ public class EnemySpawnController : MonoBehaviour
 		}
 	}
 
-	private void UpdateEltieRate(float rate)
+	private void UpdateEliteRate()
 	{
-		eliteRate = rate;
+		eliteRate += eachLevelAddEliteRate;
+		eliteRate =  eliteRate > 100 ? 100 : eliteRate;
 	}
 
 	private void SpawnNewEnemy()

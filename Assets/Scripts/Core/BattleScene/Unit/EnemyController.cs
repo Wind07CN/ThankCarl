@@ -2,16 +2,19 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+
+	[SerializeField] private bool isElite = false;
 	[SerializeField] private ElementType enemyElementType;
 	[SerializeField] private int EnemyPoint = 100;
 	[SerializeField] private float enemySpeed = Constants.EnemyDefaultMoveSpeed;
-	[SerializeField] private int enemyMaxLife = Constants.EnemyDefaultMaxLife;
+	[SerializeField] private int enemyDefaltMaxLife = Constants.EnemyDefaultMaxLife;
 	[SerializeField] private int enemyArmour = Constants.EnemyDefaultArmour;
 
 	[SerializeField] private float difficultyMultiplier = 1f;
 
 	// When enemy is inited, is not active mmediately
 	[SerializeField] private float enemyActiveTime = Constants.EnemyDefaultActiveTime;
+	[SerializeField] private int eachLvAddLife = 2;
 
 	public int damageToPlayer = 1;
 
@@ -20,6 +23,9 @@ public class EnemyController : MonoBehaviour
 	private PlayerAttribute playerAttribute;
 	private GameObject mPlayer;
 	private Rigidbody2D mRigidbody;
+
+	Vector3 mScale;
+	Vector3 mScaleflip;
 
 	public void Start()
 	{
@@ -43,6 +49,9 @@ public class EnemyController : MonoBehaviour
 
 	private void InitEnemy()
 	{
+		mScale = transform.localScale;
+		mScaleflip = mScale;
+		mScaleflip.x = -mScale.x;
 
 		enemyAttribute = new EnemyAttribute(enemyElementType);
 
@@ -50,10 +59,16 @@ public class EnemyController : MonoBehaviour
 
 		mPlayer = Utils.GetPlayerObject();
 		playerAttribute = Utils.GetPlayerAttribute();
-		difficultyMultiplier = Utils.GetMainController().difficultyMultiplier;
+
+
+		int enemylv = Utils.GetMainController().EnemyLv;
+		if (isElite) 
+		{
+			enemylv *= 2;
+		}
 
 		// Set Value
-		enemyAttribute.MaxLife = (int)(enemyMaxLife * difficultyMultiplier);
+		enemyAttribute.MaxLife = enemyDefaltMaxLife + enemylv * eachLvAddLife;
 		enemyAttribute.CurrentLife = enemyAttribute.MaxLife;
 		enemyAttribute.Armour = enemyArmour;
 		enemyAttribute.MoveSpeed = enemySpeed;
@@ -87,11 +102,11 @@ public class EnemyController : MonoBehaviour
 			// 需要重写降低损耗
 			if (orientation.x > 0)
 			{
-				mRigidbody.transform.localScale = new Vector3(-1, 1, 1);
+				mRigidbody.transform.localScale = mScaleflip;
 			}
 			else
 			{
-				mRigidbody.transform.localScale = new Vector3(1, 1, 1);
+				mRigidbody.transform.localScale = mScale;
 			}
 
 			// enemy rotation 

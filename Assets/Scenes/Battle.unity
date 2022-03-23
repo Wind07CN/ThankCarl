@@ -1991,7 +1991,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 193a51030703cfc44aea6f64a7883448, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4271,7 +4271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe4f34ad4196a14b927ddb846bbff70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficultyMultiplier: 1
+  EnemyLvUpTime: 60
+  EnemyLv: 0
 --- !u!4 &2121190883
 Transform:
   m_ObjectHideFlags: 0
@@ -4302,14 +4303,23 @@ MonoBehaviour:
   - {fileID: 9220582574361967393, guid: 21a799382be29e84d86984106765cee1, type: 3}
   - {fileID: 8068589544198079020, guid: 58cfce6dc90c7944082fbeb275a1a960, type: 3}
   - {fileID: 156542848281769717, guid: 73719a5540532f044a80bf5a1435904c, type: 3}
-  eliteEnemyPrefabs:
   - {fileID: 742313394204802393, guid: a136f6ce3341f1342a83b57db8e6c3bf, type: 3}
-  eliteRate: 0.1
-  battlefieldMaxX: 14
-  battlefieldMinX: -14
-  battlefieldMaxY: 14
-  battlefieldMinY: -14
-  nextSpawnTime: 1
+  eliteEnemyPrefabs:
+  - {fileID: 919127419535625666, guid: 58ba4aaa975660445a9df26a41020792, type: 3}
+  - {fileID: 3321944768357182701, guid: c93ec776ad6f4f94c9e54036adaee2d4, type: 3}
+  - {fileID: 4151280694914435787, guid: 35096337764a44b4d8675330283e7ddc, type: 3}
+  - {fileID: 3247214171082563065, guid: 77aa2efa1080bd14e9894fb5b1855b30, type: 3}
+  - {fileID: 3595543659912382573, guid: b26f078d792ca5d459edbb3e27e4b91c, type: 3}
+  - {fileID: 5955289250740886622, guid: 42ae85af24fa53b41a1c5fa4672b0761, type: 3}
+  - {fileID: 5063452481832518711, guid: 456ea658c11b21f47bbd8f6781f11322, type: 3}
+  - {fileID: 3728378544353194358, guid: 20c8313b4834ec84289323cc0cae20b3, type: 3}
+  eliteRate: 0.3
+  battlefieldMaxX: 30
+  battlefieldMinX: -100
+  battlefieldMaxY: 48
+  battlefieldMinY: -25
+  nextSpawnTime: 3
+  eachLevelAddEliteRate: 2
 --- !u!114 &2121190885
 MonoBehaviour:
   m_ObjectHideFlags: 0
