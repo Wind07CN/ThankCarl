@@ -3110,7 +3110,7 @@ MonoBehaviour:
   invincibleTime: 1
   invincibleAnime: {fileID: 645621879}
   hitEffectGenerator: {fileID: 2121190885}
-  killCountForLevelUp: 20
+  killCountForLevelUp: 10
   levelUpforGetNewElement: 3
   levelupUI: {fileID: 730634106}
 --- !u!114 &1438070857
@@ -4271,7 +4271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe4f34ad4196a14b927ddb846bbff70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyLvUpTime: 60
+  EnemyLvUpTime: 30
   EnemyLv: 0
 --- !u!4 &2121190883
 Transform:

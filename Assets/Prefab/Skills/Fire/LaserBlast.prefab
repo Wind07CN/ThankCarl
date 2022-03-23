@@ -71,7 +71,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 12
+  m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 1, y: 0, z: 0}
@@ -142,5 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffba84ce539098948b5a3a5f293f5c2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elementType: 1
   damage: 200
   disappearTime: 0.3
