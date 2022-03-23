@@ -57,7 +57,11 @@ public class ChooseCharactorUIController : MonoBehaviour
 			UpdateGold();
 		}
 	}
-
+	public void JumpToStartScene()
+	{
+		Utils.GetDataRecord().NextSceneNum = Constants.StartSceneTag;
+		SceneManager.LoadScene(Constants.LoadingSceneTag);
+	}
 
 }
 

@@ -42,6 +42,7 @@ public static class Constants
     public const string LoadingSceneTag = "Loading";
     public const string LevelUpSceneTag = "LevelUp";
     public const string CharChooseSceneTag = "Choose";
+    public const string StartSceneTag = "Start";
 
     public const string LearnSkillNum = "SkillNum";
 
