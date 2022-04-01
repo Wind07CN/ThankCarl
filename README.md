@@ -13,9 +13,11 @@ Select one of the three little witches, conjour the four elements to cast powerf
 Use the left mouse button to control the player's movement, use the spacebar to cast spells. Let's see how many Slimes you can defeat!
 
 ## Documentation
-The detailed documentation about story backgroud, art set, game manual and more can be found [here](./../ThankCarlDoc.pdf).
+The detailed documentation about story backgroud, art set, game manual and more can be found [here](./ThankCarlDoc.pdf).
 
 ## Contributors
-@Wind07CN Programming, Art & Gameplay Design.
-@Shaokun-X Programming & Gameplay Design.
-@MCCPbranchofUbisoft Numerical Planning.
+@Wind07CN Programming, Art & Gameplay Design
+
+@Shaokun-X Programming & Gameplay Design
+
+@MCCPbranchofUbisoft Numerical Planning
