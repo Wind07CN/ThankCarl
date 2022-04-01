@@ -16,8 +16,8 @@ Use the left mouse button to control the player's movement, use the spacebar to 
 The detailed documentation about story backgroud, art set, game manual and more can be found [here](./ThankCarlDoc.pdf).
 
 ## Contributors
-@Wind07CN Programming, Art & Gameplay Design
+[@Wind07CN](https://github.com/Wind07CN) Programming, Art & Gameplay Design
 
-@Shaokun-X Programming & Gameplay Design
+[@Shaokun-X](https://github.com/Shaokun-X) Programming & Gameplay Design
 
-@MCCPbranchofUbisoft Numerical Planning
+[@MCCPbranchofUbisoft](https://github.com/MCCPbranchofUbisoft) Numerical Planning
