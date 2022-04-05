@@ -2,6 +2,7 @@
 You are trapped in a magic book, cast the right spells to survive!
 
 A Demo indie Game. This project started on Feb 9, 2022. The team uses their free time to complete this project.
+
 Design DOC (Chinese) : [太空卡尔?](https://docs.google.com/document/d/1c2cSY5Ul1Qk7-cG_ykuYS4eUDvX_UJjI-UKtJl1vGkQ/edit#heading=h.af80tl7prv5v)
 
 ## Download
