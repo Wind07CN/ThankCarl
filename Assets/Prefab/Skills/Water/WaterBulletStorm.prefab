@@ -129,7 +129,7 @@ MonoBehaviour:
   AreaEffectPrefab: {fileID: 0}
   ElementType: 2
   Speed: 30
-  CollisionDamage: 8
+  CollisionDamage: 20
   isAreaEffect: 0
   AreaDamage: 0
   HasPenetrateLlimit: 1

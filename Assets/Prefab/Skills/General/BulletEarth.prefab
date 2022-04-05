@@ -114,8 +114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AreaEffectPrefab: {fileID: 2077726699980165406, guid: 9e9c9db00999c3c4fa6307d3d57a8bd1, type: 3}
   ElementType: 3
-  Speed: 20
-  CollisionDamage: 2
+  Speed: 30
+  CollisionDamage: 10
   isAreaEffect: 0
   AreaDamage: 0
   HasPenetrateLlimit: 1

@@ -315,7 +315,6 @@ RectTransform:
   - {fileID: 1751100194}
   - {fileID: 386889046}
   - {fileID: 1021182537}
-  - {fileID: 1637521188}
   m_Father: {fileID: 1016728437}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -350,7 +349,6 @@ MonoBehaviour:
   - {fileID: 1751100193}
   - {fileID: 386889045}
   - {fileID: 1021182536}
-  - {fileID: 1637521187}
   unlockedSubElementCount: 1
 --- !u!1 &124658308
 GameObject:
@@ -384,6 +382,7 @@ GameObject:
   - component: {fileID: 124658330}
   - component: {fileID: 124658331}
   - component: {fileID: 124658332}
+  - component: {fileID: 124658333}
   m_Layer: 6
   m_Name: SpellCaster
   m_TagString: Untagged
@@ -556,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 2658325869160293948, guid: 930ff7ce2e4a3b34d931c07d5a4cf050, type: 3}
-  explosionScale: 2
+  explosionScale: 4
   damage: 10
   forceFactor: 10
 --- !u!114 &124658321
@@ -660,9 +659,9 @@ MonoBehaviour:
   MaxCaptureDistance: 30
   EffectExistTime: 0.2
   EffectDisappearTime: 0.2
-  Damage: 20
+  Damage: 30
   BulletSpeed: 30
-  MaxJumpCount: 3
+  MaxJumpCount: 8
 --- !u!114 &124658328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,6 +732,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CannonTowerPrefab: {fileID: 1008183812050823698, guid: cf506a11dd1bc3748b7235bcd6cd2196, type: 3}
+--- !u!114 &124658333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124658308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25be1d332e07153458a8e3be466b3a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  schutzwallPrefab: {fileID: 7318207612167196882, guid: 38d46c4f6bc18014caa712e06b221a46, type: 3}
 --- !u!1001 &249137570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3308,7 +3320,7 @@ MonoBehaviour:
   shakeRange: 10
   shakeTime: 0.15
   endUI: {fileID: 2147739070062176601, guid: 9bfac6afaef8eba4e9ce2bfd376406ab, type: 3}
-  getNewSkillUI: {fileID: 7760079435752953613, guid: 964b1710c913d0e4ea759d6610e4196c, type: 3}
+  getNewSkillUI: {fileID: 7177187595190275340, guid: 53b71b6575b8f664cb7021f1d43fd792, type: 3}
   getNewElementUI: {fileID: 7937583067232110039, guid: 802eafeabe138504d9d843c416d86762, type: 3}
   getUI: {fileID: 1031190652}
   conjureTable: {fileID: 116805455}
@@ -3725,81 +3737,6 @@ MonoBehaviour:
   PointTextObj: {fileID: 31078469}
   BarImageObj: {fileID: 752498335}
   shouldUpdate: 1
---- !u!1 &1637521187
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1637521188}
-  - component: {fileID: 1637521190}
-  - component: {fileID: 1637521189}
-  m_Layer: 5
-  m_Name: Image (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1637521188
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1637521187}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
-  m_Children: []
-  m_Father: {fileID: 116805454}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 335.80005, y: 42.69995}
-  m_SizeDelta: {x: 62.427887, y: 62.427902}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1637521189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1637521187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: da199f09cd3327d4aa1a0034ece34b02, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1637521190
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1637521187}
-  m_CullTransparentMesh: 1
 --- !u!1 &1655852446
 GameObject:
   m_ObjectHideFlags: 0

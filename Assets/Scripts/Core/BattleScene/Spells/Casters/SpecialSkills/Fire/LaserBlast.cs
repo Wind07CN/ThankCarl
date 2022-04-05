@@ -8,6 +8,8 @@ public class LaserBlast : AbstractSpellCaster
 
 	public override void Cast(ISpell spell)
 	{
-		Instantiate(laserPrefab, transform.position, Quaternion.identity);
+		Vector3 pos = transform.position;
+		pos.z = 0.5f;
+		Instantiate(laserPrefab, pos, Quaternion.identity);
 	}
 }

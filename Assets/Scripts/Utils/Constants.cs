@@ -46,8 +46,8 @@ public static class Constants
 
     public const string LearnSkillNum = "SkillNum";
 
-
-    public const int MaxSubElementsCount = 5;
+    public const int DefaultSubElementNum = 1;
+    public const int MaxSubElementsCount = 4;
     public const int EachTimeLifeRecover = 3;
 
     public const float EachLevelAddSpeed = 0.05f;
@@ -79,5 +79,5 @@ public static class Constants
     public const string CurrentGold = "CurrentGold";
     public const string Char = "CharNo";
 
-    public const int DefaultSubElementNum = 1;
+
 }

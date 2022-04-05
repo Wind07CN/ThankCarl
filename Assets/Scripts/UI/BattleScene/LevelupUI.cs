@@ -73,6 +73,16 @@ public class LevelupUI : MonoBehaviour
 			isActive = false;
 			animator.SetBool("levelUp", false);
 		}
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			if (restOfUnchooseAddElement + playerAttribute.CurrentSubElement < Constants.MaxSubElementsCount) 
+			{
+				playerAttribute.CurrentSubElement++;
+				mainUIController.Addconjure();
+				Utils.GetMainUIController().ShowGetNewElementUI();
+			}
+			
+		}
 	}
 
 	private void InitSpriteDic()

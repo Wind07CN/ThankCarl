@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b7c35c868a15e46ab6aaa7c228bbc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AreaEffectPrefab: {fileID: 0}
+  AreaEffectPrefab: {fileID: 4130252325508052604, guid: b21d0c4d7976cf245a433667031595a4, type: 3}
   ElementType: 0
   Speed: 40
   CollisionDamage: 15

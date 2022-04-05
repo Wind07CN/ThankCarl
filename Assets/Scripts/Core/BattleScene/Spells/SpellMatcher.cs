@@ -13,32 +13,34 @@ public class SpellMatcher
     public SpellMatcher()
     {
         // Fire Skills
-        this.spells.Add(new Spell<FireBall>(10, ElementType.Fire, ElementType.Fire));
-        this.spells.Add(new Spell<Meteorite>(20, ElementType.Fire, ElementType.Earth));
-        this.spells.Add(new Spell<LaserBlast>(20, ElementType.Fire, ElementType.Wind, ElementType.Water));
+        this.spells.Add(new Spell<FireBall>(10, ElementType.Fire, ElementType.Fire)); 
         this.spells.Add(new Spell<FireBlast>(10, ElementType.Fire, ElementType.Wind));
-        this.spells.Add(new Spell<Phoenix>(30, ElementType.Fire, ElementType.Fire, ElementType.Fire, ElementType.Water, ElementType.Wind, ElementType.Wind));
+        this.spells.Add(new Spell<Meteorite>(40, ElementType.Fire, ElementType.Earth, ElementType.Earth));
+        this.spells.Add(new Spell<LaserBlast>(20, ElementType.Fire, ElementType.Wind, ElementType.Water));
+        this.spells.Add(new Spell<Phoenix>(70, ElementType.Fire, ElementType.Fire, ElementType.Fire, ElementType.Water, ElementType.Wind));
 
         // Water Skills
         this.spells.Add(new Spell<Whirl>(10, ElementType.Water, ElementType.Wind));
-        this.spells.Add(new Spell<MagicCircle>(10, ElementType.Water, ElementType.Water, ElementType.Earth, ElementType.Earth));
-        this.spells.Add(new Spell<TimeStop>(10, ElementType.Water, ElementType.Water, ElementType.Water, ElementType.Water, ElementType.Wind, ElementType.Wind));
-        this.spells.Add(new Spell<WaterDropProtector>(10, ElementType.Water, ElementType.Wind, ElementType.Wind));
-        this.spells.Add(new Spell<WaterBulletStorm>(10, ElementType.Water, ElementType.Fire, ElementType.Earth));
+        this.spells.Add(new Spell<WaterDropProtector>(40, ElementType.Water, ElementType.Wind, ElementType.Wind));
+        this.spells.Add(new Spell<WaterBulletStorm>(20, ElementType.Water, ElementType.Fire, ElementType.Earth));
+        this.spells.Add(new Spell<MagicCircle>(30, ElementType.Water, ElementType.Water, ElementType.Earth, ElementType.Earth));
+        this.spells.Add(new Spell<TimeStop>(20, ElementType.Water, ElementType.Water, ElementType.Earth, ElementType.Wind, ElementType.Wind));
+
 
         // Earth Skills
-        this.spells.Add(new Spell<Shotgun>(10, ElementType.Earth, ElementType.Water));
+        this.spells.Add(new Spell<Shotgun>(30, ElementType.Earth, ElementType.Water));
         this.spells.Add(new Spell<RollingStone>(10, ElementType.Earth, ElementType.Fire));
-        this.spells.Add(new Spell<CannonTower>(10, ElementType.Earth, ElementType.Fire, ElementType.Wind, ElementType.Water));
-        this.spells.Add(new Spell<Schutzwall>(10, ElementType.Earth, ElementType.Earth, ElementType.Earth, ElementType.Earth, ElementType.Wind, ElementType.Fire));
         this.spells.Add(new Spell<DefensiveWalls>(10, ElementType.Earth, ElementType.Earth));
+        this.spells.Add(new Spell<CannonTower>(40, ElementType.Earth, ElementType.Fire, ElementType.Wind, ElementType.Water));
+        this.spells.Add(new Spell<Schutzwall>(40, ElementType.Earth, ElementType.Earth, ElementType.Earth, ElementType.Wind, ElementType.Fire));
+
 
         // Wind Skill 
-        this.spells.Add(new Spell<Tornado>(10, ElementType.Wind, ElementType.Water));
-        this.spells.Add(new Spell<Thunder>(30, ElementType.Wind, ElementType.Wind, ElementType.Fire, ElementType.Fire, ElementType.Fire, ElementType.Water));
-        this.spells.Add(new Spell<Teleport>(10, ElementType.Wind, ElementType.Wind, ElementType.Fire, ElementType.Earth));
-        this.spells.Add(new Spell<LightningChain>(20, ElementType.Wind, ElementType.Wind, ElementType.Fire, ElementType.Fire));
         this.spells.Add(new Spell<TrackingArrow>(10, ElementType.Wind, ElementType.Wind));
+        this.spells.Add(new Spell<Tornado>(20, ElementType.Wind, ElementType.Water, ElementType.Wind));
+        this.spells.Add(new Spell<Teleport>(10, ElementType.Wind, ElementType.Wind, ElementType.Earth));
+        this.spells.Add(new Spell<LightningChain>(30, ElementType.Wind, ElementType.Wind, ElementType.Fire, ElementType.Fire));
+        this.spells.Add(new Spell<Thunder>(70, ElementType.Wind, ElementType.Wind, ElementType.Fire, ElementType.Fire, ElementType.Water));
 
         // general spells require only one element
         this.generalSpells.Add(new Spell<FireGeneral>(0, ElementType.Fire));

@@ -182,6 +182,6 @@ MonoBehaviour:
   elementType: 3
   bulletDamage: 15
   bulletPrefab: {fileID: 3889093922870368045, guid: 8f04c9233ac8e774fb656b0d29df38d6, type: 3}
-  firingIntervalTime: 0.5
+  firingIntervalTime: 0.2
   fireTimer: 0
   turret: {fileID: 1008183811937233327}

@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 042b043bb20a1344198d0df770c45d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AreaScale: 3
-  Damage: 100
+  AreaScale: 5
+  Damage: 10000
   ZigzagLineNumber: 3
   PrimaryColorLineProportion: 0.75
   PrimaryColor: {r: 0.9490197, g: 0.8705883, b: 0.5058824, a: 1}

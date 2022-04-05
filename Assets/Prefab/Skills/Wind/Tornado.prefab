@@ -96,9 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe39fceb1d5a2148b7bf43a5a3f08dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementType: 2
+  elementType: 0
   damageIntervalTime: 0.3
-  Damage: 5
+  Damage: 3
   expandTime: 0.2
   durationTime: 5
   disapperTime: 0.3

@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementType: 1
   damageIntervalTime: 0.5
-  Damage: 15
+  Damage: 10
   expandTime: 0.2
   durationTime: 5
   disapperTime: 0.3

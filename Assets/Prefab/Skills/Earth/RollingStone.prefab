@@ -113,10 +113,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elementType: 3
-  damage: 2
-  enemyStunTime: 1
+  damage: 20
+  enemyStunTime: 3.5
   durationTime: 3
   moveSpeed: 10
-  scaleSpeed: 2
+  scaleSpeed: 1
   rotateSpeed: 120
   disappearTime: 0.3

@@ -135,6 +135,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expandTime: 0.2
-  durationTime: 10
+  durationTime: 5
   disapperTime: 0.3
   scaleRatio: 5
