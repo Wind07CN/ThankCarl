@@ -1,11 +1,14 @@
 # ThankCarl
 You are trapped in a magic book, cast the right spells to survive!
 
-## Download
-[Version1.0.0](https://github.com/Wind07CN/ThankCarl/releases/tag/Release)
-
 ## An Indie Game
 Design DOC (Chinese) : [太空卡尔?](https://docs.google.com/document/d/1c2cSY5Ul1Qk7-cG_ykuYS4eUDvX_UJjI-UKtJl1vGkQ/edit#heading=h.af80tl7prv5v)
+
+## Download
+The first release version(v1.0.0, Windows) can be found [here](https://github.com/Wind07CN/ThankCarl/releases/tag/Release)
+
+## Documentation
+The detailed documentation about story backgroud, art set, game manual and more can be found [here](./ThankCarlDoc.pdf).
 
 ## Background
 A Demo indie Game. This project started on Feb 9, 2022. The team uses their free time to complete this project.
@@ -24,9 +27,6 @@ Use the left mouse button to control the player's movement, use the spacebar to 
 ![Battle](SkillGifs/battle.png)
 
 ![End](SkillGifs/End.png)
-
-## Documentation
-The detailed documentation about story backgroud, art set, game manual and more can be found [here](./ThankCarlDoc.pdf).
 
 ## Skills Demonstration
 ### Fire
