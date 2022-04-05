@@ -1,6 +1,9 @@
 # ThankCarl
 You are trapped in a magic book, cast the right spells to survive!
 
+## Download
+[Version1.0.0](https://github.com/Wind07CN/ThankCarl/releases/tag/Release)
+
 ## An Indie Game
 Design DOC (Chinese) : [太空卡尔?](https://docs.google.com/document/d/1c2cSY5Ul1Qk7-cG_ykuYS4eUDvX_UJjI-UKtJl1vGkQ/edit#heading=h.af80tl7prv5v)
 
