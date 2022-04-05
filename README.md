@@ -1,6 +1,7 @@
 # ThankCarl
 You are trapped in a magic book, cast the right spells to survive!
 
+## Background
 A Demo Indie Game. This project started on Feb 9, 2022. 
 
 The team uses their free time to complete this project.
