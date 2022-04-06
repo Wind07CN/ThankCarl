@@ -1,5 +1,6 @@
 # ThankCarl
 [![GitHub license](https://img.shields.io/github/license/Wind07CN/ThankCarl)](https://github.com/Wind07CN/ThankCarl/blob/main/LICENSE)
+
 You are trapped in a magic book, cast the right spells to survive!
 
 ## Background
