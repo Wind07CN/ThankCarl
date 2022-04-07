@@ -12,7 +12,7 @@ The team uses their free time to complete this project.
 Design DOC (Chinese) : [太空卡尔?](https://docs.google.com/document/d/1c2cSY5Ul1Qk7-cG_ykuYS4eUDvX_UJjI-UKtJl1vGkQ/edit#heading=h.af80tl7prv5v)
 
 ## Download
-The first release version (v1.0.0, Windows) can be found [here](https://github.com/Wind07CN/ThankCarl/releases/tag/Release)
+The first release version (v1.0.0, Windows) can be found [here](https://github.com/Wind07CN/ThankCarl/releases/tag/v1.0.0)
 
 ## Documentation
 The detailed documentation about story backgroud, art set, game manual and more can be found [here](./ThankCarlDoc.pdf).
