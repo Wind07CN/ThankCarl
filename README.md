@@ -83,4 +83,4 @@ Use the left mouse button to control the player's movement, use the spacebar to 
 
 [@Shaokun-X](https://github.com/Shaokun-X) Programming & Gameplay Design
 
-[@MCCPbranchofUbisoft](https://github.com/MCCPbranchofUbisoft) Numerical Planning
+[@PrimusXuan](https://github.com/PrimusXuan) Numerical Planning
