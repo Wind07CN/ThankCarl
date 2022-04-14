@@ -3320,7 +3320,7 @@ MonoBehaviour:
   shakeRange: 10
   shakeTime: 0.15
   endUI: {fileID: 2147739070062176601, guid: 9bfac6afaef8eba4e9ce2bfd376406ab, type: 3}
-  getNewSkillUI: {fileID: 7177187595190275340, guid: 53b71b6575b8f664cb7021f1d43fd792, type: 3}
+  getNewSkillUI: {fileID: 7760079435752953613, guid: 964b1710c913d0e4ea759d6610e4196c, type: 3}
   getNewElementUI: {fileID: 7937583067232110039, guid: 802eafeabe138504d9d843c416d86762, type: 3}
   getUI: {fileID: 1031190652}
   conjureTable: {fileID: 116805455}
